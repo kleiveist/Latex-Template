@@ -1,0 +1,25 @@
+\begin{figure}[H]
+  \centering
+  \resizebox{\textwidth}{!}{%
+  \begin{tikzpicture}[node distance=7mm and 8mm]
+    \node[casePrimary,minimum width=35mm] (requirements) {Projektanforderung};
+    \node[caseBox,minimum width=24mm,right=of requirements] (browser) {Browser?};
+    \node[caseBox,minimum width=24mm,right=of browser] (desktop) {Desktop?};
+    \node[caseBox,minimum width=24mm,right=of desktop] (backend) {Backend?};
+    \node[caseBox,minimum width=24mm,right=of backend] (cloud) {Cloud?};
+    \node[casePrimary,minimum width=35mm,below=13mm of $(desktop)!0.5!(backend)$] (profile) {passendes Profil};
+    \node[caseOptional,minimum width=35mm,below=of profile] (capability) {optionale Capability};
+
+    \draw[caseFlow] (requirements) -- (browser);
+    \draw[caseFlow] (browser) -- (desktop);
+    \draw[caseFlow] (desktop) -- (backend);
+    \draw[caseFlow] (backend) -- (cloud);
+    \draw[caseFlow] (browser) |- (profile);
+    \draw[caseFlow] (desktop) -- (profile);
+    \draw[caseFlow] (backend) -- (profile);
+    \draw[caseFlow] (cloud) |- (profile);
+    \draw[caseFlow] (profile) -- (capability);
+  \end{tikzpicture}}
+  \caption{Entscheidungsstruktur für die Auswahl eines Projektprofils}
+  \label{fig:profile-selection-flow}
+\end{figure}

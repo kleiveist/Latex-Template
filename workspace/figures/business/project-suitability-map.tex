@@ -1,0 +1,23 @@
+\begin{figure}[H]
+  \centering
+  \resizebox{0.96\textwidth}{!}{%
+  \begin{tikzpicture}[
+    cell/.style={draw=caseLine,minimum width=40mm,minimum height=8mm,align=center,font=\sffamily\scriptsize},
+    head/.style={cell,fill=caseBlue,text=white,font=\sffamily\bfseries\scriptsize},
+    open/.style={cell,fill=caseLight,text=black!60}
+  ]
+    \matrix[matrix of nodes,nodes in empty cells,ampersand replacement=\&,row sep=-\pgflinewidth,column sep=-\pgflinewidth] {
+      |[head,minimum width=48mm]| Projekttyp \& |[head]| Anforderungsfit \& |[head]| Anpassungsbedarf \& |[head]| Evidenz \\
+      |[cell,minimum width=48mm]| Web-Anwendungen \& |[open]| offen \& |[open]| offen \& |[open]| offen \\
+      |[cell,minimum width=48mm]| Cloud-Anwendungen \& |[open]| offen \& |[open]| offen \& |[open]| offen \\
+      |[cell,minimum width=48mm]| Desktop-Anwendungen \& |[open]| offen \& |[open]| offen \& |[open]| offen \\
+      |[cell,minimum width=48mm]| SaaS + Desktop \& |[open]| offen \& |[open]| offen \& |[open]| offen \\
+      |[cell,minimum width=48mm]| lokale Business-Tools \& |[open]| offen \& |[open]| offen \& |[open]| offen \\
+      |[cell,minimum width=48mm]| stark native Anwendungen \& |[open]| offen \& |[open]| offen \& |[open]| offen \\
+      |[cell,minimum width=48mm]| Echtzeitsysteme \& |[open]| offen \& |[open]| offen \& |[open]| offen \\
+      |[cell,minimum width=48mm]| Spiele \& |[open]| offen \& |[open]| offen \& |[open]| offen \\
+    };
+  \end{tikzpicture}}
+  \caption{Offene Bewertungsstruktur für die Projekteignung}
+  \label{fig:project-suitability-map}
+\end{figure}

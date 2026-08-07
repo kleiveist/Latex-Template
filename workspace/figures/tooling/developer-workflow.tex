@@ -1,0 +1,23 @@
+\begin{figure}[H]
+  \centering
+  \resizebox{\textwidth}{!}{%
+  \begin{tikzpicture}[node distance=6mm]
+    \node[casePrimary,minimum width=24mm] (doctor) {doctor};
+    \node[caseBox,minimum width=24mm,right=of doctor] (install) {install};
+    \node[caseBox,minimum width=24mm,right=of install] (run) {run};
+    \node[caseBox,minimum width=24mm,right=of run] (develop) {develop};
+    \node[caseBox,minimum width=24mm,right=of develop] (test) {test};
+    \node[caseBox,minimum width=24mm,right=of test] (build) {build};
+    \node[caseOptional,minimum width=30mm,right=of build] (release) {release check};
+
+    \draw[caseFlow] (doctor) -- (install);
+    \draw[caseFlow] (install) -- (run);
+    \draw[caseFlow] (run) -- (develop);
+    \draw[caseFlow] (develop) -- (test);
+    \draw[caseFlow] (test) -- (build);
+    \draw[caseFlow] (build) -- (release);
+    \draw[caseSecondaryFlow] (test.south) to[bend left=25] (develop.south);
+  \end{tikzpicture}}
+  \caption{Grundstruktur des Entwicklungsworkflows}
+  \label{fig:developer-workflow}
+\end{figure}

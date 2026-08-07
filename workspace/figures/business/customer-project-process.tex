@@ -1,0 +1,24 @@
+\begin{figure}[H]
+  \centering
+  \resizebox{\textwidth}{!}{%
+  \begin{tikzpicture}[node distance=5mm]
+    \node[casePrimary,minimum width=31mm] (request) {Kundenanforderung};
+    \node[caseBox,minimum width=31mm,right=of request] (analysis) {Anforderungsanalyse};
+    \node[caseBox,minimum width=29mm,right=of analysis] (profile) {Profil auswählen};
+    \node[caseOptional,minimum width=32mm,right=of profile] (capabilities) {optionale Capabilities};
+    \node[caseBox,minimum width=31mm,right=of capabilities] (generate) {Projekt generieren};
+    \node[caseBox,minimum width=32mm,right=of generate] (domain) {Fachlogik entwickeln};
+    \node[caseBox,minimum width=27mm,right=of domain] (acceptance) {Test / Abnahme};
+    \node[casePrimary,minimum width=26mm,right=of acceptance] (delivery) {Auslieferung};
+
+    \draw[caseFlow] (request) -- (analysis);
+    \draw[caseFlow] (analysis) -- (profile);
+    \draw[caseFlow] (profile) -- (capabilities);
+    \draw[caseFlow] (capabilities) -- (generate);
+    \draw[caseFlow] (generate) -- (domain);
+    \draw[caseFlow] (domain) -- (acceptance);
+    \draw[caseFlow] (acceptance) -- (delivery);
+  \end{tikzpicture}}
+  \caption{Prozess vom Kundenbedarf bis zur Auslieferung}
+  \label{fig:customer-project-process}
+\end{figure}

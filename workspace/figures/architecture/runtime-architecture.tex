@@ -1,0 +1,25 @@
+\begin{figure}[H]
+  \centering
+  \resizebox{0.94\textwidth}{!}{%
+  \begin{tikzpicture}[node distance=8mm and 16mm]
+    \node[casePrimary,minimum width=32mm] (browser) {Browser};
+    \node[casePrimary,minimum width=32mm,right=42mm of browser] (desktop) {Tauri Desktop};
+    \node[caseBox,minimum width=32mm,below=of browser] (webfront) {gemeinsames Frontend};
+    \node[caseBox,minimum width=32mm,below=of desktop] (deskfront) {gleiches Frontend};
+    \node[caseBox,minimum width=39mm,below=15mm of $(webfront)!0.5!(deskfront)$] (api)
+      {FastAPI};
+    \node[caseOptional,minimum width=39mm,below=of api] (postgres) {PostgreSQL optional};
+
+    \draw[caseFlow] (browser) -- (webfront);
+    \draw[caseFlow] (desktop) -- (deskfront);
+    \draw[caseFlow] (webfront) -- node[left,font=\sffamily\tiny] {HTTP} (api);
+    \draw[caseFlow] (deskfront) -- node[right,font=\sffamily\tiny] {HTTP} (api);
+    \draw[caseSecondaryFlow] (api) -- (postgres);
+
+    \begin{scope}[on background layer]
+      \node[caseGroup,fit=(browser)(desktop)(postgres),label={[font=\sffamily\scriptsize,text=black!60]below:Komponentenbestand abhängig vom gewählten Profil}] {};
+    \end{scope}
+  \end{tikzpicture}}
+  \caption{Profilabhängige Laufzeitarchitektur}
+  \label{fig:runtime-architecture}
+\end{figure}

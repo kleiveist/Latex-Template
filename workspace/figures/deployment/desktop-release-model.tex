@@ -1,0 +1,25 @@
+\begin{figure}[H]
+  \centering
+  \resizebox{0.94\textwidth}{!}{%
+  \begin{tikzpicture}[node distance=7mm and 12mm]
+    \node[casePrimary,minimum width=38mm] (tauri) {Tauri Build};
+    \node[caseBox,minimum width=38mm,below=of tauri] (platform) {Plattform-Build};
+    \node[caseBox,minimum width=28mm,below left=of platform] (windows) {Windows};
+    \node[caseBox,minimum width=28mm,below=of platform] (macos) {macOS};
+    \node[caseBox,minimum width=28mm,below right=of platform] (linux) {Linux};
+    \node[caseBox,minimum width=38mm,below=15mm of macos] (packaging) {Packaging};
+    \node[caseOptional,minimum width=72mm,below=of packaging] (external)
+      {Signing / Notarisierung / Veröffentlichung\\produktspezifische oder externe Schritte};
+
+    \draw[caseFlow] (tauri) -- (platform);
+    \draw[caseFlow] (platform) -- (windows);
+    \draw[caseFlow] (platform) -- (macos);
+    \draw[caseFlow] (platform) -- (linux);
+    \draw[caseFlow] (windows) |- (packaging);
+    \draw[caseFlow] (macos) -- (packaging);
+    \draw[caseFlow] (linux) |- (packaging);
+    \draw[caseSecondaryFlow] (packaging) -- (external);
+  \end{tikzpicture}}
+  \caption{Plattformübergreifendes Modell für Desktop-Releases}
+  \label{fig:desktop-release-model}
+\end{figure}

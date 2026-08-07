@@ -1,0 +1,30 @@
+\begin{figure}[H]
+  \centering
+  \resizebox{\textwidth}{!}{%
+  \begin{tikzpicture}[node distance=7mm and 10mm]
+    \node[casePrimary,minimum width=40mm,minimum height=18mm] (control) {control.py\\gemeinsamer Einstiegspunkt};
+
+    \node[caseGroup,minimum width=35mm,minimum height=32mm,left=18mm of control] (setupgroup) {};
+    \node[font=\sffamily\bfseries\scriptsize,text=caseBlue,above=1mm of setupgroup.north] {Setup};
+    \node[caseBox,minimum width=28mm,above=2mm of setupgroup.center] (doctor) {doctor};
+    \node[caseBox,minimum width=28mm,below=2mm of setupgroup.center] (init) {init / install};
+
+    \node[caseGroup,minimum width=35mm,minimum height=42mm,right=18mm of control] (devgroup) {};
+    \node[font=\sffamily\bfseries\scriptsize,text=caseBlue,above=1mm of devgroup.north] {Entwicklung};
+    \node[caseBox,minimum width=28mm,above=7mm of devgroup.center] (run) {run};
+    \node[caseBox,minimum width=28mm] at (devgroup.center) (test) {test / build};
+    \node[caseBox,minimum width=28mm,below=7mm of devgroup.center] (config) {config};
+
+    \node[caseGroup,minimum width=35mm,minimum height=42mm,below=17mm of control] (specialgroup) {};
+    \node[font=\sffamily\bfseries\scriptsize,text=caseBlue,above=1mm of specialgroup.north] {Subsysteme};
+    \node[caseBox,minimum width=28mm,above=7mm of specialgroup.center] (db) {db};
+    \node[caseBox,minimum width=28mm] at (specialgroup.center) (tauri) {tauri};
+    \node[caseBox,minimum width=28mm,below=7mm of specialgroup.center] (release) {release};
+
+    \draw[caseFlow] (control) -- (setupgroup);
+    \draw[caseFlow] (control) -- (devgroup);
+    \draw[caseFlow] (control) -- (specialgroup);
+  \end{tikzpicture}}
+  \caption{Befehlsgruppen des zentralen Projekt-Toolings}
+  \label{fig:control-command-map}
+\end{figure}

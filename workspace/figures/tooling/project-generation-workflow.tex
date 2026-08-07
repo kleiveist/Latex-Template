@@ -1,0 +1,22 @@
+\begin{figure}[H]
+  \centering
+  \resizebox{0.48\textwidth}{!}{%
+  \begin{tikzpicture}[node distance=5mm]
+    \node[casePrimary,minimum width=45mm] (master) {Master Repository};
+    \node[caseBox,minimum width=45mm,below=of master] (profile) {Profilwahl};
+    \node[caseBox,minimum width=45mm,below=of profile] (features) {Feature-Auflösung};
+    \node[caseBox,minimum width=45mm,below=of features] (plan) {Scaffold-Plan};
+    \node[caseBox,minimum width=45mm,below=of plan] (generation) {Projektgenerierung};
+    \node[caseOptional,minimum width=45mm,below=of generation] (manifest) {project-profile.toml};
+    \node[casePrimary,minimum width=45mm,below=of manifest] (product) {neues Produktprojekt};
+
+    \draw[caseFlow] (master) -- (profile);
+    \draw[caseFlow] (profile) -- (features);
+    \draw[caseFlow] (features) -- (plan);
+    \draw[caseFlow] (plan) -- (generation);
+    \draw[caseFlow] (generation) -- (manifest);
+    \draw[caseFlow] (manifest) -- (product);
+  \end{tikzpicture}}
+  \caption{Workflow der profilgesteuerten Projektgenerierung}
+  \label{fig:project-generation-workflow}
+\end{figure}

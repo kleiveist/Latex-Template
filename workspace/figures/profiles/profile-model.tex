@@ -1,0 +1,18 @@
+\begin{figure}[H]
+  \centering
+  \resizebox{0.92\textwidth}{!}{%
+  \begin{tikzpicture}[node distance=8mm]
+    \node[casePrimary,minimum width=54mm] (master) {Master Template};
+    \node[caseBox,minimum width=54mm,below=of master] (core) {Shared Core};
+    \node[caseBox,minimum width=54mm,below=of core] (profiles) {Profile Presets};
+    \node[caseOptional,minimum width=54mm,below=of profiles] (project) {Generated Product Project};
+
+    \draw[caseFlow] (master) -- (core);
+    \draw[caseFlow] (core) -- (profiles);
+    \draw[caseFlow] (profiles) -- (project);
+    \node[font=\sffamily\scriptsize,text=black!60,right=13mm of core,align=left]
+      {gemeinsame Wartung\\keine separaten Template-Repositories};
+  \end{tikzpicture}}
+  \caption{Profilmodell auf Basis eines gemeinsamen Master-Templates}
+  \label{fig:profile-model}
+\end{figure}

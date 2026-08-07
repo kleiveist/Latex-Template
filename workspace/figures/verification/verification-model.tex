@@ -1,0 +1,22 @@
+\begin{figure}[H]
+  \centering
+  \resizebox{\textwidth}{!}{%
+  \begin{tikzpicture}[node distance=6mm]
+    \node[casePrimary,minimum width=26mm] (requirement) {Anforderung};
+    \node[caseBox,minimum width=34mm,right=of requirement] (decision) {Architekturentscheidung};
+    \node[caseBox,minimum width=28mm,right=of decision] (implementation) {Implementierung};
+    \node[caseBox,minimum width=31mm,right=of implementation] (test) {automatisierter Test};
+    \node[caseBox,minimum width=24mm,right=of test] (acceptance) {Abnahme};
+    \node[caseOptional,minimum width=24mm,right=of acceptance] (evidence) {Evidenz};
+    \node[caseOptional,minimum width=24mm,right=of evidence] (evaluation) {Bewertung};
+
+    \draw[caseFlow] (requirement) -- (decision);
+    \draw[caseFlow] (decision) -- (implementation);
+    \draw[caseFlow] (implementation) -- (test);
+    \draw[caseFlow] (test) -- (acceptance);
+    \draw[caseFlow] (acceptance) -- (evidence);
+    \draw[caseFlow] (evidence) -- (evaluation);
+  \end{tikzpicture}}
+  \caption{Nachweiskette der technischen Verifikation}
+  \label{fig:verification-model}
+\end{figure}

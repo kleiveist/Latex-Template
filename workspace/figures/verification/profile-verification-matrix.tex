@@ -1,0 +1,20 @@
+\begin{figure}[H]
+  \centering
+  \resizebox{\textwidth}{!}{%
+  \begin{tikzpicture}[
+    cell/.style={draw=caseLine,minimum width=20mm,minimum height=8mm,align=center,font=\sffamily\tiny},
+    head/.style={cell,fill=caseBlue,text=white,font=\sffamily\bfseries\tiny},
+    open/.style={cell,fill=caseLight,text=black!60}
+  ]
+    \matrix[matrix of nodes,nodes in empty cells,ampersand replacement=\&,row sep=-\pgflinewidth,column sep=-\pgflinewidth] {
+      |[head,minimum width=29mm]| Profil \& |[head]| Generate \& |[head]| Install \& |[head]| Doctor \& |[head]| Tests \& |[head]| Web Build \& |[head]| Desktop / Tauri \& |[head]| Database \& |[head]| Container \\
+      |[head,minimum width=29mm]| web-only \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \\
+      |[head,minimum width=29mm]| web-cloud \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \\
+      |[head,minimum width=29mm]| desktop-local \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \\
+      |[head,minimum width=29mm]| desktop-cloud \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \\
+      |[head,minimum width=29mm]| full-platform \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \\
+    };
+  \end{tikzpicture}}
+  \caption{Struktur der profilbezogenen Verifikationsmatrix}
+  \label{fig:profile-verification-matrix}
+\end{figure}

@@ -1,0 +1,24 @@
+\begin{figure}[H]
+  \centering
+  \resizebox{0.95\textwidth}{!}{%
+  \begin{tikzpicture}[node distance=6mm and 18mm]
+    \node[casePrimary,minimum width=42mm] (cli) {CLI Override};
+    \node[caseBox,minimum width=42mm,below=of cli] (env) {Process Environment};
+    \node[caseBox,minimum width=42mm,below=of env] (dotenv) {.env};
+    \node[caseBox,minimum width=42mm,below=of dotenv] (default) {Default};
+
+    \draw[caseFlow] (cli) -- (env);
+    \draw[caseFlow] (env) -- (dotenv);
+    \draw[caseFlow] (dotenv) -- (default);
+
+    \node[caseBox,minimum width=39mm,right=of cli] (frontend) {Frontend Values};
+    \node[caseBox,minimum width=39mm,below=of frontend] (server) {Server-only Values};
+    \node[caseOptional,minimum width=39mm,below=of server] (secrets) {Secrets};
+    \begin{scope}[on background layer]
+      \node[caseGroup,fit=(frontend)(server)(secrets),
+        label={[font=\sffamily\bfseries\scriptsize,text=caseBlue]above:Sicherheitsgrenzen}] {};
+    \end{scope}
+  \end{tikzpicture}}
+  \caption{Konfigurationspriorität und Sicherheitsgrenzen}
+  \label{fig:configuration-boundaries}
+\end{figure}

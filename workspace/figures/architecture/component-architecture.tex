@@ -1,0 +1,27 @@
+\begin{figure}[H]
+  \centering
+  \resizebox{\textwidth}{!}{%
+  \begin{tikzpicture}[node distance=7mm and 8mm]
+    \node[caseBox,minimum width=38mm] (frontend) {\textbf{frontend/}\\Benutzeroberfläche und Client-Build};
+    \node[caseBox,minimum width=38mm,right=of frontend] (backend) {\textbf{backend/}\\API und serverseitige Dienste};
+    \node[caseBox,minimum width=38mm,right=of backend] (tauri) {\textbf{src-tauri/}\\Desktop-Schicht};
+    \node[caseBox,minimum width=38mm,below=of frontend] (shared) {\textbf{shared/}\\gemeinsame Verträge};
+    \node[caseBox,minimum width=38mm,right=of shared] (profiles) {\textbf{profiles/}\\Profil-Presets};
+    \node[caseBox,minimum width=38mm,right=of profiles] (tools) {\textbf{tools/}\\Projektsteuerung};
+    \node[caseBox,minimum width=38mm,below=of shared] (deployment) {\textbf{deployment/}\\Betriebsartefakte};
+    \node[caseBox,minimum width=38mm,right=of deployment] (docs) {\textbf{docs/}\\Dokumentation};
+    \node[casePrimary,minimum width=38mm,right=of docs] (repository) {Master Repository};
+
+    \draw[caseSecondaryFlow,<->] (frontend) -- (shared);
+    \draw[caseSecondaryFlow,<->] (backend) -- (shared);
+    \draw[caseSecondaryFlow,<->] (tauri) -- (frontend);
+    \draw[caseSecondaryFlow] (profiles) -- (frontend);
+    \draw[caseSecondaryFlow] (profiles) -- (backend);
+    \draw[caseSecondaryFlow] (profiles) -- (tauri);
+    \draw[caseSecondaryFlow] (tools) -- (profiles);
+    \draw[caseSecondaryFlow] (deployment) -- (backend);
+    \draw[caseSecondaryFlow] (docs) -- (repository);
+  \end{tikzpicture}}
+  \caption{Komponenten und Verantwortungsgrenzen im Master Repository}
+  \label{fig:component-architecture}
+\end{figure}

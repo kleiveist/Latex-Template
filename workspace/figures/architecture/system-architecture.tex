@@ -1,0 +1,26 @@
+\begin{figure}[H]
+  \centering
+  \resizebox{\textwidth}{!}{%
+  \begin{tikzpicture}[node distance=9mm and 12mm]
+    \node[casePrimary,minimum width=32mm] (browser) {Browser};
+    \node[casePrimary,minimum width=32mm,right=of browser] (desktop) {Desktop / Tauri};
+    \node[caseBox,minimum width=76mm,below=of $(browser)!0.5!(desktop)$] (frontend)
+      {gemeinsames Frontend\\Vite + TypeScript};
+    \node[caseBox,minimum width=38mm,below=of frontend] (backend) {FastAPI-Backend};
+    \node[caseOptional,minimum width=38mm,below=of backend] (database)
+      {PostgreSQL\\optionale Persistenz};
+    \node[caseBox,minimum width=31mm,left=22mm of backend] (contracts) {Shared Contracts};
+    \node[caseBox,minimum width=31mm,right=22mm of backend] (tooling) {Projekt-Tooling};
+
+    \draw[caseFlow] (browser) -- (frontend);
+    \draw[caseFlow] (desktop) -- (frontend);
+    \draw[caseFlow] (frontend) -- node[right,font=\sffamily\tiny] {HTTP} (backend);
+    \draw[caseSecondaryFlow] (backend) -- (database);
+    \draw[caseSecondaryFlow,<->] (contracts) -- (backend);
+    \draw[caseSecondaryFlow,<->] (contracts) |- (frontend);
+    \draw[caseSecondaryFlow] (tooling) -- (backend);
+    \draw[caseSecondaryFlow] (tooling) |- (frontend);
+  \end{tikzpicture}}
+  \caption{Gesamtarchitektur des Technologie-Templates}
+  \label{fig:system-architecture}
+\end{figure}

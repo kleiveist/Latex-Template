@@ -1,0 +1,24 @@
+\begin{figure}[H]
+  \centering
+  \resizebox{\textwidth}{!}{%
+  \begin{tikzpicture}[node distance=8mm and 11mm]
+    \node[casePrimary,minimum width=31mm] (frontend) {Frontend Build};
+    \node[casePrimary,minimum width=31mm,right=of frontend] (backend) {Backend Service};
+    \node[caseBox,minimum width=31mm,right=of backend] (container) {Docker / Compose};
+    \node[caseBox,minimum width=26mm,below=of backend] (health) {Health};
+    \node[caseBox,minimum width=26mm,right=of health] (readiness) {Readiness};
+    \node[caseOptional,minimum width=36mm,right=of readiness] (postgres) {PostgreSQL optional};
+
+    \draw[caseFlow] (frontend) -- (backend);
+    \draw[caseFlow] (backend) -- (container);
+    \draw[caseSecondaryFlow] (container) -- (health);
+    \draw[caseSecondaryFlow] (container) -- (readiness);
+    \draw[caseSecondaryFlow] (container) -- (postgres);
+    \begin{scope}[on background layer]
+      \node[caseGroup,fit=(frontend)(backend)(container)(health)(readiness)(postgres),
+        label={[font=\sffamily\bfseries\scriptsize,text=caseBlue]above:providerneutrale Deployment-Grenze}] {};
+    \end{scope}
+  \end{tikzpicture}}
+  \caption{Providerneutrale Deployment-Architektur}
+  \label{fig:deployment-architecture}
+\end{figure}

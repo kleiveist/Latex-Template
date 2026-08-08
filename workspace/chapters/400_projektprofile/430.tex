@@ -1,9 +1,16 @@
 \subsection{Profil Web-cloud}
 \label{subsec:profil-web-cloud}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - vorgesehene Frontend-, Backend- und Cloud-Bausteine prüfen
-% - optionale Persistenz getrennt vom Plattformprofil behandeln
-% - Generierungs- und Betriebsgrenzen aus Projektartefakten ableiten
+\texttt{web-cloud} deklariert \texttt{frontend}, \texttt{backend} und
+\texttt{cloud}. Der Scaffold enthält damit Vite-Frontend, den für das
+Basisbackend ausgewählten FastAPI-Code sowie \path{deployment/} und
+\path{.dockerignore}; \path{src-tauri/} und dessen npm-Abhängigkeiten werden
+nicht übernommen. Das Frontend kommuniziert über die öffentliche API-URL mit
+dem getrennten Backend. \texttt{cloud} kennzeichnet Deployment-Dateien ohne
+Bindung an einen konkreten Anbieter
+\parencite{kleiveist2026deployment,kleiveist2026profiles}.
+
+Ohne weitere Auswahl fehlen Datenbankmodul, Alembic sowie die Datenbank- und
+Psycopg-Dateien. PostgreSQL ist deshalb eine kompatible, aber
+separat anzufordernde Capability; \texttt{web-cloud} ist nicht gleichbedeutend
+mit \texttt{web-cloud + postgres}.

@@ -1,43 +1,47 @@
 \begin{figure}[H]
   \centering
-  \resizebox{0.98\textwidth}{!}{%
-  \begin{tikzpicture}[node distance=8mm and 9mm]
-    \node[casePrimary,minimum width=42mm] (repository) {Master-Repository};
+  \resizebox{0.97\textwidth}{!}{%
+  \begin{tikzpicture}[node distance=5.5mm and 11mm]
+    \node[casePrimary,minimum width=48mm] (repository) {Master-Repository};
+    \node[font=\sffamily\bfseries\scriptsize,text=caseBlue,above=5mm of repository]
+      {Verantwortungsbereiche im Repository};
 
-    \node[caseBox,minimum width=42mm,below left=of repository] (profiles)
-      {\textbf{profiles/} + \textbf{config/}\\Auswahl und Variablenvertrag};
-    \node[caseBox,minimum width=42mm,below right=of repository] (tools)
-      {\textbf{tools/}\\Generierung und Lebenszyklus};
+    \node[casePrimary,minimum width=46mm,below left=10mm and 53mm of repository] (runtime)
+      {Laufzeitquellen};
+    \node[casePrimary,minimum width=46mm,below=10mm of repository] (contracts)
+      {Auswahl und Verträge};
+    \node[casePrimary,minimum width=46mm,below right=10mm and 53mm of repository] (lifecycle)
+      {Lebenszyklus};
 
-    \node[caseBox,minimum width=42mm,below left=12mm and 53mm of repository] (frontend)
+    \node[caseBox,minimum width=46mm,below=of runtime] (frontend)
       {\textbf{frontend/}\\UI, Build, HTTP-Client};
-    \node[caseBox,minimum width=42mm,right=of frontend] (backend)
+    \node[caseBox,minimum width=46mm,below=of frontend] (backend)
       {\textbf{backend/}\\API, Konfiguration, optionale DB};
-    \node[caseBox,minimum width=42mm,right=of backend] (tauri)
+    \node[caseBox,minimum width=46mm,below=of backend] (tauri)
       {\textbf{src-tauri/}\\native Desktop-Grenze};
 
-    \node[caseBox,minimum width=42mm,below=of frontend] (shared)
+    \node[caseBox,minimum width=46mm,below=of contracts] (profiles)
+      {\textbf{profiles/}\\Features und Presets};
+    \node[caseBox,minimum width=46mm,below=of profiles] (config)
+      {\textbf{config/}\\Variablenvertrag};
+    \node[caseBox,minimum width=46mm,below=of config] (shared)
       {\textbf{shared/}\\Schema, Beispiele, Assets};
-    \node[caseBox,minimum width=42mm,right=of shared] (deployment)
+
+    \node[caseBox,minimum width=46mm,below=of lifecycle] (tools)
+      {\textbf{tools/}\\Generierung und Steuerung};
+    \node[caseBox,minimum width=46mm,below=of tools] (deployment)
       {\textbf{deployment/}\\providerneutrale Artefakte};
-    \node[caseBox,minimum width=42mm,right=of deployment] (docs)
+    \node[caseBox,minimum width=46mm,below=of deployment] (docs)
       {\textbf{docs/}\\Architektur und Betrieb};
 
-    \draw[caseFlow] (repository) -- (profiles);
-    \draw[caseFlow] (repository) -- (tools);
-    \draw[caseSecondaryFlow] (profiles) -- node[left,font=\sffamily\tiny] {wählt} (frontend);
-    \draw[caseSecondaryFlow] (profiles) -- (backend);
-    \draw[caseSecondaryFlow] (profiles) -| (tauri);
-    \draw[caseSecondaryFlow] (tools) -- node[right,font=\sffamily\tiny] {steuert} (backend);
-    \draw[caseSecondaryFlow] (tools) -| (frontend);
-    \draw[caseSecondaryFlow] (tools) -| (tauri);
-    \draw[caseSecondaryFlow] (tools) -- node[above,font=\sffamily\tiny] {validiert} (shared);
-    \draw[caseSecondaryFlow] (deployment) -- (backend);
-    \draw[caseSecondaryFlow] (tauri) -- node[above,font=\sffamily\tiny] {hostet} (frontend);
+    \draw[caseFlow] (repository) -- (runtime);
+    \draw[caseFlow] (repository) -- (contracts);
+    \draw[caseFlow] (repository) -- (lifecycle);
 
     \begin{scope}[on background layer]
-      \node[caseGroup,fit=(repository)(profiles)(tools)(frontend)(backend)(tauri)(shared)(deployment)(docs),
-        label={[font=\sffamily\bfseries\scriptsize,text=caseBlue]above:Verantwortungsbereiche im Repository}] {};
+      \node[caseGroup,fit=(runtime)(frontend)(backend)(tauri)] {};
+      \node[caseGroup,fit=(contracts)(profiles)(config)(shared)] {};
+      \node[caseGroup,fit=(lifecycle)(tools)(deployment)(docs)] {};
     \end{scope}
   \end{tikzpicture}}
   \caption{Komponenten und Verantwortungsgrenzen im Master Repository}

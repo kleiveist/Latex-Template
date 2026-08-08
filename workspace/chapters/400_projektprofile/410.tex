@@ -1,14 +1,62 @@
 \subsection{Grundprinzip des Profilmodells}
 \label{subsec:grundprinzip-profilmodell}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - Profile als Presets eines gemeinsamen Master-Templates
-% - gemeinsame Basis und profilspezifische Feature-Auswahl
-% - strukturelle Zuordnung ohne vorweggenommene Qualitätsbewertung
+Wie in Kapitel~\ref{sec:architektur} beschrieben, bildet ein
+Master-Repository die gemeinsame technische Ausgangsbasis. Das Modell weist
+damit Merkmale featurebasierter Variabilitätsverwaltung und systematischer
+Softwarewiederverwendung auf, ohne allein deshalb eine vollständige
+Software-Produktlinie zu konstituieren
+\parencite{clements2001software-product-lines,krueger1992software-reuse}.
+Der Katalog \path{profiles/features.toml} trennt vier Begriffe: Der
+\emph{Core} umfasst die in jedes Produktprojekt kopierten Pfade
+\path{README.md}, \path{VERSION}, \path{.gitignore}, \path{config/},
+\path{docs/}, \path{profiles/}, \path{shared/} und \path{tools/}. Ein
+\emph{Feature} ordnet einer technischen Fähigkeit eigene Scaffold-Pfade und
+gegebenenfalls Abhängigkeiten zu. Ein \emph{Profil} ist dagegen ein benanntes
+Preset zulässiger Features. Eine \emph{optionale Capability} erweitert dieses
+Preset nach der Profilwahl; sie ist weder ein Plattformprofil noch automatisch
+Bestandteil eines Profils \parencite{kleiveist2026profiles,kleiveist2026template}.
 
 \input{workspace/figures/profiles/profile-model}
-\input{workspace/figures/profiles/profile-matrix}
+
+Abbildung~\ref{fig:profile-model} fasst diese Ebenen zusammen. Sie abstrahiert
+von den Laufzeitkomponenten und hebt stattdessen hervor, dass Core,
+Feature-Katalog und Presets in einer Wartungsbasis liegen. Der Generator löst
+das gewählte Preset und kompatible Capabilities auf, bildet aus Core- und
+Feature-Pfaden einen Scaffold-Plan und kopiert diesen in ein neues
+Produktprojekt. Nicht aktivierte Verzeichnisse werden somit überwiegend gar
+nicht ausgewählt; bei Webprofilen entfernt die Nachbearbeitung zusätzlich die
+Tauri-CLI aus den kopierten Frontend-Abhängigkeiten. Optional können Name,
+Slug und bei Tauri die Anwendungs-ID angepasst werden
+\parencite{kleiveist2026profiles,kleiveist2026tooling}.
+
+Die Auswahl in Abbildung~\ref{fig:profile-selection-flow} berücksichtigt, dass
+die gegenwärtigen Presets Backend und Cloud gemeinsam führen. Bei
+Desktopprojekten trennt der zusätzliche Browser-Produktkanal semantisch
+\texttt{full-platform} von \texttt{desktop-cloud}; erst nach der Profilwahl
+wird eine Capability geprüft. Die anschließende Abhängigkeitsauflösung
+verhindert, dass dadurch stillschweigend ein fehlendes Plattformfeature
+ergänzt wird.
+
 \input{workspace/figures/profiles/profile-selection-flow}
+
+Jedes generierte Projekt erhält das aktive Manifest
+\texttt{project-\allowbreak profile.toml}. Es speichert ausschließlich
+\texttt{schema\_version}, Profil-\texttt{id}, \texttt{name},
+\texttt{description}, die angeforderten \texttt{optional\_features} und die
+vollständig aufgelösten \texttt{features}. Das gemeinsame Tooling lädt und
+validiert das Manifest. Dadurch behandelt es nur aktive Dienste und Workflows.
+Im Master aktiviert das Manifest \texttt{full-platform} und
+\texttt{postgres}. Das gleichnamige Preset bleibt davon unberührt.
+Strukturprofil und Laufzeitumgebung bleiben getrennt: Development-, Test- und
+Produktionswerte, Ports, URLs und Geheimnisse stammen aus dem in
+Abschnitt~\ref{subsec:konfigurationsmodell} beschriebenen
+Konfigurationsmodell \parencite{kleiveist2026configuration,kleiveist2026template}.
+
+Abbildung~\ref{fig:profile-matrix} ermöglicht den schnellen strukturellen
+Vergleich. Tabelle~\ref{tab:profile-matrix} ergänzt dazu die exakt deklarierten
+Feature-IDs und die daraus ausgewählten Laufzeitverzeichnisse. Insbesondere ist
+PostgreSQL bei keinem der fünf Presets voreingestellt.
+
+\input{workspace/figures/profiles/profile-matrix}
 \input{workspace/tables/profile-matrix}

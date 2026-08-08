@@ -1,9 +1,12 @@
 \subsection{Profil Web-only}
 \label{subsec:profil-web-only}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - vorgesehene Komponenten und Einsatzgrenzen anhand des Profils prüfen
-% - Abgrenzung zu backend- und desktopfähigen Profilen
-% - keine nicht verifizierten Features ergänzen
+\texttt{web-only} aktiviert als einziges Plattformfeature
+\texttt{frontend}. Zum Core kommt daher \path{frontend/}. Nicht in den
+Scaffold gelangen \path{backend/}, \path{src-tauri/}, \path{deployment/}
+sowie Datenbank- und PostgreSQL-Abhängigkeiten. Der Generator entfernt außerdem
+Tauri-Skript und -CLI aus \path{package.json} und Lockfile. Das Laufzeitmodell
+ist damit ein im Browser geladenes Vite-Frontend ohne FastAPI- oder native
+Desktop-Schicht; auch das generierte Frontend-Profil aktiviert keinen
+Backend-Statusaufruf. Gegenüber \texttt{web-cloud} fehlen folglich API und
+Cloud-/Deployment-Feature \parencite{kleiveist2026profiles}.

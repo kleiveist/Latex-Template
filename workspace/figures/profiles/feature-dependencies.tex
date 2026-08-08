@@ -1,0 +1,23 @@
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[node distance=12mm and 18mm]
+    \node[caseBox,minimum width=31mm] (backend) {\texttt{backend}};
+    \node[caseBox,minimum width=31mm,right=48mm of backend] (frontend) {\texttt{frontend}};
+
+    \node[caseBox,minimum width=31mm,below left=of backend] (cloud) {\texttt{cloud}};
+    \node[caseOptional,minimum width=31mm,below right=of backend] (database)
+      {\texttt{database}\\optional};
+    \node[caseBox,minimum width=31mm,below=of frontend] (tauri) {\texttt{tauri}};
+    \node[caseOptional,minimum width=31mm,below=of database] (postgres)
+      {\texttt{postgres}\\auswählbar};
+
+    \draw[caseFlow] (cloud) -- (backend);
+    \draw[caseFlow] (database) -- (backend);
+    \draw[caseFlow] (postgres) -- (database);
+    \draw[caseFlow] (tauri) -- (frontend);
+    \node[font=\sffamily\scriptsize,text=black!60,below=3mm of postgres]
+      {Pfeilrichtung: benötigt};
+  \end{tikzpicture}
+  \caption{Implementierte Abhängigkeiten des Feature-Katalogs}
+  \label{fig:feature-dependencies}
+\end{figure}

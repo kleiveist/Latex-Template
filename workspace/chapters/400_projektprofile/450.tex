@@ -1,9 +1,16 @@
 \subsection{Profil Desktop-cloud}
 \label{subsec:profil-desktop-cloud}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - Zusammenspiel von Desktop, gemeinsamem Frontend und Cloud-Backend prüfen
-% - Unterschiede zu Desktop-local und Full-platform herausarbeiten
-% - optionale Persistenz separat kennzeichnen
+\texttt{desktop-cloud} aktiviert \texttt{frontend}, \texttt{backend},
+\texttt{tauri} und \texttt{cloud}. Es ergänzt \texttt{desktop-local} damit um
+FastAPI und die Deployment-Grenze: Das gemeinsame Frontend wird in der
+Tauri-Webview ausgeführt und greift über die konfigurierte öffentliche URL auf
+das getrennte Backend zu. Datenbankinfrastruktur bleibt ohne Capability
+ausgeschlossen; PostgreSQL kann wegen des vorhandenen Backends ergänzt werden
+\parencite{kleiveist2026profiles,kleiveist2026deployment}.
+
+Die Basisfeatures und Feature-Pfade sind identisch zu
+\texttt{full-platform}. Die Profil-ID dokumentiert jedoch den Desktop-Client
+als vorgesehenen Produktkanal, während das folgende Profil Browser und Desktop
+gemeinsam adressiert. Ein zusätzlicher technischer Baustein entsteht aus
+dieser semantischen Abgrenzung nicht.

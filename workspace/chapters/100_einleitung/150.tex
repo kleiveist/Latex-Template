@@ -1,15 +1,36 @@
 \subsection{Methodisches Vorgehen}
 \label{subsec:methodisches-vorgehen}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - Analyse des implementierten Templates
-% - Untersuchung der Architektur
-% - Prüfung der Projektprofile
-% - Auswertung vorhandener Tests und Abnahmen
-% - Bewertung anhand definierter Kriterien
-% - Ableitung geeigneter Einsatzfelder
-% - Fallstudienmethodik wissenschaftlich begründen und belegen
+Die Untersuchung ist als technische Fallstudie des implementierten Templates
+angelegt. Ausgangspunkt ist eine Bestandsaufnahme des Master Repository. Dabei
+werden die Repository-Struktur, die enthaltenen Komponenten und die
+dokumentierten Verantwortungsgrenzen erfasst. Anschließend werden die
+Architekturentscheidungen und die Beziehungen zwischen Frontend, Backend,
+Desktop-Integration, gemeinsam genutzten Schnittstellen, Persistenz und
+Deployment betrachtet. Die Analyse beschreibt den vorhandenen Gegenstand und
+trennt belegbare Projekteigenschaften von Annahmen oder noch offenen
+Prüfpunkten.
+
+Darauf aufbauend wird das Profilmodell untersucht. Im Mittelpunkt stehen die
+Abgrenzung der Profile, die Aufteilung zwischen gemeinsamem Kern und
+profilspezifischen Bestandteilen sowie das Modell optionaler Capabilities. Die
+Betrachtung des Python-basierten Toolings ergänzt diese strukturelle Analyse
+um den praktischen Entwicklungsablauf. Hierzu werden insbesondere
+Projektgenerierung, Systemprüfung, Installation, Entwicklungsbetrieb, Tests,
+Builds und Release-Vorbereitung als zusammenhängender Workflow betrachtet.
+
+Für die Verifikation werden vorhandene automatisierte Tests, Build-Ergebnisse
+und dokumentierte Abnahmen den jeweils untersuchten Anforderungen und
+Architekturentscheidungen zugeordnet. Externe oder produktspezifische
+Prüfschritte werden davon abgegrenzt. Auf dieser Evidenzbasis erfolgt die
+Bewertung von Wiederverwendbarkeit, Standardisierung,
+Produktivitätspotenzial, Stärken und Grenzen. Abschließend werden daraus
+Kriterien für geeignete Einsatzfelder und für die Übertragung auf zukünftige
+Kundenprojekte abgeleitet.
+
+Abbildung~\ref{fig:case-study-method} fasst diese aufeinander aufbauenden
+Untersuchungsschritte zusammen. Die vertikale Darstellung verdeutlicht, dass
+die Bewertung und der Transfer erst auf Grundlage der zuvor erhobenen und
+analysierten Projektinformationen erfolgen.
 
 \input{workspace/figures/verification/case-study-method}

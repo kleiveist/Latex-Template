@@ -1,11 +1,32 @@
 \subsection{Ausgangslage}
 \label{subsec:ausgangslage}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - wiederkehrende Einrichtung neuer Softwareprojekte
-% - unterschiedliche Anforderungen an Web-, Cloud- und Desktop-Anwendungen
-% - wiederkehrende Architektur-, Tooling- und Deploymententscheidungen
-% - Motivation für eine standardisierte technische Ausgangsbasis
-% - mögliche wissenschaftliche und technische Quellen ergänzen
+Die Einrichtung eines neuen Softwareprojekts umfasst neben der Umsetzung der
+Fachlogik zahlreiche technische Grundentscheidungen. Dazu gehören die Auswahl
+und Konfiguration der verwendeten Technologien, die Strukturierung des
+Quellcodes, die Definition von Schnittstellen sowie die Einrichtung von
+Entwicklungs-, Test-, Build- und Deployment-Prozessen. Bei Projekten mit
+vergleichbaren technischen Anforderungen treten diese Aufgaben wiederholt
+auf. Werden sie für jedes Vorhaben unabhängig gelöst, entstehen bereits vor
+Beginn der eigentlichen Produktentwicklung unterschiedliche technische
+Ausgangslagen.
+
+Die Anforderungen an diese Ausgangslagen unterscheiden sich zusätzlich nach
+der vorgesehenen Betriebs- und Nutzungsform. Eine reine Web-Anwendung benötigt
+andere Komponenten als eine cloudgestützte Anwendung mit Backend und
+Persistenz. Desktop-Anwendungen erfordern darüber hinaus eine Integration in
+das jeweilige Betriebssystem sowie eigene Build- und
+Bereitstellungsmechanismen. Soll ein Projekt mehrere Plattformen unterstützen,
+müssen gemeinsame Bestandteile und plattformspezifische Erweiterungen so
+voneinander abgegrenzt werden, dass sie konsistent entwickelt und gewartet
+werden können.
+
+Vor diesem Hintergrund besteht Bedarf an einer standardisierten technischen
+Ausgangsbasis, die wiederkehrende Entscheidungen nachvollziehbar bündelt und
+zugleich unterschiedliche Projektformen berücksichtigt. Ein konsistentes
+Entwicklungsmodell kann hierfür gemeinsame Strukturen, Werkzeuge und
+Qualitätssicherungsmaßnahmen bereitstellen. Gegenstand dieser Fallstudie ist
+das Projekt \enquote{Template-Projekte}, das als wiederverwendbares
+Full-Stack-Technologie-Template für Web-, Cloud- und Desktop-Projekte
+konzipiert ist. Seine konkrete Ausgestaltung und seine Eignung werden im
+weiteren Verlauf der Arbeit systematisch untersucht.

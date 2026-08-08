@@ -1,11 +1,31 @@
 \subsection{Problemstellung}
 \label{subsec:problemstellung}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - Aufwand bei Projektstarts
-% - Inkonsistenzen zwischen Projekten
-% - Wartung mehrerer technischer Baselines
-% - Gefahr auseinanderlaufender Technologien und Entwicklungsprozesse
-% - Problembeobachtungen von späterer Bewertung trennen
+Die wiederholte Initialisierung technisch ähnlicher Softwareprojekte bindet
+Aufwand, der nicht unmittelbar der Umsetzung produktspezifischer Anforderungen
+dient. Projektstrukturen, Konfigurationen und Automatisierungen müssen erneut
+erstellt, aufeinander abgestimmt und überprüft werden. Ohne eine gemeinsame
+Baseline können sich dabei selbst zwischen verwandten Projekten Unterschiede
+in Architektur, Werkzeugauswahl, Schnittstellengestaltung und
+Entwicklungsabläufen ergeben. Diese Unterschiede erschweren die Übertragung
+von Erfahrungen und erhöhen den Einarbeitungsbedarf bei einem Wechsel zwischen
+Projekten.
+
+Werden für Web-, Cloud- und Desktop-Anwendungen getrennte technische
+Ausgangsstände gepflegt, entsteht zusätzlicher Wartungsaufwand. Änderungen an
+gemeinsam verwendeten Technologien oder Qualitätsanforderungen müssen dann in
+mehreren Baselines nachvollzogen werden. Erfolgt diese Pflege nicht
+gleichförmig, können Technologieversionen, Build-Prozesse,
+Konfigurationsmodelle und Dokumentationsstände auseinanderlaufen. Damit steigt
+das Risiko, dass vergleichbare Anforderungen unterschiedlich umgesetzt oder
+Prüfungen nur in einzelnen Projektvarianten berücksichtigt werden.
+
+Die zentrale Herausforderung besteht folglich darin, Einheitlichkeit und
+Flexibilität miteinander zu verbinden. Ein Technologie-Template muss genügend
+gemeinsame Struktur vorgeben, um Standardisierung und Wiederverwendung zu
+ermöglichen. Gleichzeitig darf es Projekte nicht mit Komponenten oder
+Abhängigkeiten belasten, die für das gewählte Einsatzszenario nicht benötigt
+werden. Die Fallstudie untersucht deshalb, wie das entwickelte Template diesen
+Zielkonflikt durch eine gemeinsame technische Basis, Projektprofile und
+optionale Erweiterungen adressiert und an welchen Stellen Grenzen oder
+zusätzlicher Anpassungsbedarf bestehen.

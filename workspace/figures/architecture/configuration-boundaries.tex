@@ -22,32 +22,36 @@
     \node[caseBox,minimum width=39mm,below=of secrets] (errors)
       {ungültig: Abbruch\\ohne Secret-Ausgabe};
 
+    \begin{scope}[on background layer]
+      \node[caseGroup,fit=(frontend)(server)(secrets)(errors),
+        label={[font=\sffamily\bfseries\scriptsize,text=caseBlue]above:Sicherheitsgrenzen}] {};
+    \end{scope}
+
     \coordinate (inputtop) at ($(cli.east)+(9mm,0)$);
     \coordinate (inputenv) at (inputtop |- env.east);
     \coordinate (inputdotenv) at (inputtop |- dotenv.east);
     \coordinate (inputbottom) at (inputtop |- contract.east);
-    \draw[draw=caseLine,line width=0.8pt] (cli.east) -- (inputtop);
-    \draw[draw=caseLine,line width=0.8pt] (env.east) -- (inputenv);
-    \draw[draw=caseLine,line width=0.8pt] (dotenv.east) -- (inputdotenv);
-    \draw[draw=caseLine,line width=0.8pt] (contract.east) -- (inputbottom);
-    \draw[draw=caseLine,line width=0.8pt] (inputtop) -- (inputbottom);
-    \draw[caseFlow] (inputtop |- resolver.west) -- (resolver.west);
-    \draw[caseFlow] (profile) -- (resolver);
 
     \coordinate (outputtop) at ($(frontend.west)+(-9mm,0)$);
     \coordinate (outputserver) at (outputtop |- server.west);
     \coordinate (outputsecrets) at (outputtop |- secrets.west);
     \coordinate (outputbottom) at (outputtop |- errors.west);
-    \draw[draw=caseBlue,line width=0.9pt] (resolver.east) -- (outputserver);
-    \draw[draw=caseBlue,line width=0.9pt] (outputtop) -- (outputsecrets);
-    \draw[caseFlow] (outputtop) -- (frontend.west);
-    \draw[caseFlow] (outputserver) -- (server.west);
-    \draw[caseFlow] (outputsecrets) -- (secrets.west);
-    \draw[caseSecondaryFlow] (outputsecrets) -- (outputbottom) -- (errors.west);
 
     \begin{scope}[on background layer]
-      \node[caseGroup,fit=(frontend)(server)(secrets)(errors),
-        label={[font=\sffamily\bfseries\scriptsize,text=caseBlue]above:Sicherheitsgrenzen}] {};
+      \draw[draw=caseLine,line width=0.8pt] (cli.east) -- (inputtop);
+      \draw[draw=caseLine,line width=0.8pt] (env.east) -- (inputenv);
+      \draw[draw=caseLine,line width=0.8pt] (dotenv.east) -- (inputdotenv);
+      \draw[draw=caseLine,line width=0.8pt] (contract.east) -- (inputbottom);
+      \draw[draw=caseLine,line width=0.8pt] (inputtop) -- (inputbottom);
+      \draw[caseFlow] (inputtop |- resolver.west) -- (resolver.west);
+      \draw[caseFlow] (profile) -- (resolver);
+
+      \draw[draw=caseBlue,line width=0.9pt] (resolver.east) -- (outputserver);
+      \draw[draw=caseBlue,line width=0.9pt] (outputtop) -- (outputsecrets);
+      \draw[caseFlow] (outputtop) -- (frontend.west);
+      \draw[caseFlow] (outputserver) -- (server.west);
+      \draw[caseFlow] (outputsecrets) -- (secrets.west);
+      \draw[caseSecondaryFlow] (outputsecrets) -- (outputbottom) -- (errors.west);
     \end{scope}
   \end{tikzpicture}}
   \caption{Konfigurationspriorität und Sicherheitsgrenzen}

@@ -13,8 +13,7 @@
     \draw[caseFlow] (master) -- (core);
     \draw[caseFlow] (core) -- (profiles);
     \draw[caseFlow] (profiles) -- (capability);
-    \draw[caseFlow] (capability) -- node[right,font=\sffamily\scriptsize,text=black!60]
-      {Abhängigkeiten auflösen} (project);
+    \draw[caseFlow] (capability) -- (project);
     \begin{scope}[on background layer]
       \node[caseGroup,fit=(master)(capability),inner sep=5mm] (basis) {};
     \end{scope}

@@ -25,8 +25,8 @@
     \draw[caseFlow] (webbackend.east) -| node[answer,pos=0.22] {ja} (webcloud.north);
     \draw[caseFlow] (browserchannel.west) -| node[answer,pos=0.22] {ja} (full.north);
     \draw[caseFlow] (browserchannel.east) -| node[answer,pos=0.22] {nein} (desktopbackend.north);
-    \draw[caseFlow] (desktopbackend.west) -| node[answer,pos=0.22] {nein} (desktoplocal.north);
-    \draw[caseFlow] (desktopbackend.east) -| node[answer,pos=0.22] {ja} (desktopcloud.north);
+    \draw[caseFlow] (desktopbackend.west) -| node[answer,pos=0.68,left] {nein} (desktoplocal.north);
+    \draw[caseFlow] (desktopbackend.east) -| node[answer,pos=0.68,right] {ja} (desktopcloud.north);
 
     \begin{scope}[on background layer]
       \node[caseGroup,fit=(webonly)(webcloud)(full)(desktoplocal)(desktopcloud),inner sep=5mm] (presets) {};

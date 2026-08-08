@@ -40,15 +40,15 @@ ergänzt wird.
 
 \input{workspace/figures/profiles/profile-selection-flow}
 
-Jedes generierte Projekt erhält das aktive Manifest
-\texttt{project-\allowbreak profile.toml}. Es speichert ausschließlich
-\texttt{schema\_version}, Profil-\texttt{id}, \texttt{name},
-\texttt{description}, die angeforderten \texttt{optional\_features} und die
-vollständig aufgelösten \texttt{features}. Das gemeinsame Tooling lädt und
+Das aktive Manifest heißt \texttt{project-profile.toml}. Es wird für jedes
+generierte Projekt erzeugt. \texttt{schema\_version} hält die Schema-Version
+fest. \texttt{id}, \texttt{name} und \texttt{description} beschreiben das
+Profil. \texttt{optional\_features} erfasst die angeforderten Erweiterungen;
+\texttt{features} enthält die vollständige Auflösung. Das Tooling lädt und
 validiert das Manifest. Dadurch behandelt es nur aktive Dienste und Workflows.
-Im Master aktiviert das Manifest \texttt{full-platform} und
-\texttt{postgres}. Das gleichnamige Preset bleibt davon unberührt.
-Strukturprofil und Laufzeitumgebung bleiben getrennt: Development-, Test- und
+Im Master nennt das Manifest \texttt{full-platform} als Profil. Zusätzlich
+aktiviert es \texttt{postgres}; das Preset selbst bleibt davon unberührt.
+Profilstruktur und Laufzeitwerte sind getrennte Achsen. Development-, Test- und
 Produktionswerte, Ports, URLs und Geheimnisse stammen aus dem in
 Abschnitt~\ref{subsec:konfigurationsmodell} beschriebenen
 Konfigurationsmodell \parencite{kleiveist2026configuration,kleiveist2026template}.

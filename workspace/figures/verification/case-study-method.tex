@@ -1,5 +1,6 @@
 \begin{figure}[H]
   \centering
+  \scalebox{1.15}{%
   \begin{tikzpicture}[node distance=6mm]
     \node[casePrimary,minimum width=78mm] (capture) {Template erfassen};
     \node[caseBox,minimum width=78mm,below=of capture] (architecture) {Architektur analysieren};
@@ -15,7 +16,9 @@
     \draw[caseFlow] (tooling) -- (verification);
     \draw[caseFlow] (verification) -- (evaluation);
     \draw[caseFlow] (evaluation) -- (transfer);
-  \end{tikzpicture}
+  \end{tikzpicture}}
   \caption{Methodische Schritte der Fallstudie}
   \label{fig:case-study-method}
+  \smallskip
+  {\footnotesize Quelle: Eigene Darstellung.\par}
 \end{figure}

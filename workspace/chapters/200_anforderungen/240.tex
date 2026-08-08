@@ -1,11 +1,19 @@
 \subsection{Qualitäts- und Wartbarkeitsanforderungen}
 \label{subsec:qualitaets-wartbarkeitsanforderungen}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - Testbarkeit, Reproduzierbarkeit und Build-Stabilität
-% - verständliche Konfiguration und sichere Standardgrenzen
-% - dokumentierbare Architektur- und Profilentscheidungen
-% - Aktualisierbarkeit der eingesetzten Technologien
-% - Kriterien später mit belastbaren Quellen operationalisieren
+Die Qualitätsanforderungen orientieren sich an überprüfbaren Merkmalen des
+Produktqualitätsmodells nach ISO/IEC~25010 \parencite{iso25010-2023}.
+Komponenten und Profile sollen klare Verantwortlichkeiten besitzen, getrennt
+testbar und durch dokumentierte Architektur-, Profil- und Workflowentscheidungen
+wartbar sein. Neue optionale Fähigkeiten sowie Technologieaktualisierungen
+sollen ohne Duplizierung der gesamten Baseline möglich bleiben; daraus folgt
+keine Annahme, dass Aktualisierungen automatisch risikofrei sind.
+
+Gleiche Eingaben und Konfigurationen sollen nachvollziehbare Generierungs- und
+Build-Ergebnisse ermöglichen. Reproduzierbare Builds erhöhen die Prüfbarkeit
+der Beziehung zwischen Quellstand und Artefakt
+\parencite{lamb2022reproducible-builds}. Ferner sollen relevante Zielartefakte
+kontrolliert erzeugbar, Konfigurationsquellen und Prioritäten verständlich
+definiert und serverseitige Geheimnisse von Frontend- und
+Client-Konfiguration getrennt sein. Die tatsächliche Erfüllung wird in
+Kapitel~\ref{sec:qualitaetssicherung-verifikation} untersucht.

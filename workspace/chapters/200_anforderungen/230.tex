@@ -1,11 +1,38 @@
 \subsection{Anforderungen für Web-, Cloud- und Desktop-Anwendungen}
 \label{subsec:anforderungen-plattformen}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - Anforderungen browserbasierter Anwendungen
-% - Anforderungen cloudfähiger Backend-Anwendungen
-% - Anforderungen lokaler und cloudverbundener Desktop-Anwendungen
-% - gemeinsame und profilspezifische Komponenten unterscheiden
-% - PostgreSQL als optionale Capability einordnen
+Alle Varianten sollen eine gemeinsame Frontend-Basis, Projektstruktur,
+Konfigurationslogik sowie ein einheitliches Test- und Dokumentationsmodell
+nutzen. Browserprojekte benötigen keine native Desktop-Schicht und nur bei
+Bedarf ein Backend. Cloudfähige Varianten erfordern eine serverseitige API,
+konfigurierbare Deployment-Grenzen sowie Health- und Readiness-Prüfbarkeit.
+Desktopvarianten sollen dasselbe Frontend in einer nativen Laufzeit verwenden
+und Weblogik von plattformspezifischer Integration trennen. Kombinierte
+Varianten verbinden Desktop-Client, Backend und gegebenenfalls Browserzugriff.
+
+\begin{table}[H]
+  \centering
+  \scriptsize
+  \renewcommand{\arraystretch}{1.08}
+  \caption{Anforderungsmatrix der unterstützten Projektarten}
+  \label{tab:plattform-anforderungen}
+  \begin{tabularx}{\textwidth}{@{}p{0.24\textwidth}>{\centering\arraybackslash}X>{\centering\arraybackslash}X>{\centering\arraybackslash}X>{\centering\arraybackslash}X@{}}
+    \toprule
+    \textbf{Anforderung} & \textbf{Web} & \textbf{Cloud} & \textbf{Desktop lokal} & \textbf{Desktop + Cloud} \\
+    \midrule
+    Frontend & erforderlich & erforderlich & erforderlich & erforderlich \\
+    Backend / API & optional & erforderlich & nicht grundsätzlich & erforderlich \\
+    Desktop-Laufzeit & nein & nein & erforderlich & erforderlich \\
+    Deployment-Grenze & optional & erforderlich & nein & erforderlich \\
+    Persistenz & optional & optional & produktspezifisch & optional \\
+    \bottomrule
+  \end{tabularx}
+  \smallskip
+  {\footnotesize Quelle: Eigene Darstellung.\par}
+\end{table}
+
+Die Matrix formuliert Anforderungen, keine Prüfergebnisse. PostgreSQL ist
+dabei ausschließlich eine optionale Capability für backendfähige Profile und
+kein eigenes Plattformprofil \parencite{kleiveist2026profiles}. Öffentliche
+Client-Konfiguration und serverseitige Werte einschließlich Geheimnissen sind
+voneinander zu trennen; eine bestimmte Cloud-Plattform wird nicht vorausgesetzt.

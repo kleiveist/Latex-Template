@@ -1,10 +1,19 @@
 \subsection{Zielbild des Technologie-Templates}
 \label{subsec:zielbild-technologie-template}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - technische Ausgangsbasis für mehrere Projektarten
-% - Verhältnis von gemeinsamem Kern, Profilen und Capabilities
-% - angestrebte Verantwortungs- und Systemgrenzen
-% - Zielbild nicht mit bereits verifizierten Ergebnissen gleichsetzen
+Das Template soll eine wiederverwendbare technische Ausgangsbasis für Web-,
+Cloud- und Desktop-Projekte bilden. Wiederverwendung setzt dabei geplante
+Gemeinsamkeiten und beherrschte Variabilität voraus
+\parencite{krueger1992software-reuse,clements2001software-product-lines}.
+Projektstruktur, Entwicklungsworkflow, Tooling, Dokumentationsprinzipien,
+Konfigurationslogik, Tests und Schnittstellen sollen deshalb in einem
+gemeinsamen Kern zentral gepflegt werden.
+
+Nicht jedes Projekt benötigt sämtliche Komponenten. Profile sollen passende
+Kombinationen des Kerns auswählen; optionale Capabilities wie PostgreSQL
+sollen kompatible Backend-Profile unabhängig vom Plattformprofil erweitern
+\parencite{kleiveist2026profiles}. Bereits im Zielbild sind Frontend, Backend,
+Desktop-Schicht, Persistenz, Tooling und Deployment als getrennte
+Verantwortungsbereiche vorgesehen. Ob die Umsetzung diese Anforderungen
+erfüllt, wird erst in den nachfolgenden Architektur-, Verifikations- und
+Bewertungskapiteln geprüft.

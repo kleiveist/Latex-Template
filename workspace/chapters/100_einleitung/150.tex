@@ -2,14 +2,15 @@
 \label{subsec:methodisches-vorgehen}
 
 Die Untersuchung ist als technische Fallstudie des implementierten Templates
-angelegt. Ausgangspunkt ist eine Bestandsaufnahme des Master Repository. Dabei
+angelegt \parencite{runeson2009case-study}. Ausgangspunkt ist eine
+Bestandsaufnahme des Master Repository. Dabei
 werden die Repository-Struktur, die enthaltenen Komponenten und die
 dokumentierten Verantwortungsgrenzen erfasst. Anschließend werden die
 Architekturentscheidungen und die Beziehungen zwischen Frontend, Backend,
 Desktop-Integration, gemeinsam genutzten Schnittstellen, Persistenz und
 Deployment betrachtet. Die Analyse beschreibt den vorhandenen Gegenstand und
 trennt belegbare Projekteigenschaften von Annahmen oder noch offenen
-Prüfpunkten.
+Prüfpunkten \parencite{kleiveist2026architecture}.
 
 Darauf aufbauend wird das Profilmodell untersucht. Im Mittelpunkt stehen die
 Abgrenzung der Profile, die Aufteilung zwischen gemeinsamem Kern und
@@ -18,6 +19,9 @@ Betrachtung des Python-basierten Toolings ergänzt diese strukturelle Analyse
 um den praktischen Entwicklungsablauf. Hierzu werden insbesondere
 Projektgenerierung, Systemprüfung, Installation, Entwicklungsbetrieb, Tests,
 Builds und Release-Vorbereitung als zusammenhängender Workflow betrachtet.
+Die maßgeblichen Profil- und Werkzeugbeschreibungen werden dabei als
+projektinterne Primärquellen herangezogen
+\parencite{kleiveist2026profiles,kleiveist2026tooling}.
 
 Für die Verifikation werden vorhandene automatisierte Tests, Build-Ergebnisse
 und dokumentierte Abnahmen den jeweils untersuchten Anforderungen und
@@ -26,7 +30,7 @@ Prüfschritte werden davon abgegrenzt. Auf dieser Evidenzbasis erfolgt die
 Bewertung von Wiederverwendbarkeit, Standardisierung,
 Produktivitätspotenzial, Stärken und Grenzen. Abschließend werden daraus
 Kriterien für geeignete Einsatzfelder und für die Übertragung auf zukünftige
-Kundenprojekte abgeleitet.
+Kundenprojekte abgeleitet \parencite{kleiveist2026acceptance}.
 
 Abbildung~\ref{fig:case-study-method} fasst diese aufeinander aufbauenden
 Untersuchungsschritte zusammen. Die vertikale Darstellung verdeutlicht, dass

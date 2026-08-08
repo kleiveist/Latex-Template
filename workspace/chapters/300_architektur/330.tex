@@ -1,10 +1,27 @@
 \subsection{Backend mit FastAPI}
 \label{subsec:fastapi-backend}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - Verantwortlichkeiten und Schnittstellen des Backends
-% - API-Struktur, Konfiguration und Laufzeitgrenzen
-% - profilspezifische Verfügbarkeit des Backends
-% - verifizierte Projektartefakte und technische Primärquellen auswerten
+Das Backend ist eine separate HTTP-Schicht der Profile Web-cloud,
+Desktop-cloud und Full-platform. \path{backend/app/main.py} erzeugt die
+FastAPI-Anwendung, lädt typisierte Einstellungen, richtet CORS ein und bindet
+den Router unter \texttt{/api} ein. Der derzeitige Router enthält ausschließlich
+\texttt{/health} und \texttt{/ready}; produktspezifische Dienste, Fachmodelle
+und Authentifizierung sind bewusst nicht vorgegeben. FastAPI stellt hierfür die
+HTTP-Routen, Validierung und OpenAPI-Beschreibung bereit
+\parencite{fastapi2026features,kleiveist2026architecture}.
+
+Liveness meldet nur den Prozesszustand. Readiness prüft bei aktivierter
+Datenbankfähigkeit zusätzlich mit \texttt{SELECT 1} und antwortet bei fehlender
+Konfiguration oder Verbindung mit HTTP~503, ohne interne Fehler offenzulegen.
+Tests adressieren Router, Einstellungen und diese Abhängigkeit getrennt. Die
+Architektur hält Handler klein; erst ein abgeleitetes Produkt ergänzt
+Service- oder Domänenmodule.
+
+Auch im Deployment bleiben die Einheiten getrennt
+(Abbildung~\ref{fig:deployment-architecture}). Der Vite-Build kann statisch
+bereitgestellt werden, während FastAPI in einem eigenen, nicht privilegierten
+Container läuft. Compose simuliert diese providerneutrale Grenze lokal;
+PostgreSQL wird nur über ein explizites Profil ergänzt
+\parencite{kleiveist2026deployment}.
+
+\input{workspace/figures/architecture/deployment-architecture}

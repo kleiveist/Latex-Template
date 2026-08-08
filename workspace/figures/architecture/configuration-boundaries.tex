@@ -1,24 +1,45 @@
 \begin{figure}[H]
   \centering
-  \resizebox{0.95\textwidth}{!}{%
-  \begin{tikzpicture}[node distance=6mm and 18mm]
-    \node[casePrimary,minimum width=42mm] (cli) {CLI Override};
-    \node[caseBox,minimum width=42mm,below=of cli] (env) {Process Environment};
-    \node[caseBox,minimum width=42mm,below=of env] (dotenv) {.env};
-    \node[caseBox,minimum width=42mm,below=of dotenv] (default) {Default};
+  \resizebox{0.98\textwidth}{!}{%
+  \begin{tikzpicture}[node distance=6mm and 17mm]
+    \node[casePrimary,minimum width=39mm] (cli) {1. CLI-Override};
+    \node[caseBox,minimum width=39mm,below=of cli] (env) {2. Prozessumgebung};
+    \node[caseBox,minimum width=39mm,below=of env] (dotenv) {3. lokale \texttt{.env}};
+    \node[caseBox,minimum width=39mm,below=of dotenv] (contract)
+      {4. Vertragsdefault\\\texttt{environment.toml}};
 
-    \draw[caseFlow] (cli) -- (env);
-    \draw[caseFlow] (env) -- (dotenv);
-    \draw[caseFlow] (dotenv) -- (default);
+    \node[caseBox,minimum width=42mm,right=of env] (profile)
+      {\texttt{project-profile.toml}\\filtert aktive Variablen};
+    \node[casePrimary,minimum width=42mm,below=of profile] (resolver)
+      {profilbewusster Resolver\\Priorität und Validierung};
 
-    \node[caseBox,minimum width=39mm,right=of cli] (frontend) {Frontend Values};
-    \node[caseBox,minimum width=39mm,below=of frontend] (server) {Server-only Values};
-    \node[caseOptional,minimum width=39mm,below=of server] (secrets) {Secrets};
+    \node[caseBox,minimum width=39mm,right=of cli] (frontend)
+      {öffentlich\\\texttt{VITE\_*}};
+    \node[caseBox,minimum width=39mm,below=of frontend] (server)
+      {serverseitige Werte};
+    \node[caseOptional,minimum width=39mm,below=of server] (secrets)
+      {Secrets\\maskiert};
+    \node[caseBox,minimum width=39mm,below=of secrets] (errors)
+      {ungültig: Abbruch\\ohne Secret-Ausgabe};
+
+    \draw[caseFlow] (cli) -| (resolver);
+    \draw[caseFlow] (env) -- (resolver);
+    \draw[caseFlow] (dotenv) -- (resolver);
+    \draw[caseFlow] (contract) -| (resolver);
+    \draw[caseFlow] (profile) -- (resolver);
+    \draw[caseFlow] (resolver) -| (frontend);
+    \draw[caseFlow] (resolver) -- (server);
+    \draw[caseFlow] (resolver) -| (secrets);
+    \draw[caseSecondaryFlow] (resolver) -| (errors);
+
     \begin{scope}[on background layer]
-      \node[caseGroup,fit=(frontend)(server)(secrets),
+      \node[caseGroup,fit=(frontend)(server)(secrets)(errors),
         label={[font=\sffamily\bfseries\scriptsize,text=caseBlue]above:Sicherheitsgrenzen}] {};
     \end{scope}
   \end{tikzpicture}}
   \caption{Konfigurationspriorität und Sicherheitsgrenzen}
   \label{fig:configuration-boundaries}
+  \smallskip
+  {\footnotesize Quelle: Eigene Darstellung auf Grundlage von
+  \textcite{kleiveist2026configuration}.\par}
 \end{figure}

@@ -1,14 +1,39 @@
 \subsection{Gesamtarchitektur}
 \label{subsec:gesamtarchitektur}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - Architekturüberblick erläutern
-% - Abbildungen fachlich einordnen
-% - Verantwortungs- und Repository-Grenzen erklären
-% - profilabhängig vorhandene Komponenten kenntlich machen
+Die untersuchte Baseline ist ein Master-Repository mit gemeinsam gepflegtem
+Kern und deklarativen Varianten, kein zur Laufzeit zusammenhängender Monolith.
+Profile wählen wiederverwendbare Features aus; optionale Capabilities ergänzen
+nur kompatible Profile. Dieses Vorgehen überträgt das Prinzip beherrschter
+Variabilität aus Software-Produktlinien auf die Projektstruktur und adressiert
+damit die in Kapitel~\ref{sec:anforderungen} geforderte zentrale Wartbarkeit
+ohne getrennte Template-Kopien
+\parencite{clements2001software-product-lines,kleiveist2026profiles}.
 
 \input{workspace/figures/architecture/system-architecture}
+
+Abbildung~\ref{fig:system-architecture} trennt deshalb die vollständige
+Baseline von einem abgeleiteten Projekt. Der Generator löst Profil und
+Capabilities auf, übernimmt nur die zugehörigen Pfade und hält das Ergebnis in
+\texttt{project-profile.toml} fest. Frontend, Backend, Tauri und Persistenz
+bleiben eigenständige, teilweise optionale Bausteine
+\parencite{kleiveist2026architecture}.
+
 \input{workspace/figures/architecture/component-architecture}
+
+Abbildung~\ref{fig:component-architecture} ordnet die Verantwortungen
+konkreten Verzeichnissen zu. \path{frontend/} enthält Darstellung und
+HTTP-Client, \path{backend/} die serverseitige API,
+\path{src-tauri/} die native Grenze. \path{shared/} hält
+frameworkneutrale Artefakte; \path{profiles/} und \path{config/} beschreiben
+Struktur beziehungsweise Laufzeitwerte. Tooling und Deployment steuern diese
+Komponenten, gehören aber nicht zu deren Produktlaufzeit.
+
 \input{workspace/figures/architecture/runtime-architecture}
+
+Zur Laufzeit wird derselbe Vite-Build entweder vom Browser oder in einer
+Tauri-Webview geladen (Abbildung~\ref{fig:runtime-architecture}). Nur
+backendfähige Profile ergänzen die Kommunikation über die HTTP-Grenze zu
+FastAPI; ausschließlich das Backend darf eine aktivierte Persistenzschicht
+ansprechen. Damit bleiben Client, Server und Datenhaltung getrennt test- und
+erweiterbar, ohne dass jedes Profil alle Laufzeiteinheiten enthalten muss.

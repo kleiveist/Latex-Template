@@ -1,10 +1,20 @@
 \subsection{Desktop-Integration mit Tauri und Rust}
 \label{subsec:tauri-rust-desktop}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - Einbettung des gemeinsamen Frontends in Tauri
-% - Aufgaben der Rust-basierten Desktop-Schicht
-% - lokale und cloudverbundene Laufzeitvarianten unterscheiden
-% - plattformspezifische Grenzen erst nach Verifikation bewerten
+Tauri bildet eine eigene native Grenze, ohne das Frontend zu duplizieren.
+\path{src-tauri/tauri.conf.json} startet für die Entwicklung ausschließlich den
+Vite-Server und verwendet für Builds \path{frontend/dist}. Der Rust-Einstieg
+erstellt lediglich die Tauri-Anwendung; native Fachkommandos oder ein
+eingebetteter FastAPI-Sidecar sind im Template nicht implementiert. Dies nutzt
+Tauris Fähigkeit, Web-Frontends in einer nativen Webview zu hosten, während
+Rust die native Kompositionsgrenze bereitstellt
+\parencite{tauri2026start,rust2026book,kleiveist2026architecture}.
+
+Die Standard-Capability gewährt nur \texttt{core:default}; eine Content Security
+Policy begrenzt lokale Ressourcen und die dokumentierten Entwicklungsendpunkte.
+Weitere native Berechtigungen müssen produktspezifisch und möglichst eng
+ergänzt werden \parencite{tauri2026capabilities}. Im Profil Desktop-local bleibt
+Funktionalität lokal im Frontend oder in später ergänzten Tauri-Kommandos.
+Desktop-cloud und Full-platform verwenden dagegen die öffentliche FastAPI-URL.
+Packaging, Signierung und die Entscheidung zwischen Remote-API, Sidecar oder
+lokalen Kommandos sind Produktentscheidungen und nicht Teil dieser Baseline.

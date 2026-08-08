@@ -1,10 +1,19 @@
 \subsection{Shared Contracts und Schnittstellen}
 \label{subsec:shared-contracts-schnittstellen}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - gemeinsam genutzte Verträge und Datengrenzen erfassen
-% - Kopplung zwischen Frontend, Backend und Desktop untersuchen
-% - Generierung, Validierung oder Synchronisierung nur soweit belegt beschreiben
-% - Verantwortlichkeiten für Änderungen und Kompatibilität klären
+\texttt{shared/} gehört zum Kern jedes generierten Projekts und enthält
+statische Assets, ein JSON-Schema nach Draft~2020-12 sowie je ein gültiges und
+ungültiges Beispiel. Die Schema-Tests des Toolings validieren diese Beispiele;
+die Ablage bleibt damit serialisierbar und frameworkneutral. Sie definiert
+jedoch noch keine produktbezogene API und enthält keinen ausführbaren
+Frameworkcode \parencite{kleiveist2026architecture,kleiveist2026template}.
+
+Der Implementierungsabgleich begrenzt diese Aussage: Weder Frontend noch
+Backend importieren das vorhandene Eingabeschema zur Laufzeit. Auch der
+Health-Vertrag ist nicht daraus generiert, sondern als TypeScript-Interface und
+FastAPI-Antwort manuell gespiegelt. Eine automatische Codegenerierung oder
+Synchronisierung ist nicht vorhanden. Vertragsänderungen erfordern daher
+derzeit eine bewusste Anpassung beider Seiten und ihrer Konsumententests. Diese
+Abweichung zwischen der dokumentierten Zielrolle gemeinsam konsumierter
+Verträge und der aktuellen Nutzung ist eine offene Erweiterungsgrenze, kein
+Nachweis einer bereits automatisierten Schnittstellenkopplung.

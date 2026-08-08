@@ -1,12 +1,24 @@
 \subsection{Frontend mit Vite und TypeScript}
 \label{subsec:frontend-vite-typescript}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - Rolle des gemeinsamen Frontends untersuchen
-% - Build- und Entwicklungsgrenzen von Vite einordnen
-% - TypeScript-Konfiguration und Schnittstellenbezug prüfen
-% - technische Aussagen ausschließlich mit Projekt- oder Primärquellen belegen
+Das Frontend bildet die gemeinsame Präsentationsschicht aller fünf Profile.
+Vite stellt im Entwicklungsbetrieb den Modulserver bereit und erzeugt mit
+\texttt{vite build} statische Artefakte; der vorgeschaltete TypeScript-Lauf
+prüft den strikt konfigurierten Quellcode ohne JavaScript-Ausgabe. Vitest deckt
+den HTTP-Client ab. Diese Aufgabenteilung entspricht den dokumentierten Rollen
+von Vite als Entwicklungs- und Build-Werkzeug sowie TypeScript als statischer
+Typprüfung \parencite{vite2026guide,typescript2026handbook}.
+
+\path{frontend/src/main.ts} liest das generierte Profilmodul und zeigt die
+Backend-Integration nur bei aktiviertem Feature. Alle Aufrufe liegen in
+\path{frontend/src/api/}; \texttt{backend.ts} verlangt dann eine öffentliche
+\texttt{VITE\_API\_BASE\_URL} und ruft \texttt{/api/health} auf. Dieselben
+Quellen werden im Browser und in Tauri verwendet. Serverlogik, Geheimnisse und
+direkter Datenbankzugriff bleiben außerhalb dieser Grenze; Web-only und
+Desktop-local benötigen folglich kein Backend
+\parencite{kleiveist2026architecture,kleiveist2026profiles}.
+
+Die im untersuchten Commit deklarierten Bereiche und aufgelösten Versionen sind
+in Tabelle~\ref{tab:technology-stack} zusammengefasst.
 
 \input{workspace/tables/technology-stack}

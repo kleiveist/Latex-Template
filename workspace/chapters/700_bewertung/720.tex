@@ -1,11 +1,35 @@
 \subsection{Stärken}
 \label{subsec:staerken}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - Stärken ausschließlich aus Anforderungen und Evidenz herleiten
-% - technische, prozessuale und organisatorische Aspekte trennen
-% - Geltungsbereich jeder Aussage benennen
+Die architektonische Hauptstärke ist die Verbindung einer gemeinsamen
+Baseline mit expliziten Verantwortungsgrenzen. Frontend, Backend,
+Desktop-Schicht, Persistenz und Tooling bleiben getrennte Bausteine; zugleich
+wird das Frontend profilübergreifend verwendet. Damit adressiert die
+Architektur die Anforderungen A-02 und A-05, ohne jede Variante mit allen
+Laufzeitkomponenten zu belasten (Kapitel~\ref{sec:architektur}).
+
+Bei der Variabilität bilden fünf Profile wiederkehrende Plattformzuschnitte
+ab. Abhängigkeiten verhindern insbesondere PostgreSQL ohne Backend, während
+die Capability aus kompatiblen Profilen herausgelöst bleibt. Die dokumentierte
+Abnahme der fünf Basisprofile, der drei zulässigen PostgreSQL-Kombinationen und
+der beiden unzulässigen Kombinationen stützt diese Stärke für den aktuellen,
+begrenzten Feature-Katalog \parencite{kleiveist2026acceptance}. Sie belegt
+nicht, dass beliebig viele künftige Capabilities ebenso beherrschbar wären.
+
+Prozessual schafft \texttt{control.py} einen gemeinsamen Einstieg, ohne npm,
+Pytest, Cargo, Tauri, Docker oder Alembic zu verbergen. Profilabhängiges
+Überspringen nicht vorhandener Schichten verbindet eine einheitliche
+Befehlsoberfläche mit den tatsächlichen Projektgrenzen
+(Kapitel~\ref{sec:tooling-entwicklungsworkflow}). Für Qualität und
+Nachvollziehbarkeit sprechen das versionierte Profilmanifest, der
+Konfigurationsvertrag, Tests und Buildpfade sowie die dokumentierte
+byte-identische Generierung zweier \texttt{desktop-cloud + postgres}-Projekte
+bei gleichen Eingaben \parencite{kleiveist2026acceptance}. Der Nachweis zur
+Reproduzierbarkeit ist damit konkret, aber auf eine untersuchte Kombination
+und Umgebung begrenzt.
+
+Tabelle~\ref{tab:strengths-limitations} verdichtet diese Stärken gemeinsam mit
+ihren jeweiligen Geltungsgrenzen. Sie trennt beobachtete Mechanismen und
+dokumentierte Prüfergebnisse von der daraus abgeleiteten Bedeutung.
 
 \input{workspace/tables/strengths-limitations}

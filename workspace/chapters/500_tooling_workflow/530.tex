@@ -1,10 +1,36 @@
 \subsection{Systemprüfung und Installation}
 \label{subsec:systempruefung-installation}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - Aufgaben und Grenzen der Befehle doctor und install
-% - Prüfung technischer Voraussetzungen
-% - Installation profilabhängiger Abhängigkeiten
-% - Fehlersituationen und plattformspezifische Bedingungen erfassen
+Der read-only ausgelegte \texttt{doctor} prüft den laufenden
+Python-Interpreter, Node.js, npm und npx sowie das optionale \texttt{uv}, lädt
+Profil und wirksame Konfiguration und kontrolliert relevante Projektpfade,
+Abhängigkeiten und Ports. Deaktivierte Schichten gelten nicht als Fehler.
+Cloudprofile ergänzen Containerprüfungen, wobei fehlendes Docker im allgemeinen
+Doctor nur warnt; erst \texttt{container doctor} behandelt es als
+Voraussetzung. Datenbankverbindung und native Desktop-Bibliotheken besitzen mit
+\texttt{db doctor --connect} beziehungsweise \texttt{tauri doctor} bewusst
+separate, vertiefende Diagnosewege. Letzterer prüft zusätzlich Rust/Cargo,
+Tauri-CLI und plattformspezifische Bibliotheken
+\parencite{kleiveist2026tooling,kleiveist2026configuration}.
+
+\texttt{install} verwendet für das Frontend bei vorhandenem Lockfile
+\texttt{npm ci}, andernfalls \texttt{npm install}. Für ein aktives Backend
+legt es \path{backend/.venv} an und installiert die Basisanforderungen sowie
+profilabhängig Datenbank- und PostgreSQL-Ergänzungen; \texttt{uv} ist ein
+optionaler schneller Pfad, für den ein pip/venv-Fallback existiert. Ferner wird
+bei Bedarf eine kleine Tooling-Umgebung für Pytest eingerichtet. Chromium wird
+nur installiert, wenn Playwright im Projekt konfiguriert ist. Deaktivierte
+Frontend- oder Backendschichten werden übersprungen, und eine lokale
+\texttt{.env} wird weder erzeugt noch verändert. Native Betriebssystem- und
+Rust-Voraussetzungen bleiben Aufgabe von \texttt{tauri install}. Damit bündelt
+der Standardweg die relevanten npm- und Python-Schritte, ohne jeden
+Sonderworkflow vorwegzunehmen.
+
+Die README nennt Git, Python ab Version~3.11 und Node.js ab Version~20 als
+Grundvoraussetzungen sowie Rust Stable für Desktopprofile. Der allgemeine
+Doctor prüft jedoch weder Git noch diese Versionsbereiche; auch der Tauri-Doctor
+meldet jeden vorhandenen aktiven Rust-Toolchain als gültig. Die festgelegten
+Python- und Node-Hauptversionen werden dagegen in den CI-Workflows explizit
+eingerichtet. Dies ist eine Grenze zwischen dokumentierter Voraussetzung und
+lokaler Durchsetzung, nicht eine zusätzliche Tooling-Funktion
+\parencite{kleiveist2026template,kleiveist2026ci}.

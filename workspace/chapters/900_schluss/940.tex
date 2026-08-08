@@ -1,10 +1,24 @@
 \subsection{Ausblick}
 \label{subsec:ausblick}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - offene technische und methodische Untersuchungen
-% - mögliche Weiterentwicklung des Templates
-% - externe Prüfungen und langfristige Wartung
-% - kurzfristige und langfristige Schritte unterscheiden
+Kurzfristig sind zunächst die fehlgeschlagenen aktuellen Tooling-,
+Desktopprofil- und Windows-CI-Pfade zu korrigieren und auf einem festen Commit
+erfolgreich zu wiederholen. Ergänzend stehen ein vollständiger Compose-Start
+mit Health- und Readiness-Nachweis, ein Lauf der Release Validation sowie die
+autorisierte Prüfung der Branch Protection aus. Diese Schritte würden die
+offene technische Evidenz erweitern, ohne bereits Produktreife zu belegen.
+
+Mittelfristig sind für ein konkretes Produkt Signierung, Notarisierung,
+Updater, Credentials, Deployment und Authentifizierung beziehungsweise RBAC
+separat auszugestalten und abzunehmen. Als mögliche Weiterentwicklung der
+Baseline lassen sich aus den festgestellten Grenzen eine stärkere
+Automatisierung gemeinsamer Contracts, eine striktere Capability-Auswahl und
+ein kontrolliertes Synchronisationsmodell für bereits generierte Projekte
+ableiten.
+
+Langfristig sollte das Produktivitätspotenzial vergleichend über mehrere
+Projekte untersucht werden, etwa anhand von Onboarding-Zeit, Zeit bis zum
+ersten lauffähigen Build, manuellen Setup-Schritten, Fehlerhäufigkeit und
+Pflegeaufwand. Reale Kundenprojekte könnten zugleich prüfen, ob die analytisch
+abgeleiteten Profil- und Eignungskriterien tragen und wo zusätzlicher
+Anpassungsbedarf entsteht.

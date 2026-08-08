@@ -998,7 +998,17 @@ Package hyperref Info: Option `pageanchor' set `true' on input line 72.
 
  [4
 
-] (name.lot)
+] (name.lot
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 7
+.
+ (t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmtt' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+)
 \tf@lot=\write8
 \openout8 = `name.lot'.
 
@@ -1039,17 +1049,7 @@ h de-fi-niert und ser-ver-sei-ti-ge Ge-heim-nis-se von Frontend-
 
 )) (workspace/chapters/300_architektur/300 [5]
 (workspace/chapters/300_architektur/310
-(workspace/figures/architecture/system-architecture
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 3
-9.
- (t1lmtt.fd
-File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `lmtt' (encoding: T1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-)
+(workspace/figures/architecture/system-architecture)
 (workspace/figures/architecture/component-architecture) [6]
 (workspace/figures/architecture/runtime-architecture))
 (workspace/chapters/300_architektur/320 [7]
@@ -1081,45 +1081,81 @@ Overfull \hbox (8.52614pt too wide) in paragraph at lines 4--11
 (workspace/chapters/500_tooling_workflow/500 [16]
 (workspace/chapters/500_tooling_workflow/510
 (workspace/figures/tooling/control-command-map))
-(workspace/chapters/500_tooling_workflow/520
+(workspace/chapters/500_tooling_workflow/520 [17]
 (workspace/figures/tooling/project-generation-workflow))
-(workspace/chapters/500_tooling_workflow/530 [17])
+(workspace/chapters/500_tooling_workflow/530 [18])
 (workspace/chapters/500_tooling_workflow/540
 (workspace/figures/tooling/developer-workflow))
-(workspace/chapters/500_tooling_workflow/550)
+(workspace/chapters/500_tooling_workflow/550 [19] [20])
 (workspace/chapters/500_tooling_workflow/560
-(workspace/figures/deployment/desktop-release-model))
-(workspace/chapters/500_tooling_workflow/570 [18]))
+(workspace/figures/deployment/desktop-release-model) [21])
+(workspace/chapters/500_tooling_workflow/570))
 (workspace/chapters/600_qualitaet_verifikation/600
-(workspace/chapters/600_qualitaet_verifikation/610
+(workspace/chapters/600_qualitaet_verifikation/610 [22]
 (workspace/figures/verification/verification-model))
-(workspace/chapters/600_qualitaet_verifikation/620)
+(workspace/chapters/600_qualitaet_verifikation/620 [23])
 (workspace/chapters/600_qualitaet_verifikation/630
 (workspace/figures/verification/profile-verification-matrix)
-(workspace/tables/verification-matrix [19]))
-(workspace/chapters/600_qualitaet_verifikation/640)
-(workspace/chapters/600_qualitaet_verifikation/650)
-(workspace/chapters/600_qualitaet_verifikation/660))
-(workspace/chapters/700_bewertung/700 (workspace/chapters/700_bewertung/710)
+(workspace/tables/verification-matrix
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+[]|\T1/lmtt/m/n/8 desktop-cloud +
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+[]|\T1/lmtt/m/n/8 full-platform +
+ []
+
+[24])) (workspace/chapters/600_qualitaet_verifikation/640)
+(workspace/chapters/600_qualitaet_verifikation/650 [25])
+(workspace/chapters/600_qualitaet_verifikation/660
+(workspace/tables/external-verification-items
+Underfull \hbox (badness 10000) in paragraph at lines 19--19
+[]|\T1/qhv/m/n/8 Frontend-Installation im na-ti-ven
+ []
+
+
+Underfull \hbox (badness 3009) in paragraph at lines 19--19
+[]|\T1/qhv/m/n/8 Signing, No-ta-ri-sie-rung, Up-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--19
+[]|\T1/qhv/m/n/8 Produktivbetrieb und
+ []
+
+))) (workspace/chapters/700_bewertung/700 [26]
+(workspace/chapters/700_bewertung/710 [27])
 (workspace/chapters/700_bewertung/720 (workspace/tables/strengths-limitations))
-(workspace/chapters/700_bewertung/730) (workspace/chapters/700_bewertung/740)
-(workspace/chapters/700_bewertung/750) (workspace/chapters/700_bewertung/760))
-(workspace/chapters/800_einsatz_transfer/800
+(workspace/chapters/700_bewertung/730 [28] [29])
+(workspace/chapters/700_bewertung/740) (workspace/chapters/700_bewertung/750
+[30] (workspace/tables/template-strategy-comparison))
+(workspace/chapters/700_bewertung/760 [31]
+(workspace/tables/template-evaluation)))
+(workspace/chapters/800_einsatz_transfer/800 [32]
 (workspace/chapters/800_einsatz_transfer/810
-(workspace/figures/business/project-suitability-map)
-(workspace/tables/project-suitability [20]))
-(workspace/chapters/800_einsatz_transfer/820)
-(workspace/chapters/800_einsatz_transfer/830)
+(workspace/figures/business/project-suitability-map) [33]
+(workspace/tables/project-suitability))
+(workspace/chapters/800_einsatz_transfer/820 [34])
+(workspace/chapters/800_einsatz_transfer/830
+(workspace/tables/customer-requirement-checklist) [35])
 (workspace/chapters/800_einsatz_transfer/840)
-(workspace/chapters/800_einsatz_transfer/850
+(workspace/chapters/800_einsatz_transfer/850 [36]
 (workspace/figures/business/customer-project-process))
-(workspace/chapters/800_einsatz_transfer/860))
+(workspace/chapters/800_einsatz_transfer/860 [37]))
 (workspace/chapters/900_schluss/900 (workspace/chapters/900_schluss/910)
-(workspace/chapters/900_schluss/920) (workspace/chapters/900_schluss/930)
-(workspace/chapters/900_schluss/940) (workspace/chapters/900_schluss/950))
-[21] [22]
+(workspace/chapters/900_schluss/920 [38]) (workspace/chapters/900_schluss/930
+[39]) (workspace/chapters/900_schluss/940) (workspace/chapters/900_schluss/950
+[40])) [41]
+Overfull \hbox (4.00763pt too wide) in paragraph at lines 136--136
+[][]\T1/qhv/m/n/10.95 GitHub. (2026e, 7. Au-gust). \T1/qhv/m/it/10.95 Pro-fi-le
+ ma-trix, run 31168215737 \T1/qhv/m/n/10.95 [GitHub-Actions-Lauf für Com-mit a4
+487ac
+ []
+
+
 Overfull \hbox (8.34612pt too wide) in paragraph at lines 136--136
-[][]\T1/qhv/m/n/10.95 kleiveist. (2026a, 6. Au-gust). \T1/qhv/m/it/10.95 Da-ta-
+[][]\T1/qhv/m/n/10.95 kleiveist. (2026d, 6. Au-gust). \T1/qhv/m/it/10.95 Da-ta-
 ba-se fea-ture \T1/qhv/m/n/10.95 [Pro-jekt-do-ku-men-ta-ti-on im Re-po-si-to-ry
  Template-Projekte].
  []
@@ -1131,7 +1167,9 @@ m / kleiveist / Template -[] Projekte / blob / a4487acfcdf6db896202009^^[6c1356
 7c319dfdb /
  []
 
+[42
 
+]
 Overfull \hbox (178.92763pt too wide) in paragraph at lines 136--136
 \T1/qhv/m/n/10.95 Ver-füg-bar 8. Au-gust 2026 un-ter []$https : / / github . co
 m / kleiveist / Template -[] Projekte / blob / a4487acfcdf6db896202009^^[6c1356
@@ -1145,13 +1183,11 @@ m / kleiveist / Template -[] Projekte / blob / a4487acfcdf6db896202009^^[6c1356
 7c319dfdb /
  []
 
-[23
-
-] [24] (name.aux)
+[43] [44] (name.aux)
 Package rerunfilecheck Info: File `name.out' has not changed.
 (rerunfilecheck)             Checksum: D882AFA00D95C851EA1ECFBA4C78BB3C;13114.
 Package logreq Info: Writing requests to 'name.run.xml'.
 \openout1 = `name.run.xml'.
 
  )
-Output written on name.xdv (31 pages, 462708 bytes).
+Output written on name.xdv (51 pages, 552428 bytes).

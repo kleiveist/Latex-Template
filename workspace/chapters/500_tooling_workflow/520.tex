@@ -1,12 +1,38 @@
 \subsection{Projektinitialisierung und Generierung}
 \label{subsec:projektinitialisierung-generierung}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - Profilwahl und Feature-Auflösung
-% - Scaffold-Plan und erzeugte Projektstruktur
-% - Rolle von project-profile.toml
-% - deterministische oder reproduzierbare Eigenschaften erst verifizieren
+\texttt{python tools/control.py init} leitet aus dem in
+Kapitel~\ref{sec:projektprofile} beschriebenen Modell ein eigenständiges
+Produktprojekt ab. Ohne \texttt{--profile} führt der Befehl durch Profil und
+kompatible, als auswählbar markierte Capabilities. Nicht-interaktiv können
+Profil und wiederholbare oder kommaseparierte \texttt{--with}-Angaben gesetzt
+werden. Hinzu kommen Projektname, optionaler Slug, Zielverzeichnis und
+Dry-Run. Sobald die Identität eines Tauri-Projekts angepasst wird, verlangt
+der Generator außerdem einen gültigen Reverse-Domain-Identifier
+\parencite{kleiveist2026profiles,kleiveist2026tooling}.
 
 \input{workspace/figures/tooling/project-generation-workflow}
+
+Technisch lädt \texttt{init} den Katalog, löst das Preset und transitive
+optionale Abhängigkeiten auf und bildet daraus einen geordneten Scaffold-Plan
+aus Core- und aktiven Feature-Pfaden. Vor einem Schreibzugriff werden
+Quellpfade und Ziel geprüft. Anschließend werden die ausgewählten Dateien ohne
+transiente Build- und Umgebungsverzeichnisse kopiert; generiert werden das
+aktive \path{project-profile.toml}, das Frontend-Profilmodul und eine
+featurebezogene \path{.env.example}. Bei angegebener Produktidentität passt
+die Nachbearbeitung die tatsächlich vorhandenen Frontend-, Backend-, Compose-,
+Tauri- und Cargo-Metadaten an. Webprofile verlieren zusätzlich Tauri-Skript
+und -CLI aus ihren kopierten npm-Metadaten.
+
+Ein Ziel im Master ist nur unter \path{.generated/} zulässig; alternativ kann
+ein externes \texttt{--target-dir} gewählt werden. Das Repository selbst und
+nichtleere Ziele werden abgewiesen, während \texttt{--dry-run} nur den Plan
+ausgibt. Master-Template und erzeugtes Produktprojekt bleiben somit getrennt.
+Die Auswahl- und Kopierlogik ist auf eine deterministische Ableitung aus
+Katalog, Profil, Capabilities und Identität ausgelegt; eine empirische Aussage
+zur Reproduzierbarkeit bleibt Kapitel~\ref{sec:qualitaetssicherung-verifikation}
+vorbehalten. Als bereits in Abschnitt~\ref{subsec:optionale-capabilities}
+festgestellte Implementierungsgrenze filtert nur der Dialog nach
+\texttt{selectable}; eine direkte \texttt{--with database}-Angabe wird für
+Backendprofile akzeptiert, weil die CLI dort lediglich \texttt{optional}
+prüft \parencite{kleiveist2026template}.

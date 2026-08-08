@@ -1,12 +1,52 @@
 \subsection{Vergleich mit alternativen Template-Strategien}
 \label{subsec:vergleich-template-strategien}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - mehrere separate Template-Repositories
-% - Copy-Paste-Starter
-% - Framework-spezifische Starter
-% - monolithisches Universal-Template
-% - Single-Repository mit Profilen
-% - gemeinsame Vergleichskriterien wissenschaftlich begründen
+Der Vergleich betrachtet Architekturstrategien, keine empirisch vermessenen
+Produkte. Als gemeinsame Kriterien dienen fortlaufende Wiederverwendung,
+Konsistenz, kontrollierte Variabilität, Einstiegskomplexität,
+Pflegebündelung, Testbarkeit und die Übernahme späterer Baseline-Änderungen.
+Diese Kriterien folgen dem Grundgedanken systematischer Wiederverwendung und
+der Verwaltung gemeinsamer sowie variabler Bestandteile
+\parencite{krueger1992software-reuse,clements2001software-product-lines}.
+Die Einstufungen \emph{hoch}, \emph{mittel} und \emph{niedrig} bezeichnen nur
+die qualitative Ausprägung eines Merkmals. Bei der Einstiegskomplexität ist
+\emph{hoch} folglich ein Nachteil; die Tabelle ist kein Gesamtranking.
+
+\emph{Separate Template-Repositories} isolieren beispielsweise Web-, Desktop-
+und Cloudvorlagen. Eine einzelne Vorlage bleibt übersichtlich und separat
+testbar, gemeinsame Komponenten können jedoch divergieren und müssen in
+mehreren Quellen aktualisiert werden. Ein \emph{Copy-Paste-Starter} minimiert
+die Vorlagenlogik und lässt das Zielprojekt nach der Kopie frei weiterlaufen.
+Repository-Vorlagen von GitHub illustrieren diese Trennung: Ein erzeugtes
+Repository beginnt mit einer eigenen, nicht verwandten Historie
+\parencite{github2026repository-template}. Dies erleichtert den Start, stellt
+aber keinen automatischen Rückkanal für spätere Verbesserungen bereit.
+
+\emph{Framework-spezifische Starter} fokussieren einen engeren technischen
+Ausschnitt. \texttt{create-vite} bietet beispielsweise einfache Vorlagen für
+mehrere Frontendframeworks; generierte Projekte enthalten die üblichen
+Entwicklungs- und Buildskripte \parencite{vite2026guide}. Für ein kleines
+homogenes Frontendprojekt ist diese geringere Einstiegskomplexität vorteilhaft.
+Backend, Desktop-Packaging, Persistenz und ein Workflow für den Gesamtstack
+müssen bei Bedarf jedoch separat integriert werden.
+
+Ein \emph{monolithisches Universal-Template} enthält alle Bausteine in jedem
+Projekt. Seine Auswahl- und Generatorlogik kann einfacher sein, dafür tragen
+kleine Projekte ungenutzte Komponenten und eine größere Ausgangsstruktur. Der
+untersuchte Ansatz setzt dem ein \emph{Single-Repository mit Profilen und
+optionalen Capabilities} entgegen: Gemeinsame Implementierungen werden zentral
+gepflegt, während der Generator nur ausgewählte Pfade übernimmt. Dies bietet
+im untersuchten Variantenraum hohe Konsistenz und kontrollierte Flexibilität,
+bezahlt sie aber mit Master-, Resolver- und Matrixkomplexität. Wie beim
+Copy-Starter sind erzeugte Produktprojekte anschließend eigenständig; zentrale
+Updates wirken daher nicht automatisch rückwärts.
+
+\input{workspace/tables/template-strategy-comparison}
+
+Der profilbasierte Ansatz ist somit insbesondere für wiederkehrende, technisch
+verwandte Vorhaben für Web, Cloud und Desktop plausibel. Für ein einmaliges,
+kleines Frontend kann ein Framework-Starter angemessener sein; bei bewusst
+vollständig unabhängigen Produktlinien können separate Repositories die
+organisatorische Isolation höher gewichten. Der Vergleich zeigt einen
+Trade-off zwischen einfacher Einzelvorlage und zentral beherrschter
+Variabilität, keinen universellen Sieger.

@@ -1,9 +1,20 @@
 \subsection{Reproduzierbarkeit}
 \label{subsec:reproduzierbarkeit}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - reproduzierbare Generierung, Installation, Tests und Builds untersuchen
-% - relevante Versionen und Umgebungsbedingungen dokumentieren
-% - Abhängigkeiten von Plattform, Netzwerk und externen Diensten abgrenzen
+Zwei unabhängige Generierungen von \texttt{desktop-cloud + postgres} mit
+identischen Eingaben waren im Abnahmelauf auf \texttt{1cdfb6e} bei rekursivem
+Vergleich bytegleich. Zusätzlich schrieb \texttt{init --dry-run} kein Ziel;
+nichtleere Ziele wurden abgelehnt und inkompatible Capabilities vor dem ersten
+Schreibvorgang validiert. Der Nachweis betrifft genau diese Kombination und
+diese Umgebung, nicht den gesamten Zustandsraum
+\parencite{kleiveist2026acceptance,lamb2022reproducible-builds}.
+
+Für Abhängigkeiten liegen \path{frontend/package-lock.json} und
+\path{src-tauri/Cargo.lock} vor; Installation beziehungsweise Cargo-Prüfungen
+verwenden \texttt{npm ci} und \texttt{--locked}. Drei produktive
+Python-Lockfiles fixieren den vollständigen Abhängigkeitsgraphen samt Hashes
+für die Container-Baseline Python~3.11. Deren hashgebundene Installation wurde
+im Abnahmeprotokoll geprüft \parencite{kleiveist2026ci,kleiveist2026container}.
+Die Reproduktion bleibt dennoch von Betriebssystem, Toolchain, Registries,
+Netzwerk und Plattform-SDKs abhängig; native Ergebnisse sind daher
+plattformspezifisch und keine absolute Buildgarantie.

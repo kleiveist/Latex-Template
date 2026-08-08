@@ -1,10 +1,24 @@
 \subsection{Kritische Würdigung}
 \label{subsec:kritische-wuerdigung}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - Grenzen der Methode und verfügbaren Evidenz
-% - mögliche Verzerrungen und Annahmen
-% - Übertragbarkeit auf andere Projekte
-% - Quellenkritik nach Aufnahme realer Literatur integrieren
+Die technische Fallstudie untersucht das konkrete Template detailliert, ist
+aber nur begrenzt generalisierbar. Projektunterlagen belegen die Implementierung,
+nicht deren unabhängige Evaluation; Abnahme und lokale Prüfung stammen
+ebenfalls aus dem Projektkontext. Die Verbindung von Entwicklerperspektive,
+Selbstdokumentation und Bewertung kann die Evidenzauswahl beeinflussen, ohne
+commitgebundene Befunde aufzuheben. Wissenschaftliche Literatur ordnet
+allgemeine Konzepte ein, offizielle Dokumentation die Technologien; eine
+unabhängige Replikation ersetzen beide nicht.
+
+Die Testevidenz ist heterogen: Einer früheren, überwiegend Linux-basierten
+Abnahme stehen gemischte aktuelle Remote-Ergebnisse gegenüber. Jeder Test und
+Build belegt nur sein Kriterium; ohne Coverage-Messung, Compose-Start und
+durchgehend erfolgreiche Plattformläufe entsteht kein umfassender Qualitäts-
+oder Produktionsnachweis. Unsignierte Pakete ersetzen zudem keine nativen
+Produktreleases einschließlich Signierung und Notarisierung.
+
+Übertragbar erscheinen die Prinzipien zentraler Baseline, deklarativer
+Variabilität und gemeinsamer Tooling-Einstiege; projektspezifisch bleiben
+Technologien, Profile und commitgebundene Evidenz. Produktivitätspotenzial und
+Projekteignung wurden qualitativ hergeleitet. Zeitmessungen, Vergleichsgruppen,
+reale Kundenfallprüfungen und eine wirtschaftliche Bewertung fehlen.

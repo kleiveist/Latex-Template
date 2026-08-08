@@ -1,13 +1,22 @@
 \subsection{Extern verbleibende Prüfungen}
 \label{subsec:extern-verbleibende-pruefungen}
 
-% ------------------------------------------------------------
-% Inhalt später; keine endgültige Bewertung vorwegnehmen
-% ------------------------------------------------------------
-% - Plattform-Signing
-% - Notarisierung
-% - produktive Cloud-Bereitstellung
-% - Docker-Daemon-Abhängigkeiten
-% - Branch Protection
-% - externe CI- oder Infrastrukturbedingungen
-% - Verantwortlichkeit und erforderliche Nachweise je Prüfung ergänzen
+Die offenen Punkte in Tabelle~\ref{tab:external-verification-items} sind keine
+einheitliche Fehlerklasse. \emph{FAIL} bedeutet, dass eine ausgeführte
+Prüfung ihr Kriterium nicht erfüllte; \emph{nicht verifiziert} bezeichnet
+fehlende hinreichende Evidenz; \emph{außerhalb des Scopes} kennzeichnet eine
+bewusste Produktgrenze. So sind die aktuellen roten CI-Jobs reale
+Fehlerbefunde, während ein nie gestarteter Compose-Verbund nicht als
+fehlgeschlagen gelten kann.
+
+Der aktuelle Core-Containerjob belegt zwar Compose-Validierung und den Bau
+beider Master-Images, aber weder \texttt{docker compose up} noch eine
+produktive Bereitstellung. Linux- und macOS-Pakete sind auf
+\texttt{a4487ac} unsigniert gebaut; Windows ist wegen des fehlgeschlagenen
+Installationsschritts nicht paketiert. Branch Protection konnte über die
+öffentliche API ohne Berechtigung nicht gelesen werden. Signing,
+Notarisierung, Updater, produktive Zugangsdaten sowie Authentifizierung/RBAC
+benötigen schließlich ein konkretes Produkt und geschützte externe
+Infrastruktur \parencite{kleiveist2026ci-core-run,kleiveist2026ci-desktop-run,kleiveist2026release}.
+
+\input{workspace/tables/external-verification-items}

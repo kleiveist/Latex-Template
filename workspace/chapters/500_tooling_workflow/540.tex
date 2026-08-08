@@ -1,11 +1,31 @@
 \subsection{Entwicklungsbetrieb}
 \label{subsec:entwicklungsbetrieb}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - normaler Entwicklungsweg vom Systemcheck bis zum Release-Check
-% - Zusammenspiel von run, develop, test und build
-% - parallele Dienste und profilspezifische Unterschiede untersuchen
+Der vorgesehene Entwicklungszyklus verbindet Diagnose und Installation mit
+den späteren Qualitäts- und Auslieferungsschritten, ohne daraus einen einzelnen
+monolithischen Befehl zu machen. Abbildung~\ref{fig:developer-workflow} zeigt
+den Standardpfad und kennzeichnet Desktop- sowie Buildvarianten als
+profilabhängige Abzweigungen.
 
 \input{workspace/figures/tooling/developer-workflow}
+
+\texttt{run} löst zunächst Konfiguration und Ports auf. Für alle gegenwärtigen
+Profile startet es den Vite-Entwicklungsserver; nur ein aktives Backend ergänzt
+Uvicorn. Web-only und Desktop-local führen daher keinen FastAPI-Prozess aus.
+Standardmäßig laufen die Dienste im Vordergrund, ihre Ausgaben werden
+zusammengeführt und ein Abbruch beendet die erfassten Prozessgruppen.
+\texttt{--detach} schreibt dagegen PID- und Logdaten nach
+\path{tools/.runtime}. \texttt{stop} beendet diese erfassten Prozesse und
+untersucht standardmäßig zusätzlich die konfigurierten Ports der aktiven
+Schichten. Dadurch kann es auch extern gestartete Listener auf genau diesen
+Ports beenden; \texttt{--tracked-only} begrenzt den Eingriff auf den eigenen
+Zustand \parencite{kleiveist2026control,kleiveist2026tooling}.
+
+Der native Desktopweg ist davon getrennt: \texttt{tauri run --foreground}
+delegiert an \texttt{tauri dev}, startet über dessen Konfiguration den
+Vite-Server und entfernt bekannte serverseitige Geheimnisse aus der
+Kindprozessumgebung. Ohne \texttt{--foreground} wird Tauri im Hintergrund
+gestartet und das Log verfolgt. Die zentrale \texttt{console} bietet für diese
+und die allgemeinen Entwicklungsaktionen geführte Menüs mit Bestätigungen bei
+schreibenden oder aufwendigen Operationen, ruft aber stets dieselben
+CLI-Workflows auf.

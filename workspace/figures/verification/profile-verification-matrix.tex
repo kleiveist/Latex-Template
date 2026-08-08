@@ -1,20 +1,26 @@
 \begin{figure}[H]
   \centering
-  \resizebox{\textwidth}{!}{%
-  \begin{tikzpicture}[
-    cell/.style={draw=caseLine,minimum width=20mm,minimum height=8mm,align=center,font=\sffamily\tiny},
-    head/.style={cell,fill=caseBlue,text=white,font=\sffamily\bfseries\tiny},
-    open/.style={cell,fill=caseLight,text=black!60}
-  ]
-    \matrix[matrix of nodes,nodes in empty cells,ampersand replacement=\&,row sep=-\pgflinewidth,column sep=-\pgflinewidth] {
-      |[head,minimum width=29mm]| Profil \& |[head]| Generate \& |[head]| Install \& |[head]| Doctor \& |[head]| Tests \& |[head]| Web Build \& |[head]| Desktop / Tauri \& |[head]| Database \& |[head]| Container \\
-      |[head,minimum width=29mm]| web-only \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \\
-      |[head,minimum width=29mm]| web-cloud \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \\
-      |[head,minimum width=29mm]| desktop-local \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \\
-      |[head,minimum width=29mm]| desktop-cloud \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \\
-      |[head,minimum width=29mm]| full-platform \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \& |[open]| offen \\
+  \begin{tikzpicture}[node distance=5mm]
+    \node[casePrimary,minimum width=125mm,text width=116mm] (acceptance) {
+      Lokale Abnahme, Commit \texttt{1cdfb6e}\\
+      PASS: fünf Basisprofile, drei PostgreSQL-Kombinationen und zwei erwartete Ablehnungen
     };
-  \end{tikzpicture}}
-  \caption{Struktur der profilbezogenen Verifikationsmatrix}
+    \node[caseBox,minimum width=125mm,text width=116mm,below=of acceptance] (headci) {
+      Externe CI, Commit \texttt{a4487ac}\\
+      PASS: Webprofile, \texttt{web-cloud + postgres}, Core-Builds, Linux/macOS-Desktop\\
+      FAIL: Tooling-Job, fünf Desktop-Profiltests, Windows-Installation
+    };
+    \node[caseOptional,minimum width=125mm,text width=116mm,below=of headci] (rule) {
+      Einordnung\\
+      Lokale PASS-Nachweise bleiben commitgebunden; der aktuelle Remote-Stand ist nur teilweise verifiziert.
+    };
+
+    \draw[caseFlow] (acceptance) -- (headci);
+    \draw[caseFlow] (headci) -- (rule);
+  \end{tikzpicture}
+  \caption{Profilverifikation nach Evidenzstand und Commit}
   \label{fig:profile-verification-matrix}
+  \smallskip
+  {\footnotesize Quelle: Eigene Darstellung auf Grundlage von
+  \textcite{kleiveist2026acceptance} und den aktuellen GitHub-Actions-Läufen.\par}
 \end{figure}

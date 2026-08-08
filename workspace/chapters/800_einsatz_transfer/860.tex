@@ -1,16 +1,34 @@
 \subsection{Überführung in die Produktentwicklung}
 \label{subsec:ueberfuehrung-produktentwicklung}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - Kundenanforderung
-% - technische Analyse
-% - Profil auswählen
-% - optionale Capabilities bestimmen
-% - Projekt generieren
-% - Fachlogik entwickeln
-% - testen
-% - abnehmen
-% - ausliefern
-% - Verantwortungswechsel und projektspezifische Ergänzungen beschreiben
+Nach der Generierung bildet das Zielverzeichnis ein eigenständiges
+Produktprojekt in einem separaten Repository. Das Master-Template verantwortet
+die wiederverwendbare technische Baseline und deren Ableitung; das
+Produktprojekt übernimmt ab diesem Punkt Fachmodelle, Geschäftsregeln,
+Benutzeroberfläche, externe Integrationen, Produktdaten und Betriebsparameter.
+Hinzu kommen je nach Anforderung
+Architekturentscheidungen zu Authentifizierung und Berechtigungen,
+Skalierung, Monitoring, Backup, Datenschutz oder Desktop-Signing. Diese
+Aufgaben werden durch die vorhandene Projektstruktur unterstützt, aber nicht
+automatisch gelöst.
+
+Master-Template und Produktprojekt besitzen anschließend getrennte
+Lebenszyklen. Der untersuchte Generator kopiert ausgewählte Pfade, bietet aber
+keinen dauerhaften Update- oder Synchronisationsmechanismus. Spätere
+Verbesserungen des Masters gelangen daher nicht automatisch in bereits
+erzeugte Projekte; sie müssen hinsichtlich Nutzen, Kompatibilität und
+Produktrisiko bewertet und gezielt übernommen werden. Umgekehrt gehören
+produktspezifische Änderungen nicht ohne Generalisierungs- und
+Verifikationsprüfung zurück in die gemeinsame Baseline.
+
+Schließlich sind technische Template-Abnahme und Produktabnahme zu trennen.
+Die commitgebundene Abnahme belegt für die Baseline unter dokumentierten
+Bedingungen unter anderem Generierung, Installation, Tests und ausgewählte
+Buildpfade. Sie schließt produktive Bereitstellung, Signing sowie
+produktspezifische Fach- und Sicherheitsanforderungen ausdrücklich aus
+\parencite{kleiveist2026acceptance}. Die Produktabnahme muss deshalb die
+konkreten Kundenanforderungen, Geschäftsregeln, Integrationen und
+Betriebsbedingungen mit eigenen Tests und Nachweisen prüfen. Kapitel 800
+überführt die technische Fallstudie somit in ein systematisches Auswahl- und
+Generierungsverfahren, ohne daraus Kundenerfolge oder eine universelle
+Eignungszusage abzuleiten.

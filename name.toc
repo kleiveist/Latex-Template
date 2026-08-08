@@ -35,36 +35,42 @@
 \contentsline {section}{\numberline {5}Tooling und Entwicklungsworkflow}{17}{section.5}%
 \contentsline {subsection}{\numberline {5.1}Rolle von control.py}{17}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}Projektinitialisierung und Generierung}{18}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Systemprüfung und Installation}{18}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}Entwicklungsbetrieb}{18}{subsection.5.4}%
-\contentsline {subsection}{\numberline {5.5}Tests und Builds}{19}{subsection.5.5}%
-\contentsline {subsection}{\numberline {5.6}Release- und Packaging-Workflow}{19}{subsection.5.6}%
-\contentsline {subsection}{\numberline {5.7}Entwickler-Onboarding}{19}{subsection.5.7}%
-\contentsline {section}{\numberline {6}Qualitätssicherung und Verifikation}{19}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Teststrategie}{19}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Continuous Integration}{20}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Abnahme und technische Verifikation}{20}{subsection.6.3}%
-\contentsline {subsection}{\numberline {6.4}Reproduzierbarkeit}{20}{subsection.6.4}%
-\contentsline {subsection}{\numberline {6.5}Security und Konfigurationsgrenzen}{20}{subsection.6.5}%
-\contentsline {subsection}{\numberline {6.6}Extern verbleibende Prüfungen}{20}{subsection.6.6}%
-\contentsline {section}{\numberline {7}Bewertung des Technologie-Templates}{20}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Produktivitätswirkung}{20}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Stärken}{20}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Schwächen und Grenzen}{21}{subsection.7.3}%
-\contentsline {subsection}{\numberline {7.4}Wartungsaufwand}{21}{subsection.7.4}%
-\contentsline {subsection}{\numberline {7.5}Vergleich mit alternativen Template-Strategien}{21}{subsection.7.5}%
-\contentsline {subsection}{\numberline {7.6}Gesamtbewertung}{21}{subsection.7.6}%
-\contentsline {section}{\numberline {8}Einsatzmöglichkeiten und Transfer auf Kundenprojekte}{21}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Geeignete Projekttypen}{21}{subsection.8.1}%
-\contentsline {subsection}{\numberline {8.2}Ungeeignete und eingeschränkt geeignete Projekttypen}{21}{subsection.8.2}%
-\contentsline {subsection}{\numberline {8.3}Analyse von Kundenanforderungen}{21}{subsection.8.3}%
-\contentsline {subsection}{\numberline {8.4}Auswahl des Projektprofils}{21}{subsection.8.4}%
-\contentsline {subsection}{\numberline {8.5}Generierung eines Kundenprojekts}{21}{subsection.8.5}%
-\contentsline {subsection}{\numberline {8.6}Überführung in die Produktentwicklung}{22}{subsection.8.6}%
-\contentsline {section}{\numberline {9}Schlussbetrachtung}{22}{section.9}%
-\contentsline {subsection}{\numberline {9.1}Zusammenfassung der Ergebnisse}{22}{subsection.9.1}%
-\contentsline {subsection}{\numberline {9.2}Beantwortung der Fragestellungen}{22}{subsection.9.2}%
-\contentsline {subsection}{\numberline {9.3}Kritische Würdigung}{22}{subsection.9.3}%
-\contentsline {subsection}{\numberline {9.4}Ausblick}{22}{subsection.9.4}%
-\contentsline {subsection}{\numberline {9.5}Fazit}{22}{subsection.9.5}%
-\contentsline {section}{Literaturverzeichnis}{23}{subsection.9.5}%
+\contentsline {subsection}{\numberline {5.3}Systemprüfung und Installation}{19}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Entwicklungsbetrieb}{19}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Tests und Builds}{20}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Release- und Packaging-Workflow}{21}{subsection.5.6}%
+\contentsline {subsection}{\numberline {5.7}Entwickler-Onboarding}{22}{subsection.5.7}%
+\contentsline {section}{\numberline {6}Qualitätssicherung und Verifikation}{22}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Teststrategie}{22}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Continuous Integration}{23}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Abnahme und technische Verifikation}{24}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Reproduzierbarkeit}{25}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Security und Konfigurationsgrenzen}{26}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}Extern verbleibende Prüfungen}{26}{subsection.6.6}%
+\contentsline {section}{\numberline {7}Bewertung des Technologie-Templates}{27}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Produktivitätswirkung}{27}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Stärken}{28}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Schwächen und Grenzen}{29}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Wartungsaufwand}{30}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Vergleich mit alternativen Template-Strategien}{30}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}Gesamtbewertung}{32}{subsection.7.6}%
+\contentsline {section}{\numberline {8}Einsatzmöglichkeiten und Transfer auf Kundenprojekte}{33}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Geeignete Projekttypen}{33}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Ungeeignete und eingeschränkt geeignete Projekttypen}{35}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Analyse von Kundenanforderungen}{35}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Auswahl des Projektprofils}{36}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}Generierung eines Kundenprojekts}{37}{subsection.8.5}%
+\contentsline {subsection}{\numberline {8.6}Überführung in die Produktentwicklung}{38}{subsection.8.6}%
+\contentsline {section}{\numberline {9}Schlussbetrachtung}{38}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Zusammenfassung der Ergebnisse}{38}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Beantwortung der Fragestellungen}{39}{subsection.9.2}%
+\contentsline {paragraph}{Fragestellung 1: Adressierte Anforderungen.}{39}{paragraph*.4}%
+\contentsline {paragraph}{Fragestellung 2: Varianten für Web, Cloud und Desktop.}{39}{paragraph*.5}%
+\contentsline {paragraph}{Fragestellung 3: Wiederverwendung.}{39}{paragraph*.6}%
+\contentsline {paragraph}{Fragestellung 4: Reduktion wiederkehrender Aufwände.}{39}{paragraph*.7}%
+\contentsline {paragraph}{Fragestellung 5: Projekteignung.}{39}{paragraph*.8}%
+\contentsline {paragraph}{Fragestellung 6: Grenzen, Wartungsaufwände und Risiken.}{40}{paragraph*.9}%
+\contentsline {subsection}{\numberline {9.3}Kritische Würdigung}{40}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}Ausblick}{40}{subsection.9.4}%
+\contentsline {subsection}{\numberline {9.5}Fazit}{41}{subsection.9.5}%
+\contentsline {section}{Literaturverzeichnis}{42}{subsection.9.5}%

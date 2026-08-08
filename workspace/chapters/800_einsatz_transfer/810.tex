@@ -1,12 +1,54 @@
 \subsection{Geeignete Projekttypen}
 \label{subsec:geeignete-projekttypen}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - Eignungskriterien aus Anforderungen und Bewertung ableiten
-% - Web-, Cloud-, Desktop- und kombinierte Anwendungen differenzieren
-% - noch keine endgültigen Eignungswerte festlegen
+Die Projekteignung wird aus dem Zielbild in
+Kapitel~\ref{sec:anforderungen}, den vorhandenen Architekturbausteinen, dem
+Verifikationsstand und den in Kapitel~\ref{sec:bewertung} zusammengeführten
+Stärken und Grenzen abgeleitet. Maßgeblich sind die benötigten Zugriffskanäle,
+Backend- und Persistenzbedarf, Deploymentform, Umfang nativer Integration
+sowie Abweichungen bei Infrastruktur, Sicherheit und Betrieb. Direkt belegt
+sind die generierbaren Feature-Kombinationen und die im technischen
+Abnahmeprotokoll geprüften Profilpfade. Die Einstufung eines Projekttyps als
+\emph{gut geeignet}, \emph{bedingt geeignet} oder \emph{nicht primär
+vorgesehen} ist demgegenüber eine qualitative Transferbewertung: Sie drückt
+den Abstand der Anforderungen zur Baseline aus, nicht eine empirisch
+ermittelte Erfolgswahrscheinlichkeit
+\parencite{kleiveist2026profiles,kleiveist2026acceptance}.
+
+Gut geeignet erscheinen zunächst browserbasierte Frontends, die mit dem
+Profil \texttt{web-only} ohne Template-Backend ausgeliefert werden können.
+Benötigt eine Webanwendung zusätzlich eine zentrale API und eine
+providerneutrale Deploymentstruktur, deckt \texttt{web-cloud} diese Grenze
+mit Vite, TypeScript, FastAPI und den Cloud-Bausteinen ab. Hierzu zählen
+beispielsweise interne Business-Anwendungen, Verwaltungsoberflächen und
+datenbasierte Webanwendungen. Relationale Persistenz entsteht jedoch erst
+durch die separate Capability \texttt{postgres}; Authentifizierung,
+Berechtigungen, Fachmodelle und produktive Infrastruktur bleiben
+produktspezifisch.
+
+Für lokale Desktop-Werkzeuge stellt \texttt{desktop-local} das gemeinsame
+Frontend in einer Tauri-Laufzeit bereit. Die Eignung gilt insbesondere, wenn
+kein zentrales Backend erforderlich ist und benötigte native Funktionen mit
+überschaubaren Tauri-Kommandos ergänzt werden können; eine lokale Datenbank
+gehört nicht zur Baseline. \texttt{desktop-cloud} ergänzt dagegen FastAPI und
+Deployment-Bausteine für einen Desktop-Client mit zentral bereitgestellten
+Diensten. Erfordert ein Produkt Browser- und Desktopzugang auf derselben
+Frontend- und Backendbasis, bildet \texttt{full-platform} den passenden
+semantischen Ausgangspunkt. Auch dort bleibt PostgreSQL optional. Der primäre
+Einsatzbereich lässt sich daher als Web-, Cloud- und Desktop-orientierte
+Business-/Full-Stack-Anwendungen zusammenfassen, sofern ihre technischen
+Anforderungen innerhalb dieser Grenzen liegen.
 
 \input{workspace/figures/business/project-suitability-map}
+
+Abbildung~\ref{fig:project-suitability-map} verdichtet die Einstufung;
+Tabelle~\ref{tab:project-suitability} ordnet ihr Profile und wesentliche
+Ergänzungen zu. \emph{Geeignet} bedeutet dabei nur, dass die Baseline einen
+relevanten Teil der Plattformarchitektur abdeckt. Ein fertiges Produkt
+entsteht daraus erst durch Fachlogik, Benutzeroberfläche, Integrationen,
+Produktsicherheit und den konkreten Betrieb. Technische Eignung ist zudem
+nicht mit Wirtschaftlichkeit gleichzusetzen; Budget, Teamkompetenzen,
+Betriebskosten und Produktstrategie sind nicht Gegenstand dieser
+Transferbewertung.
+
 \input{workspace/tables/project-suitability}

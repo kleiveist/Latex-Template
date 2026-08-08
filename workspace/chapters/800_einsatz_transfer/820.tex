@@ -1,10 +1,40 @@
 \subsection{Ungeeignete und eingeschränkt geeignete Projekttypen}
 \label{subsec:ungeeignete-projekttypen}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - Anforderungen außerhalb der Template-Baseline identifizieren
-% - stark native Anwendungen, Echtzeitsysteme und Spiele prüfen
-% - technische Ausschlussgründe oder Zusatzaufwände belegen
-% - keine pauschale Einstufung ohne Kriterien und Evidenz
+Eingeschränkt geeignet sind Vorhaben, deren Zugriffskanal zwar einem Profil
+entspricht, deren Kern aber deutlich andere technische Eigenschaften
+verlangt. Bei umfangreicher Betriebssystemintegration, plattformspezifischer
+UI, systemnahen Diensten oder Treibern reicht die vorhandene Tauri-Hülle nicht
+als Nachweis der Eignung; native Kommandos, Berechtigungen und Tests müssten in
+erheblichem Umfang produktspezifisch ergänzt werden. Gleiches gilt für eine
+zwingend abweichende Infrastruktur, etwa eine stark verteilte
+Microservice-Landschaft, spezielle Event-Streaming- oder HPC-Anforderungen.
+Hier ist zu prüfen, ob die Baseline als abgegrenzter Client oder Dienst
+weiterverwendet werden kann oder eine andere Architektur zweckmäßiger ist.
+
+Nicht zum primären Zielbereich gehören harte Echtzeitsysteme, deren Korrektheit
+von garantierten Antwortzeiten abhängt, grafikintensive Spiele mit Bedarf an
+einer Game Engine sowie Firmware-, Mikrocontroller- und treiberzentrierte
+Embedded-Systeme. Gewöhnliche Live-Aktualisierungen über HTTP oder WebSockets
+sind davon zu unterscheiden: Sie machen eine Business-Anwendung noch nicht zu
+einem Hard-Real-Time-System. Native iOS- und Android-Anwendungen sind ebenfalls
+kein vorhandenes Standardprofil. Diese Abgrenzungen bedeuten nicht, dass jede
+spielähnliche, mobile angebundene oder hardwarenahe Teilfunktion technisch
+unmöglich wäre; ihr jeweiliger Kern wird durch die untersuchte Baseline jedoch
+nicht bereitgestellt.
+
+Hohe Sicherheits- oder Compliance-Anforderungen führen nicht automatisch zu
+einer negativen Einstufung. Die Baseline allein weist aber weder
+produktspezifische Schutzbedarfe noch Auditierung, Zertifizierung oder
+Rechtskonformität nach. Der in
+Kapitel~\ref{sec:qualitaetssicherung-verifikation} dokumentierte Stand belegt
+zwar Compose-Validierung und Master-Image-Builds, nicht jedoch einen
+Compose-Start oder produktive Bereitstellung
+\parencite{kleiveist2026ci-core-run}. Linux- und macOS-Pakete wurden
+unsigniert gebaut; der Windows-Paketpfad ist fehlgeschlagen
+\parencite{kleiveist2026ci-desktop-run}. Signing und Notarisierung bleiben
+produktspezifische Prüfgegenstände \parencite{kleiveist2026release}. Solche
+Projekte erfordern daher zusätzliche Nachweise. Bei der Einsatzentscheidung
+ist ferner zu berücksichtigen, ob im Team die für die gewählte Variante
+benötigten TypeScript-, Python-, Rust-, Datenbank- und Deploymentkompetenzen
+vorhanden sind.

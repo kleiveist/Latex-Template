@@ -1,12 +1,43 @@
 \subsection{Release- und Packaging-Workflow}
 \label{subsec:release-packaging-workflow}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - Release-Checks und erzeugte Artefakte
-% - Docker-/Compose- und providerneutrale Deployment-Bausteine
-% - Desktop-Packaging und externe Plattformschritte
-% - Signing, Notarisierung und Veröffentlichung produktspezifisch abgrenzen
+\texttt{VERSION} ist die zentrale Versionsquelle. \texttt{version check}
+vergleicht deren SemVer-Wert mit den Metadaten aller aktiven Frontend- und
+Tauri-Komponenten; \texttt{version sync} ist der davon getrennte, schreibende
+Abgleich. \texttt{release check} erzeugt und veröffentlicht selbst keine
+Artefakte. Das Gate kombiniert Versionsprüfung, Produktidentität, bei Tauri
+CSP und Capabilities, Tagbezug und sauberen Git-Arbeitsbaum. Bei Tauri kommt
+die Anwesenheit externer Signing-Variablen hinzu. Fehlende
+Signing-Konfiguration bleibt eine Warnung; inkonsistente Versionen, ein
+unpassender Release-Tag, ein veränderter
+Arbeitsbaum oder bekannte Template-Platzhalter im abgeleiteten Projekt sind
+Fehler. Nur das Master-Repository akzeptiert seine kanonische
+Template-Identität anhand des dort vorhandenen Profilmatrix-Workflows
+\parencite{kleiveist2026release,kleiveist2026control}.
+
+Der Webpfad liefert den statischen Vite-Build und das ZIP-Paket. Für Desktop
+wählt ein Aufruf eine Plattformstrategie; Tauri baut auf dem jeweiligen Host
+native Windows-, macOS- oder Linux-Bundles. Zusätzliche Strategien existieren
+für ein portables Windows-ZIP und einen Linux-basierten Cross-Build. Die
+CI-Matrix erzeugt kurzlebige, ausdrücklich unsignierte Prüfarbeitsprodukte auf
+den drei nativen Betriebssystemen.
 
 \input{workspace/figures/deployment/desktop-release-model}
+
+Signierung, macOS-Notarisierung, Veröffentlichung, App-Stores und die
+Aktivierung eines Updaters sind nicht Teil der generischen Baseline. Sie
+benötigen Produktidentität, geschützte Zugangsdaten und produktspezifische
+Freigaberegeln. Der Release-Workflow für Tags oder manuelle Auslösung führt
+Tests, Web- und Container-Build, Release-Gate und anschließend die
+unsignierte Desktopmatrix zusammen, enthält aber weder Veröffentlichungs- noch
+Deployment-Job \parencite{kleiveist2026release,kleiveist2026ci}.
+
+Für Cloudprofile kontrollieren \texttt{container doctor} und
+\texttt{container validate} Docker, Compose und die Deployment-Dateien;
+\texttt{build container} baut versionierte Backend- und Frontend-Images. Die
+Compose-Basis dient der lokalen Produktionssimulation und hält PostgreSQL in
+einem optionalen Compose-Profil. Sie legt keinen Zielanbieter fest und ersetzt
+weder produktive Secret-Verwaltung noch einen kontrollierten Alembic-
+Migrationsjob. Docker-/Deployment-Basis und fertige AWS-, Azure- oder
+GCP-Architektur sind daher ausdrücklich nicht gleichzusetzen
+\parencite{kleiveist2026container,kleiveist2026deployment}.

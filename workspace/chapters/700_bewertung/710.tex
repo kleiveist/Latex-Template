@@ -1,10 +1,61 @@
 \subsection{Produktivitätswirkung}
 \label{subsec:produktivitaetswirkung}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - Bewertungskriterien aus Literatur und Fallstudiendaten ableiten
-% - Projektstart, Entwicklungsworkflow und Wartung getrennt betrachten
-% - qualitative und quantitative Evidenz kenntlich machen
-% - keine Produktivitätsfaktoren oder Zeitersparnisse erfinden
+Die Bewertung folgt einer Soll--Ist--Evidenz--Logik. Aus den Anforderungen in
+Kapitel~\ref{sec:anforderungen} werden Wiederverwendbarkeit, Standardisierung,
+kontrollierte Variabilität, Wartbarkeit, Testbarkeit, Reproduzierbarkeit,
+Entwicklerfreundlichkeit, Erweiterbarkeit und Plattformabdeckung als zentrale
+Kriterien übernommen. Komplexität, Betriebsreife und Dokumentierbarkeit dienen
+ergänzend dazu, Nutzen und Folgekosten einzuordnen. Als Ist-Zustand gelten die
+in den Kapiteln~\ref{sec:architektur} bis
+\ref{sec:tooling-entwicklungsworkflow} beschriebenen Mechanismen. Technische
+Evidenz liefern die in Kapitel~\ref{sec:qualitaetssicherung-verifikation}
+angelegte Verifikation und das projektinterne Abnahmeprotokoll; dessen Befunde
+sind dokumentierte Projektnachweise und keine unabhängige Replikation
+\parencite{kleiveist2026acceptance}.
+
+Produktivität wird hier nicht als Menge erzeugten Codes verstanden. Sie
+umfasst vielmehr den Aufwand bis zu einem lauffähigen Ausgangsprojekt, die
+Zahl wiederkehrender Einrichtungsentscheidungen, einen einheitlichen
+Entwicklungsfluss sowie den späteren Pflegeaufwand. Diese mehrdimensionale
+Betrachtung entspricht der Forschung, nach der Entwicklerproduktivität nicht
+durch eine einzelne Aktivitätskennzahl angemessen beschrieben werden kann
+\parencite{forsgren2021space}. Konzeptionell lässt sich die Wirkung daher als
+
+\begin{center}
+  \emph{Produktivitätsnutzen = vermiedener Projektaufwand
+  $-$ Template-Pflegeaufwand $-$ zusätzliche Komplexität}
+\end{center}
+
+auffassen. Die Beziehung strukturiert die Diskussion, ist aber mangels
+Zeit- und Aufwandsmessungen nicht numerisch auswertbar.
+
+Beim \emph{Projektstart} sind Profilwahl, Scaffold-Plan, Generierung,
+Systemprüfung und Installation über \texttt{control.py} gebündelt. Das
+Abnahmeprotokoll dokumentiert Generierung, Installation und Diagnose für alle
+fünf Profile sowie die sichere Ablehnung inkompatibler PostgreSQL-Auswahlen
+\parencite{kleiveist2026acceptance}. Dies ist direkte technische Evidenz für
+automatisierte und vereinheitlichte Setup-Schritte auf dem dort geprüften
+Commit. Die gemischten CI-Ergebnisse des später untersuchten HEAD begrenzen
+die Übertragbarkeit (Abschnitt~\ref{subsec:continuous-integration}). Aus den
+Mechanismen folgt dennoch ein plausibles Potenzial für weniger manuelle
+Einrichtung und Fehlentscheidungen; eine konkrete Zeitersparnis ist damit
+nicht bewiesen.
+
+In der \emph{laufenden Entwicklung} reduzieren profilabhängige Einstiege für
+Start, Test und Build die Zahl projektspezifischer Bedienpfade. Gemeinsames
+Frontend, Konfigurationsvertrag und dokumentierte Komponentenverantwortung
+fördern zudem die Wiederverwendung. Dem stehen die weiterhin erforderlichen
+Fachwerkzeuge und plattformspezifischen Voraussetzungen gegenüber. In der
+\emph{Wartung} kann eine Änderung an der zentralen Baseline zukünftigen
+Projektstarts zugutekommen; Profile, Generator, Testmatrix und Dokumentation
+müssen dafür jedoch gemeinsam gepflegt werden. Bereits generierte
+Produktprojekte erhalten diese Änderungen nicht automatisch.
+
+Quantitative Produktivitätsevidenz liegt somit nicht vor. Eine spätere
+kontrollierte Evaluation sollte vergleichbare Vorhaben mit und ohne Template
+beobachten und mindestens die Zeit bis zum ersten lauffähigen Build und zur
+ersten Fachfunktion, Setup-Fehler, Onboarding-Zeit, fehlgeschlagene Builds,
+den Anteil wiederverwendeter Basiskomponenten und die Pflegezeit der Baseline
+erfassen. Erst solche Messungen erlaubten eine belastbare Aussage über die
+Größe des Produktivitätseffekts.

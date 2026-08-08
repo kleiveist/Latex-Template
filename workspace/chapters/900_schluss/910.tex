@@ -1,9 +1,31 @@
 \subsection{Zusammenfassung der Ergebnisse}
 \label{subsec:zusammenfassung-ergebnisse}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - zentrale, im Hauptteil tatsächlich hergeleitete Ergebnisse bündeln
-% - Anforderungen, Architektur, Verifikation und Bewertung verbinden
-% - keine neuen Argumente oder Ergebnisse einführen
+Ausgangspunkt der Fallstudie war der wiederkehrende Aufwand für technisch
+ähnliche Projektinitialisierungen und das Risiko voneinander abweichender
+Baselines für Web-, Cloud- und Desktopanwendungen. Die daraus abgeleiteten
+Anforderungen bündeln Generierbarkeit und nachvollziehbare Konfiguration,
+konsistente Verantwortungsgrenzen, kontrollierte Varianten, gemeinsame
+Arbeitsabläufe und zentrale Wartbarkeit. Die Lösung setzt sie durch ein
+Master-Template mit gemeinsamem Kern und deklarativer Variabilität um.
+
+Architektonisch verbindet die Baseline ein gemeinsames Vite-Frontend mit einem
+profilabhängigen FastAPI-Backend und einer optionalen Tauri-Schicht.
+PostgreSQL lässt sich nur bei Backendprofilen als Capability ergänzen. Fünf
+Projektprofile wählen daraus kontrollierte Presets; gemeinsame Contracts,
+Konfiguration und Tooling verbleiben im Kern. \texttt{control.py} bündelt
+Generierung, Diagnose, Installation, Entwicklungsbetrieb, Tests, Builds und
+Release-Vorbereitung. Generierte Produktprojekte bleiben eigenständig und
+erhalten spätere Änderungen des Master-Templates nicht automatisch.
+
+Die technische Evidenz ist nach Stand und Umgebung zu unterscheiden. Die
+dokumentierte lokale Abnahme eines früheren Commits weist den Status
+\emph{PASS WITH OPEN EXTERNAL ITEMS} und \emph{READY FOR CASE STUDY} aus und
+stützt die untersuchten Profil-, PostgreSQL-, Test-, Web-Build- und
+Linux-Paketierungspfade. Die aktuelle externe CI ist dagegen nur teilweise
+erfolgreich; weitere Pfade sind nicht anwendbar, nicht verifiziert oder
+produktspezifisch offen. Das Ergebnis ist eine standardisierte, kontrolliert
+variable Baseline mit plausiblem Produktivitätspotenzial, aber auch zentraler
+Pflegekomplexität, manueller Schnittstellensynchronisierung und unvollständiger
+Plattform- und Betriebsevidenz. Produktionsreife oder empirisch bestätigte
+Kundeneignung lassen sich daraus nicht ableiten.

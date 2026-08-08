@@ -103,6 +103,263 @@
       \verb https://www.sei.cmu.edu/library/software-product-lines-practices-and-patterns/
       \endverb
     \endentry
+    \entry{forsgren2021space}{article}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=0dc9ac8a967e13c60fcfaedde74976f2}{%
+           family={Forsgren},
+           familyi={F\bibinitperiod},
+           given={Nicole},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d88bfec92aef818de9532a68531f7f5c}{%
+           family={Storey},
+           familyi={S\bibinitperiod},
+           given={Margaret-Anne},
+           giveni={M\bibinithyphendelim A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=24e8cd7be1c3aeccfe0f3675bcbaa524}{%
+           family={Maddila},
+           familyi={M\bibinitperiod},
+           given={Chandra},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9bfbc841af43915c12169734f59a4e7b}{%
+           family={Zimmermann},
+           familyi={Z\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=608e48ba29e6f2fe39680f27de033fe0}{%
+           family={Houck},
+           familyi={H\bibinitperiod},
+           given={Brian},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=60abb38f81bcb956a22a079a0171cd9c}{%
+           family={Butler},
+           familyi={B\bibinitperiod},
+           given={Jenna},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6182ff2ce3d65afe566932add04e4d0a}
+      \strng{fullhash}{bd5c69cb5a24df1ef12bd5623144fcc6}
+      \strng{bibnamehash}{bd5c69cb5a24df1ef12bd5623144fcc6}
+      \strng{authorbibnamehash}{bd5c69cb5a24df1ef12bd5623144fcc6}
+      \strng{authornamehash}{6182ff2ce3d65afe566932add04e4d0a}
+      \strng{authorfullhash}{bd5c69cb5a24df1ef12bd5623144fcc6}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Queue}
+      \field{langid}{english}
+      \field{number}{1}
+      \field{subtitle}{There's More to It than You Think}
+      \field{title}{The SPACE of Developer Productivity}
+      \field{volume}{19}
+      \field{year}{2021}
+      \field{pages}{20\bibrangedash 48}
+      \range{pages}{29}
+      \verb{doi}
+      \verb 10.1145/3454122.3454124
+      \endverb
+    \endentry
+    \entry{kleiveist2026ci-core-run}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=d3b7c913cd04ebfec0e9ec32cb6fd58c}{%
+           family={{GitHub}},
+           familyi={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \strng{fullhash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \strng{bibnamehash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \strng{authorbibnamehash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \strng{authornamehash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \strng{authorfullhash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \field{extraname}{1}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{7}
+      \field{langid}{english}
+      \field{month}{8}
+      \field{note}{GitHub-Actions-Lauf für Commit a4487ac im Repository Template-Projekte}
+      \field{title}{Core CI, Run 31168215013}
+      \field{urlday}{9}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{year}{2026}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://github.com/kleiveist/Template-Projekte/actions/runs/31168215013
+      \endverb
+      \verb{url}
+      \verb https://github.com/kleiveist/Template-Projekte/actions/runs/31168215013
+      \endverb
+    \endentry
+    \entry{github2026repository-template}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=d3b7c913cd04ebfec0e9ec32cb6fd58c}{%
+           family={{GitHub}},
+           familyi={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \strng{fullhash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \strng{bibnamehash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \strng{authorbibnamehash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \strng{authornamehash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \strng{authorfullhash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \field{extraname}{2}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{langid}{english}
+      \field{note}{GitHub Documentation}
+      \field{title}{Creating a Repository from a Template}
+      \field{urlday}{9}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{year}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template
+      \endverb
+      \verb{url}
+      \verb https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template
+      \endverb
+    \endentry
+    \entry{kleiveist2026ci-desktop-run}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=d3b7c913cd04ebfec0e9ec32cb6fd58c}{%
+           family={{GitHub}},
+           familyi={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \strng{fullhash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \strng{bibnamehash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \strng{authorbibnamehash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \strng{authornamehash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \strng{authorfullhash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \field{extraname}{3}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradate}{3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{7}
+      \field{langid}{english}
+      \field{month}{8}
+      \field{note}{GitHub-Actions-Lauf für Commit a4487ac im Repository Template-Projekte}
+      \field{title}{Desktop CI, Run 31168214763}
+      \field{urlday}{9}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{year}{2026}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://github.com/kleiveist/Template-Projekte/actions/runs/31168214763
+      \endverb
+      \verb{url}
+      \verb https://github.com/kleiveist/Template-Projekte/actions/runs/31168214763
+      \endverb
+    \endentry
+    \entry{kleiveist2026ci-postgres-run}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=d3b7c913cd04ebfec0e9ec32cb6fd58c}{%
+           family={{GitHub}},
+           familyi={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \strng{fullhash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \strng{bibnamehash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \strng{authorbibnamehash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \strng{authornamehash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \strng{authorfullhash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \field{extraname}{4}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradate}{4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{7}
+      \field{langid}{english}
+      \field{month}{8}
+      \field{note}{GitHub-Actions-Lauf für Commit a4487ac im Repository Template-Projekte}
+      \field{title}{PostgreSQL Integration, Run 31168216208}
+      \field{urlday}{9}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{year}{2026}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://github.com/kleiveist/Template-Projekte/actions/runs/31168216208
+      \endverb
+      \verb{url}
+      \verb https://github.com/kleiveist/Template-Projekte/actions/runs/31168216208
+      \endverb
+    \endentry
+    \entry{kleiveist2026ci-profiles-run}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=d3b7c913cd04ebfec0e9ec32cb6fd58c}{%
+           family={{GitHub}},
+           familyi={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \strng{fullhash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \strng{bibnamehash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \strng{authorbibnamehash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \strng{authornamehash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \strng{authorfullhash}{d3b7c913cd04ebfec0e9ec32cb6fd58c}
+      \field{extraname}{5}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradate}{5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{7}
+      \field{langid}{english}
+      \field{month}{8}
+      \field{note}{GitHub-Actions-Lauf für Commit a4487ac im Repository Template-Projekte}
+      \field{title}{Profile Matrix, Run 31168215737}
+      \field{urlday}{9}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{year}{2026}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://github.com/kleiveist/Template-Projekte/actions/runs/31168215737
+      \endverb
+      \verb{url}
+      \verb https://github.com/kleiveist/Template-Projekte/actions/runs/31168215737
+      \endverb
+    \endentry
     \entry{iso25010-2023}{report}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=0828a8408614177181026ea908d5594a}{%
@@ -190,7 +447,7 @@
       \verb https://doc.rust-lang.org/book/
       \endverb
     \endentry
-    \entry{kleiveist2026database}{online}{}
+    \entry{kleiveist2026control}{online}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=24ce33a294a9aa2e0359f61d566b0cdd}{%
            family={{kleiveist}},
@@ -206,6 +463,123 @@
       \field{sortinit}{k}
       \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
       \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{7}
+      \field{langid}{english}
+      \field{month}{8}
+      \field{note}{CLI-Implementierung im Repository Template-Projekte}
+      \field{title}{Central Project Control CLI}
+      \field{urlday}{9}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{year}{2026}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://github.com/kleiveist/Template-Projekte/blob/a4487acfcdf6db896202009ff6c13567c319dfdb/tools/control.py
+      \endverb
+      \verb{url}
+      \verb https://github.com/kleiveist/Template-Projekte/blob/a4487acfcdf6db896202009ff6c13567c319dfdb/tools/control.py
+      \endverb
+    \endentry
+    \entry{kleiveist2026container}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=24ce33a294a9aa2e0359f61d566b0cdd}{%
+           family={{kleiveist}},
+           familyi={k\bibinitperiod}}}%
+      }
+      \strng{namehash}{24ce33a294a9aa2e0359f61d566b0cdd}
+      \strng{fullhash}{24ce33a294a9aa2e0359f61d566b0cdd}
+      \strng{bibnamehash}{24ce33a294a9aa2e0359f61d566b0cdd}
+      \strng{authorbibnamehash}{24ce33a294a9aa2e0359f61d566b0cdd}
+      \strng{authornamehash}{24ce33a294a9aa2e0359f61d566b0cdd}
+      \strng{authorfullhash}{24ce33a294a9aa2e0359f61d566b0cdd}
+      \field{extraname}{2}
+      \field{sortinit}{k}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{7}
+      \field{langid}{english}
+      \field{month}{8}
+      \field{note}{Projektdokumentation im Repository Template-Projekte}
+      \field{title}{Container Builds and Local Production Simulation}
+      \field{urlday}{9}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{year}{2026}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://github.com/kleiveist/Template-Projekte/blob/a4487acfcdf6db896202009ff6c13567c319dfdb/docs/tools/container-builds.md
+      \endverb
+      \verb{url}
+      \verb https://github.com/kleiveist/Template-Projekte/blob/a4487acfcdf6db896202009ff6c13567c319dfdb/docs/tools/container-builds.md
+      \endverb
+    \endentry
+    \entry{kleiveist2026ci}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=24ce33a294a9aa2e0359f61d566b0cdd}{%
+           family={{kleiveist}},
+           familyi={k\bibinitperiod}}}%
+      }
+      \strng{namehash}{24ce33a294a9aa2e0359f61d566b0cdd}
+      \strng{fullhash}{24ce33a294a9aa2e0359f61d566b0cdd}
+      \strng{bibnamehash}{24ce33a294a9aa2e0359f61d566b0cdd}
+      \strng{authorbibnamehash}{24ce33a294a9aa2e0359f61d566b0cdd}
+      \strng{authornamehash}{24ce33a294a9aa2e0359f61d566b0cdd}
+      \strng{authorfullhash}{24ce33a294a9aa2e0359f61d566b0cdd}
+      \field{extraname}{3}
+      \field{sortinit}{k}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradate}{3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{7}
+      \field{langid}{english}
+      \field{month}{8}
+      \field{note}{Projektdokumentation im Repository Template-Projekte}
+      \field{title}{Continuous Integration}
+      \field{urlday}{9}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{year}{2026}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://github.com/kleiveist/Template-Projekte/blob/a4487acfcdf6db896202009ff6c13567c319dfdb/docs/tools/ci.md
+      \endverb
+      \verb{url}
+      \verb https://github.com/kleiveist/Template-Projekte/blob/a4487acfcdf6db896202009ff6c13567c319dfdb/docs/tools/ci.md
+      \endverb
+    \endentry
+    \entry{kleiveist2026database}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=24ce33a294a9aa2e0359f61d566b0cdd}{%
+           family={{kleiveist}},
+           familyi={k\bibinitperiod}}}%
+      }
+      \strng{namehash}{24ce33a294a9aa2e0359f61d566b0cdd}
+      \strng{fullhash}{24ce33a294a9aa2e0359f61d566b0cdd}
+      \strng{bibnamehash}{24ce33a294a9aa2e0359f61d566b0cdd}
+      \strng{authorbibnamehash}{24ce33a294a9aa2e0359f61d566b0cdd}
+      \strng{authornamehash}{24ce33a294a9aa2e0359f61d566b0cdd}
+      \strng{authorfullhash}{24ce33a294a9aa2e0359f61d566b0cdd}
+      \field{extraname}{4}
+      \field{sortinit}{k}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradate}{4}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
@@ -241,10 +615,10 @@
       \strng{authorbibnamehash}{24ce33a294a9aa2e0359f61d566b0cdd}
       \strng{authornamehash}{24ce33a294a9aa2e0359f61d566b0cdd}
       \strng{authorfullhash}{24ce33a294a9aa2e0359f61d566b0cdd}
-      \field{extraname}{2}
+      \field{extraname}{5}
       \field{sortinit}{k}
       \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
-      \field{extradate}{2}
+      \field{extradate}{5}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
@@ -280,10 +654,10 @@
       \strng{authorbibnamehash}{24ce33a294a9aa2e0359f61d566b0cdd}
       \strng{authornamehash}{24ce33a294a9aa2e0359f61d566b0cdd}
       \strng{authorfullhash}{24ce33a294a9aa2e0359f61d566b0cdd}
-      \field{extraname}{3}
+      \field{extraname}{6}
       \field{sortinit}{k}
       \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
-      \field{extradate}{3}
+      \field{extradate}{6}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
@@ -319,10 +693,10 @@
       \strng{authorbibnamehash}{24ce33a294a9aa2e0359f61d566b0cdd}
       \strng{authornamehash}{24ce33a294a9aa2e0359f61d566b0cdd}
       \strng{authorfullhash}{24ce33a294a9aa2e0359f61d566b0cdd}
-      \field{extraname}{4}
+      \field{extraname}{7}
       \field{sortinit}{k}
       \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
-      \field{extradate}{4}
+      \field{extradate}{7}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
@@ -346,6 +720,45 @@
       \verb https://github.com/kleiveist/Template-Projekte/blob/a4487acfcdf6db896202009ff6c13567c319dfdb/docs/def/project-profiles.md
       \endverb
     \endentry
+    \entry{kleiveist2026release}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=24ce33a294a9aa2e0359f61d566b0cdd}{%
+           family={{kleiveist}},
+           familyi={k\bibinitperiod}}}%
+      }
+      \strng{namehash}{24ce33a294a9aa2e0359f61d566b0cdd}
+      \strng{fullhash}{24ce33a294a9aa2e0359f61d566b0cdd}
+      \strng{bibnamehash}{24ce33a294a9aa2e0359f61d566b0cdd}
+      \strng{authorbibnamehash}{24ce33a294a9aa2e0359f61d566b0cdd}
+      \strng{authornamehash}{24ce33a294a9aa2e0359f61d566b0cdd}
+      \strng{authorfullhash}{24ce33a294a9aa2e0359f61d566b0cdd}
+      \field{extraname}{8}
+      \field{sortinit}{k}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradate}{8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{7}
+      \field{langid}{english}
+      \field{month}{8}
+      \field{note}{Projektdokumentation im Repository Template-Projekte}
+      \field{title}{Release and Desktop Packaging Model}
+      \field{urlday}{9}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{year}{2026}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://github.com/kleiveist/Template-Projekte/blob/a4487acfcdf6db896202009ff6c13567c319dfdb/docs/tools/release-model.md
+      \endverb
+      \verb{url}
+      \verb https://github.com/kleiveist/Template-Projekte/blob/a4487acfcdf6db896202009ff6c13567c319dfdb/docs/tools/release-model.md
+      \endverb
+    \endentry
     \entry{kleiveist2026configuration}{online}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=24ce33a294a9aa2e0359f61d566b0cdd}{%
@@ -358,10 +771,10 @@
       \strng{authorbibnamehash}{24ce33a294a9aa2e0359f61d566b0cdd}
       \strng{authornamehash}{24ce33a294a9aa2e0359f61d566b0cdd}
       \strng{authorfullhash}{24ce33a294a9aa2e0359f61d566b0cdd}
-      \field{extraname}{5}
+      \field{extraname}{9}
       \field{sortinit}{k}
       \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
-      \field{extradate}{5}
+      \field{extradate}{9}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
@@ -397,10 +810,10 @@
       \strng{authorbibnamehash}{24ce33a294a9aa2e0359f61d566b0cdd}
       \strng{authornamehash}{24ce33a294a9aa2e0359f61d566b0cdd}
       \strng{authorfullhash}{24ce33a294a9aa2e0359f61d566b0cdd}
-      \field{extraname}{6}
+      \field{extraname}{10}
       \field{sortinit}{k}
       \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
-      \field{extradate}{6}
+      \field{extradate}{10}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
@@ -436,10 +849,10 @@
       \strng{authorbibnamehash}{24ce33a294a9aa2e0359f61d566b0cdd}
       \strng{authornamehash}{24ce33a294a9aa2e0359f61d566b0cdd}
       \strng{authorfullhash}{24ce33a294a9aa2e0359f61d566b0cdd}
-      \field{extraname}{7}
+      \field{extraname}{11}
       \field{sortinit}{k}
       \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
-      \field{extradate}{7}
+      \field{extradate}{11}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \true{uniqueprimaryauthor}
@@ -476,10 +889,10 @@
       \strng{authorbibnamehash}{24ce33a294a9aa2e0359f61d566b0cdd}
       \strng{authornamehash}{24ce33a294a9aa2e0359f61d566b0cdd}
       \strng{authorfullhash}{24ce33a294a9aa2e0359f61d566b0cdd}
-      \field{extraname}{8}
+      \field{extraname}{12}
       \field{sortinit}{k}
       \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
-      \field{extradate}{8}
+      \field{extradate}{12}
       \field{extradatescope}{labelyear}
       \field{labeldatesource}{}
       \true{uniqueprimaryauthor}

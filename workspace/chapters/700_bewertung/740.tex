@@ -1,10 +1,37 @@
 \subsection{Wartungsaufwand}
 \label{subsec:wartungsaufwand}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - Pflege des gemeinsamen Kerns und der Profil-Presets
-% - Technologie- und Abhängigkeitsaktualisierungen
-% - Testmatrix, Dokumentation und Release-Prozess
-% - Aufwand erst anhand nachvollziehbarer Evidenz bewerten
+Die Single-Repository-Strategie aus
+Abschnitt~\ref{subsec:single-repository-strategie} bündelt Core,
+Feature-Implementierungen, Profile, Generator, Tests und Dokumentation in
+einer Source of Truth. Gegenüber mehreren unabhängig gepflegten Vorlagen
+vermeidet dies parallele Änderungen gemeinsamer Bestandteile. Der Vorteil gilt
+unmittelbar für die Baseline und für künftig erzeugte Projekte; die
+Übertragung einer Korrektur in bereits abgeleitete Produktrepositories bleibt
+ein eigener, nicht automatisierter Prozess.
+
+Diese Bündelung verlagert Aufwand in die zentrale Pflege. Node.js/TypeScript,
+Python, Rust, PostgreSQL, Docker und GitHub Actions verwenden unterschiedliche
+Dependency-Manager und Toolchains; auch Plattformvoraussetzungen und
+Releasezyklen unterscheiden sich. Die Vielfalt ist sachlich durch Web-,
+Backend-, Desktop- und Deploymentziele begründet, erhöht aber die für
+Aktualisierungen erforderliche Kompetenz und Testbreite. Insbesondere native
+Builds und externe Dienste machen die Wartung umgebungsabhängiger als bei
+einem reinen Web-Starter.
+
+Auch das Variabilitätsmodell verursacht Folgekosten. Aktuell begrenzen fünf
+Profile, sechs Features und eine benutzerseitig auswählbare Capability den
+Kombinationsraum; die dokumentierte Abnahme deckt die fünf Basispfade und drei
+zulässige PostgreSQL-Erweiterungen ab \parencite{kleiveist2026acceptance}.
+Weitere Capabilities können zusätzliche Abhängigkeiten und zulässige
+Kombinationen erzeugen. Dann müssen Katalog, Generatorlogik,
+Konfigurationsvertrag, Testmatrix und Dokumentation gemeinsam erweitert
+werden. Es ist daher keine mathematische Explosion nachgewiesen, wohl aber ein
+mit der Variabilität wachsender Pflegebedarf.
+
+Insgesamt ist der Wartungsaufwand als bewusste Zentralinvestition zu bewerten:
+Er ist höher als bei einem kleinen, technologiehomogenen Starter, kann aber
+wiederholte Basispflege über mehrere zukünftige Projektarten hinweg bündeln.
+Ob diese Investition wirtschaftlich ist, hängt von Nutzungshäufigkeit,
+Ähnlichkeit der Projekte und der tatsächlich gemessenen Pflegezeit ab; solche
+Kostendaten liegen nicht vor.

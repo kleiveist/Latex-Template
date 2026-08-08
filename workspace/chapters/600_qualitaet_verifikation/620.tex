@@ -1,10 +1,35 @@
 \subsection{Continuous Integration}
 \label{subsec:continuous-integration}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - GitHub-Actions-Workflows und Trigger untersuchen
-% - Prüfpfade, Matrizen und Artefakte erfassen
-% - lokale und externe Ausführungsbedingungen unterscheiden
-% - beobachtete Ergebnisse mit konkreter Evidenz belegen
+Vier GitHub-Actions-Workflows reagieren auf Pull Requests, Pushes nach
+\texttt{main} und manuelle Auslösung: \emph{Core CI} trennt Tooling,
+Backend/Schema, Frontend/Web-Build und Container-Build in Ubuntu-Jobs;
+\emph{Profile Matrix} generiert und prüft die fünf Profile unter Ubuntu;
+\emph{PostgreSQL Integration} nutzt einen isolierten PostgreSQL-16-Service
+für Master und drei kompatible Kombinationen; \emph{Desktop CI} baut
+unsignierte Artefakte nativ unter Linux, macOS und Windows. Die separate
+\emph{Release Validation} läuft nur manuell oder für Tags der Form
+\texttt{v*.*.*}. Alle Definitionen besitzen nur Leserechte und rufen die auch
+lokal nutzbare Schnittstelle \path{tools/control.py} auf
+\parencite{kleiveist2026ci}.
+
+Die am 9.~August~2026 abgefragten externen Läufe vom 7.~August beziehen sich
+eindeutig auf den untersuchten HEAD \texttt{a4487ac}. Ihr Ergebnis ist nicht insgesamt grün:
+In \emph{Core CI} bestanden Backend und Schema, Frontend samt Web-Build sowie
+Compose-Validierung und beide Image-Builds. Der Job für Tooling, Profile und
+Konfiguration scheiterte. In der \emph{Profile Matrix} bestanden
+\texttt{web-only} und \texttt{web-cloud}; alle drei Desktopprofile scheiterten
+im Schritt \emph{Test generated project}. Die Basisintegration mit PostgreSQL
+und \texttt{web-cloud + postgres} bestanden. Die beiden Desktopkombinationen
+mit PostgreSQL scheiterten dagegen beim Projekttest. In \emph{Desktop CI}
+bestanden die Paketierungen unter Linux und macOS; der Windows-Job scheiterte
+bereits bei der Frontend-Installation
+\parencite{kleiveist2026ci-core-run,kleiveist2026ci-profiles-run,kleiveist2026ci-postgres-run,kleiveist2026ci-desktop-run}.
+
+Ein lokaler Kontrolllauf am 9.~August~2026 führte auf demselben HEAD unter
+Python~3.13.14 alle 194 Tooling-Tests erfolgreich aus; auch Schema, API und
+SQLAlchemy-Einheitstests bestanden lokal. Dies lokalisiert den CI-Widerspruch,
+ersetzt aber weder den fehlgeschlagenen externen Job noch die mangels Node.js,
+Rust und Docker auf diesem Host nicht ausgeführten Prüfpfade.
+Für \emph{Release Validation} existiert auf diesem Commit kein Run. Struktur,
+Ausführung und Ergebnis bleiben somit getrennte Aussagen.

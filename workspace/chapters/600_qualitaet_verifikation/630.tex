@@ -1,13 +1,33 @@
 \subsection{Abnahme und technische Verifikation}
 \label{subsec:abnahme-technische-verifikation}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - Abnahmekriterien und technische Prüfschritte erfassen
-% - Verifikation je Profil und Capability dokumentieren
-% - Evidenzarten und Grenzen der Aussagekraft erläutern
-% - Matrix erst mit tatsächlich belegten Ergebnissen füllen
+Das finale Abnahmeprotokoll bewertet den funktional geprüften Commit
+\texttt{1cdfb6e} (vollständige SHA in der zitierten Abnahme) als \emph{PASS
+WITH OPEN EXTERNAL ITEMS} und \emph{READY FOR CASE STUDY}. Dies bezeichnet die Annahme
+der Repository-Baseline für die Fallstudie, nicht Produktionsreife oder eine
+Freigabe externer Deployments. Der dokumentierte Tooling-Lauf umfasste dort
+189 bestandene Tests; die Zahl beschreibt allein diese Suite auf diesem
+Commit \parencite{kleiveist2026acceptance}.
+
+Die lokale Abnahme generierte alle fünf Basisprofile, installierte ihre
+Abhängigkeiten, führte profilabhängige Diagnosen und Tests sowie jeweils den
+Web-Build aus. Für die drei Desktopprofile entstand zusätzlich ein Linux-DEB.
+Die Doctor-Hinweise der Cloudprofile betrafen das optional fehlende lokale
+Compose-Werkzeug; mit bereitgestelltem Compose bestand die strikte Validierung.
+Separat bestanden \texttt{web-cloud}, \texttt{desktop-cloud} und
+\texttt{full-platform} mit PostgreSQL einschließlich Verbindungstest,
+Alembic \texttt{upgrade/current}, Backend-, Frontend- und Datenbanktests sowie
+Web-Build; die Desktopvarianten wurden ebenfalls als Linux-DEB paketiert.
+\texttt{web-only + postgres} und \texttt{desktop-local + postgres} wurden
+erwartungsgemäß mit Exitcode~1 vor der Zielerzeugung abgewiesen. Dieses
+Fehlerverhalten gilt deshalb als PASS \parencite{kleiveist2026acceptance}.
+
+Abbildung~\ref{fig:profile-verification-matrix} zeigt die beiden
+Evidenzstände, Tabelle~\ref{tab:verification-matrix} löst die lokale Abnahme
+nach Profil und Prüfdimension auf und stellt ihr die aktuelle externe CI
+gegenüber. Die neueren CI-Fehler entwerten die commitgebundene Abnahme nicht,
+verhindern aber ihre Übertragung auf \texttt{a4487ac} als vollständig grünen
+Remote-Nachweis.
 
 \input{workspace/figures/verification/profile-verification-matrix}
 \input{workspace/tables/verification-matrix}

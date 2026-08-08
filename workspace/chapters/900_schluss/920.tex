@@ -1,9 +1,57 @@
 \subsection{Beantwortung der Fragestellungen}
 \label{subsec:beantwortung-fragestellungen}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - jede endgültige Fragestellung nachvollziehbar beantworten
-% - Antworten auf zuvor dargestellte Evidenz zurückführen
-% - verbleibende Unsicherheiten offen benennen
+\paragraph{Fragestellung 1: Adressierte Anforderungen.}
+Das Technologie-Template adressiert die in Kapitel~\ref{sec:anforderungen}
+formulierten fachlich-technischen, qualitativen und betrieblichen Anforderungen
+durch eine generierbare Baseline, klare Komponentenstrukturen,
+profilabhängige Auswahl, gemeinsame Workflows, zentrale Pflege sowie
+versionierte Konfiguration und Capability-Abhängigkeiten. Getrennte
+Laufzeitgrenzen und profilabhängige Prüfpfade stützen dies. Fachlogik,
+Authentifizierung, Berechtigungen und Produktivbetrieb bleiben
+produktspezifisch.
+
+\paragraph{Fragestellung 2: Varianten für Web, Cloud und Desktop.}
+Architektur und Profilmodell kombinieren den gemeinsamen Frontend-Kern mit
+optionalen Backend-, Cloud- und Tauri-Bausteinen. Fünf Presets bilden die
+Plattformzuschnitte ab; PostgreSQL wird getrennt und nur bei Backendfähigkeit
+aufgelöst. Generierte Projekte enthalten so überwiegend nur benötigte Pfade.
+Dies gilt für den untersuchten Katalog; \texttt{desktop-cloud} und
+\texttt{full-platform} sind technisch gleich gescaffoldet und vor allem
+semantisch abgegrenzt.
+
+\paragraph{Fragestellung 3: Wiederverwendung.}
+Gemeinsamer Kern und Single-Repository-Strategie fördern Wiederverwendung und
+Standardisierung weitgehend, weil Implementierungen, Profile, Generator,
+Konfiguration, Tests und Dokumentation zentral gepflegt werden. Deklarative
+Presets und gemeinsame Tooling-Befehle begrenzen abweichende Ausgangsstände.
+Dieser Vorteil gilt unmittelbar für die Baseline und künftige Generierungen;
+bereits abgeleitete Produktprojekte bleiben separate Repositories ohne
+automatischen Rückfluss späterer Template-Änderungen.
+
+\paragraph{Fragestellung 4: Reduktion wiederkehrender Aufwände.}
+Für Projektinitialisierung, Entwicklungsworkflow, Qualitätssicherung und
+Bereitstellung besteht begründbares Einsparpotenzial: Profilwahl, Generierung,
+Diagnose, Installation, Start, Tests und Builds sind automatisiert oder
+vereinheitlicht und teilweise technisch abgenommen. Messdaten zu Zeit und
+Aufwand sowie Vergleichsdaten fehlen. Eine Produktivitätssteigerung ist daher
+nicht nachgewiesen; zudem sind zentrale Pflege und mehrere Toolchains
+gegenzurechnen.
+
+\paragraph{Fragestellung 5: Projekteignung.}
+Eine geeignete Ausgangsbasis stellt das Template grundsätzlich für technisch
+verwandte Web-, Desktop- und kombinierte Business-Anwendungen dar, deren
+Plattform-, Cloud- und Persistenzbedarf abbildbar ist. Stark native Anwendungen,
+Spiele und spezialisierte Echtzeitsysteme liegen nicht im primären Zielbereich.
+Kapitel~\ref{sec:einsatz-transfer} leitet eine technikneutrale Analyse, das
+kleinste passende Profil und die getrennte Capability-Auswahl ab. Die
+Einstufung bleibt qualitativ und ist keine universelle Eignungszusage.
+
+\paragraph{Fragestellung 6: Grenzen, Wartungsaufwände und Risiken.}
+Zu berücksichtigen sind die wachsende Regressionsbreite des Master-Templates,
+manuell synchronisierte Schnittstellen, die nicht strikt getrennte
+Capability-Auswahl und fehlende automatische Updates generierter Projekte.
+Mehrere Toolchains erhöhen den Pflegebedarf. Aktuell schlagen Tooling-,
+Desktopprofil- und Windows-CI-Pfade fehl; Release Validation, Compose-Start
+und Branch Protection sind nicht verifiziert. Signing, Notarisierung, Updater,
+Produktiv-Deployment und Sicherheitsmodell bleiben Produktaufgaben.

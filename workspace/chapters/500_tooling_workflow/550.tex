@@ -1,10 +1,40 @@
 \subsection{Tests und Builds}
 \label{subsec:tests-builds}
 
-% ------------------------------------------------------------
-% Inhalt später
-% ------------------------------------------------------------
-% - Befehle und Prüfumfang von test und build
-% - profilabhängige Test- und Buildpfade
-% - lokale und CI-Ausführung unterscheiden
-% - keine Erfolgswerte oder Abdeckungsgrade ohne Evidenz eintragen
+Ein leerer \texttt{test}-Aufruf zeigt zunächst die Suite-Karte; eine Ausführung
+erfordert \texttt{--suite}. Verfügbar sind \texttt{tools} für die
+Python-Toolingtests, \texttt{schema} für JSON-Schema-Beispiele, \texttt{api}
+und \texttt{database} für Pytest, \texttt{postgres} für Integrationstests,
+\texttt{frontend} für das npm-/Vitest-Skript, \texttt{e2e} für Playwright und
+\texttt{tauri} für Strukturprüfung, \texttt{cargo check --locked} und
+Rust-Tests. \texttt{test --suite all} expandiert auf diese acht Suites und ist
+der vollständige projektbezogene Einstieg; optionale Markdown- oder
+JSON-Berichte landen unter \path{.report/}
+\parencite{kleiveist2026control,kleiveist2026tooling}.
+
+Die Auswahl bleibt profilabhängig: Fehlt ein Feature im aktiven Manifest,
+meldet die zugehörige Suite \texttt{SKIP}; fehlen bei einem aktiven Feature
+Quellen oder ausführbare Voraussetzungen, entsteht \texttt{FAIL}. Die
+PostgreSQL-Suite wird ohne \texttt{DATABASE\_URL\_TEST} ebenfalls übersprungen,
+und die E2E-Suite nur bei vorhandener Playwright-Konfiguration ausgeführt. Für
+Backend-Suites prüft der Runner die virtuelle Umgebung und versucht sie bei
+Bedarf über \texttt{install} zu reparieren. Konfigurierte E2E-Tests können die
+Entwicklungsdienste selbst im Detached-Modus starten und anschließend stoppen;
+\texttt{--no-start} unterbindet diesen Schritt.
+
+Die Build-Karte trennt drei Artefaktpfade. \texttt{build web} ruft das
+npm-Buildskript auf. Neben dem Vite-Ausgabeverzeichnis entsteht ein ZIP-Paket
+unter \path{.dist/web/}. \texttt{build desktop} ist nur bei aktivem
+Tauri-Feature zulässig und reicht Ziel- und Bundlewahl an das native
+Tauri-Tooling weiter. Der Containerpfad ist auf Cloudprofile begrenzt und baut
+über Docker wahlweise Backend-, Frontend- oder beide Images. Der Befehl
+\texttt{container validate} prüft zuvor das Compose-Modell, ohne Dienste zu
+starten \parencite{kleiveist2026container,kleiveist2026release}.
+
+Die GitHub-Actions-Workflows verwenden dieselben öffentlichen Einstiege.
+Getrennte Jobs adressieren Core-Prüfungen, generierte Profilmatrizen,
+PostgreSQL und native Desktopziele. Lokaler Befehl und CI-Orchestrierung sind damit vergleichbar,
+aber nicht identisch: CI stellt Betriebssysteme, Laufzeiten und den temporären
+PostgreSQL-Dienst bereit. Ergebnisse dieser Ausführungen werden erst in
+Kapitel~\ref{sec:qualitaetssicherung-verifikation} bewertet
+\parencite{kleiveist2026ci}.

@@ -1,22 +1,31 @@
 \begin{figure}[H]
   \centering
-  \resizebox{0.48\textwidth}{!}{%
-  \begin{tikzpicture}[node distance=5mm]
-    \node[casePrimary,minimum width=45mm] (master) {Master Repository};
-    \node[caseBox,minimum width=45mm,below=of master] (profile) {Profilwahl};
-    \node[caseBox,minimum width=45mm,below=of profile] (features) {Feature-Auflösung};
-    \node[caseBox,minimum width=45mm,below=of features] (plan) {Scaffold-Plan};
-    \node[caseBox,minimum width=45mm,below=of plan] (generation) {Projektgenerierung};
-    \node[caseOptional,minimum width=45mm,below=of generation] (manifest) {project-profile.toml};
-    \node[casePrimary,minimum width=45mm,below=of manifest] (product) {neues Produktprojekt};
+  \resizebox{0.72\textwidth}{!}{%
+  \begin{tikzpicture}[node distance=5mm and 10mm]
+    \node[casePrimary,minimum width=52mm] (master) {Master-Repository};
+    \node[caseBox,minimum width=52mm,below=of master] (selection)
+      {Profil + Capabilities\\optionale Produktidentität};
+    \node[caseBox,minimum width=52mm,below=of selection] (features)
+      {Abhängigkeiten auflösen\\Kombination validieren};
+    \node[caseBox,minimum width=52mm,below=of features] (plan)
+      {Scaffold-Plan\\Core + aktive Feature-Pfade};
+    \node[caseBox,minimum width=52mm,below=of plan] (generation)
+      {Pfade kopieren\\Konfiguration und Identität ableiten};
+    \node[casePrimary,minimum width=52mm,below=of generation] (product)
+      {eigenständiges Produktprojekt};
+    \node[caseOptional,minimum width=42mm,right=of product] (manifest)
+      {aktives Manifest\\\texttt{project-profile.toml}};
 
-    \draw[caseFlow] (master) -- (profile);
-    \draw[caseFlow] (profile) -- (features);
+    \draw[caseFlow] (master) -- (selection);
+    \draw[caseFlow] (selection) -- (features);
     \draw[caseFlow] (features) -- (plan);
     \draw[caseFlow] (plan) -- (generation);
-    \draw[caseFlow] (generation) -- (manifest);
-    \draw[caseFlow] (manifest) -- (product);
+    \draw[caseFlow] (generation) -- (product);
+    \draw[caseSecondaryFlow] (product) -- (manifest);
   \end{tikzpicture}}
   \caption{Workflow der profilgesteuerten Projektgenerierung}
   \label{fig:project-generation-workflow}
+  \smallskip
+  {\footnotesize Quelle: Eigene Darstellung auf Grundlage von
+  \textcite{kleiveist2026profiles} und \textcite{kleiveist2026tooling}.\par}
 \end{figure}

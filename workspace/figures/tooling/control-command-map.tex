@@ -1,30 +1,28 @@
 \begin{figure}[H]
   \centering
-  \resizebox{\textwidth}{!}{%
-  \begin{tikzpicture}[node distance=7mm and 10mm]
-    \node[casePrimary,minimum width=40mm,minimum height=18mm] (control) {control.py\\gemeinsamer Einstiegspunkt};
+  \resizebox{0.98\textwidth}{!}{%
+  \begin{tikzpicture}
+    \node[casePrimary,minimum width=52mm,minimum height=14mm] (control) at (0,0)
+      {\texttt{control.py}\\gemeinsamer öffentlicher Einstieg};
 
-    \node[caseGroup,minimum width=35mm,minimum height=32mm,left=18mm of control] (setupgroup) {};
-    \node[font=\sffamily\bfseries\scriptsize,text=caseBlue,above=1mm of setupgroup.north] {Setup};
-    \node[caseBox,minimum width=28mm,above=2mm of setupgroup.center] (doctor) {doctor};
-    \node[caseBox,minimum width=28mm,below=2mm of setupgroup.center] (init) {init / install};
+    \node[caseBox,minimum width=37mm,minimum height=25mm] (setup) at (-6.3,-2.4)
+      {\textbf{Setup / Diagnose}\\\texttt{init / doctor / install}};
+    \node[caseBox,minimum width=37mm,minimum height=25mm] (development) at (-2.1,-2.4)
+      {\textbf{Entwicklung / Qualität}\\\texttt{run / stop / test}\\\texttt{build / console}};
+    \node[caseBox,minimum width=37mm,minimum height=25mm] (subsystems) at (2.1,-2.4)
+      {\textbf{Subsysteme}\\\texttt{config / db}\\\texttt{tauri / container}};
+    \node[caseBox,minimum width=37mm,minimum height=25mm] (delivery) at (6.3,-2.4)
+      {\textbf{Auslieferung / Pflege}\\\texttt{version / release / docs}};
 
-    \node[caseGroup,minimum width=35mm,minimum height=42mm,right=18mm of control] (devgroup) {};
-    \node[font=\sffamily\bfseries\scriptsize,text=caseBlue,above=1mm of devgroup.north] {Entwicklung};
-    \node[caseBox,minimum width=28mm,above=7mm of devgroup.center] (run) {run};
-    \node[caseBox,minimum width=28mm] at (devgroup.center) (test) {test / build};
-    \node[caseBox,minimum width=28mm,below=7mm of devgroup.center] (config) {config};
-
-    \node[caseGroup,minimum width=35mm,minimum height=42mm,below=17mm of control] (specialgroup) {};
-    \node[font=\sffamily\bfseries\scriptsize,text=caseBlue,above=1mm of specialgroup.north] {Subsysteme};
-    \node[caseBox,minimum width=28mm,above=7mm of specialgroup.center] (db) {db};
-    \node[caseBox,minimum width=28mm] at (specialgroup.center) (tauri) {tauri};
-    \node[caseBox,minimum width=28mm,below=7mm of specialgroup.center] (release) {release};
-
-    \draw[caseFlow] (control) -- (setupgroup);
-    \draw[caseFlow] (control) -- (devgroup);
-    \draw[caseFlow] (control) -- (specialgroup);
+    \coordinate (branch) at (0,-0.95);
+    \draw[caseFlow] (control.south) -- (branch) -| (setup.north);
+    \draw[caseFlow] (branch) -| (development.north);
+    \draw[caseFlow] (branch) -| (subsystems.north);
+    \draw[caseFlow] (branch) -| (delivery.north);
   \end{tikzpicture}}
   \caption{Befehlsgruppen des zentralen Projekt-Toolings}
   \label{fig:control-command-map}
+  \smallskip
+  {\footnotesize Quelle: Eigene Darstellung auf Grundlage von
+  \textcite{kleiveist2026control} und \textcite{kleiveist2026tooling}.\par}
 \end{figure}

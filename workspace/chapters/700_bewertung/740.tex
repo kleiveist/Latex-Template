@@ -1,37 +1,29 @@
 \subsection{Wartungsaufwand}
 \label{subsec:wartungsaufwand}
 
-Die Single-Repository-Strategie aus
-Abschnitt~\ref{subsec:single-repository-strategie} bündelt Core,
-Feature-Implementierungen, Profile, Generator, Tests und Dokumentation in
-einer Source of Truth. Gegenüber mehreren unabhängig gepflegten Vorlagen
-vermeidet dies parallele Änderungen gemeinsamer Bestandteile. Der Vorteil gilt
-unmittelbar für die Baseline und für künftig erzeugte Projekte; die
-Übertragung einer Korrektur in bereits abgeleitete Produktrepositories bleibt
-ein eigener, nicht automatisierter Prozess.
+Die Single-Repository-Strategie bündelt Core, Features, Profile, Generator,
+Tests und Dokumentation. Das vermeidet parallele Baseline-Änderungen und nützt
+künftigen Projekten. Bereits generierte Repositories müssen Korrekturen jedoch
+eigenständig übernehmen.
+Die Source of Truth reduziert somit die Zahl zu pflegender Ausgangsstände,
+nicht aber den Aufwand für die Migration bestehender Produkte.
 
-Diese Bündelung verlagert Aufwand in die zentrale Pflege. Node.js/TypeScript,
-Python, Rust, PostgreSQL, Docker und GitHub Actions verwenden unterschiedliche
-Dependency-Manager und Toolchains; auch Plattformvoraussetzungen und
-Releasezyklen unterscheiden sich. Die Vielfalt ist sachlich durch Web-,
-Backend-, Desktop- und Deploymentziele begründet, erhöht aber die für
-Aktualisierungen erforderliche Kompetenz und Testbreite. Insbesondere native
-Builds und externe Dienste machen die Wartung umgebungsabhängiger als bei
-einem reinen Web-Starter.
+Die zentrale Pflege umfasst mehrere Sprachen, Dependency-Manager, Toolchains,
+Plattformen und Releasezyklen. Diese Vielfalt folgt aus den Web-, Backend-,
+Desktop- und Deploymentzielen, erhöht aber Kompetenzbedarf, Testbreite und
+Umgebungsabhängigkeit.
+Native Builds und externe Dienste sind dabei wartungsintensiver als ein rein
+webbasierter, technologiehomogener Starter.
 
-Auch das Variabilitätsmodell verursacht Folgekosten. Aktuell begrenzen fünf
-Profile, sechs Features und eine benutzerseitig auswählbare Capability den
-Kombinationsraum; die dokumentierte Abnahme deckt die fünf Basispfade und drei
-zulässige PostgreSQL-Erweiterungen ab \parencite{kleiveist2026acceptance}.
-Weitere Capabilities können zusätzliche Abhängigkeiten und zulässige
-Kombinationen erzeugen. Dann müssen Katalog, Generatorlogik,
-Konfigurationsvertrag, Testmatrix und Dokumentation gemeinsam erweitert
-werden. Es ist daher keine mathematische Explosion nachgewiesen, wohl aber ein
-mit der Variabilität wachsender Pflegebedarf.
+Fünf Profile, sechs Features und eine auswählbare Capability begrenzen derzeit
+den Kombinationsraum; die Abnahme deckt fünf Basispfade und drei zulässige
+PostgreSQL-Erweiterungen ab \parencite{kleiveist2026acceptance}. Weitere
+Capabilities erweitern Abhängigkeiten und Testmatrix. Eine kombinatorische
+Explosion ist nicht nachgewiesen, ein wachsender Pflegebedarf aber plausibel.
+Katalog, Resolver, Konfigurationsvertrag, Testmatrix und Dokumentation müssen
+bei solchen Erweiterungen gemeinsam konsistent bleiben.
 
-Insgesamt ist der Wartungsaufwand als bewusste Zentralinvestition zu bewerten:
-Er ist höher als bei einem kleinen, technologiehomogenen Starter, kann aber
-wiederholte Basispflege über mehrere zukünftige Projektarten hinweg bündeln.
-Ob diese Investition wirtschaftlich ist, hängt von Nutzungshäufigkeit,
-Ähnlichkeit der Projekte und der tatsächlich gemessenen Pflegezeit ab; solche
-Kostendaten liegen nicht vor.
+Die zentrale Wartung ist damit aufwendiger als bei einem kleinen homogenen
+Starter, kann aber wiederholte Basispflege bündeln. Ihre Wirtschaftlichkeit
+hängt von Nutzungshäufigkeit, Projektähnlichkeit und Pflegezeit ab; Kostendaten
+fehlen.

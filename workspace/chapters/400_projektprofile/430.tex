@@ -1,16 +1,10 @@
 \subsection{Profil Web-cloud}
 \label{subsec:profil-web-cloud}
 
-\texttt{web-cloud} deklariert \texttt{frontend}, \texttt{backend} und
-\texttt{cloud}. Der Scaffold enthält damit Vite-Frontend, den für das
-Basisbackend ausgewählten FastAPI-Code sowie \path{deployment/} und
-\path{.dockerignore}; \path{src-tauri/} und dessen npm-Abhängigkeiten werden
-nicht übernommen. Das Frontend kommuniziert über die öffentliche API-URL mit
-dem getrennten Backend. \texttt{cloud} kennzeichnet Deployment-Dateien ohne
-Bindung an einen konkreten Anbieter
-\parencite{kleiveist2026deployment,kleiveist2026profiles}.
-
-Ohne weitere Auswahl fehlen Datenbankmodul, Alembic sowie die Datenbank- und
-Psycopg-Dateien. PostgreSQL ist deshalb eine kompatible, aber
-separat anzufordernde Capability; \texttt{web-cloud} ist nicht gleichbedeutend
-mit \texttt{web-cloud + postgres}.
+\texttt{web-cloud} kombiniert Vite-Frontend, getrenntes FastAPI-Backend und
+providerneutrale Deployment-Dateien. Eine native Desktop-Schicht fehlt
+\parencite{kleiveist2026deployment,kleiveist2026profiles}. Datenbankmodul,
+Alembic und Psycopg kommen nur mit der kompatiblen, separat zu wählenden
+PostgreSQL-Capability hinzu.
+Das Frontend greift über eine öffentliche URL auf das getrennte Backend zu.
+Ohne Capability bleibt das Profil trotz Cloud-Bezeichnung datenbankfrei.

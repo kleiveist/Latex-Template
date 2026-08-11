@@ -1,30 +1,22 @@
 \subsection{Analyse von Kundenanforderungen}
 \label{subsec:analyse-kundenanforderungen}
 
-Die Analyse beginnt technikneutral mit dem fachlichen Ziel, den Nutzergruppen,
-Arbeitsabläufen und der Einsatzumgebung. Erst danach werden funktionale
-Anforderungen in technische Entscheidungsdimensionen übersetzt. Die Aussage,
-mehrere Beschäftigte sollten denselben Datenbestand bearbeiten, beschreibt
-beispielsweise zunächst eine fachliche Zusammenarbeit. Daraus können ein
-zentrales Backend und dauerhafte Persistenz folgen; PostgreSQL ist damit aber
-noch nicht ohne Prüfung als Lösung festgelegt.
+Die Analyse beginnt mit fachlichem Ziel, Nutzergruppen, Arbeitsabläufen und
+Einsatzumgebung. Erst danach werden Anforderungen technisch eingeordnet.
+Gemeinsame Datenbearbeitung kann etwa Backend und Persistenz erfordern, legt
+aber noch nicht PostgreSQL fest.
 
-Anschließend werden Browser- und Desktopzugang, zentrale serverseitige
-Funktionen, relationale Persistenz und Offline-Bedarf getrennt erfasst. Hinzu
-kommen erforderliche native Funktionen, externe APIs, Betriebs- und
-Deploymentumgebung sowie Sicherheits- und Compliance-Vorgaben. Gerade der
-Offline-Fall ist gesondert zu behandeln: \texttt{desktop-local} benötigt zwar
-kein Cloud-Backend, enthält aber weder automatisch ein lokales Datenmodell
-noch eine Synchronisationslogik. Tabelle~\ref{tab:customer-requirement-checklist}
-fasst die Leitfragen und ihren Einfluss auf die Auswahl zusammen.
+Getrennt erfasst werden Browser- und Desktopzugang, Serverfunktionen,
+Persistenz, Offline-Bedarf, native Funktionen, externe APIs, Betrieb,
+Deployment, Sicherheit und Compliance. \texttt{desktop-local} enthält trotz
+fehlendem Cloud-Backend weder lokales Datenmodell noch Synchronisation.
+Tabelle~\ref{tab:customer-requirement-checklist} bündelt die Leitfragen.
 
 \input{workspace/tables/customer-requirement-checklist}
 
-Das Analyseergebnis enthält damit nicht nur eine Liste benötigter
-Plattformkomponenten, sondern auch einen Abweichungskatalog. Darin werden
-beispielsweise Authentifizierung und Rollen, konkrete Datenmodelle,
-Drittanbieterintegrationen, Observability, Backups, produktive Infrastruktur
-oder Desktop-Signing erfasst, soweit sie für das Produkt relevant sind. Erst
-auf dieser Grundlage lässt sich entscheiden, ob ein Profil passt, eine
-begrenzte Erweiterung notwendig ist oder die Anforderung außerhalb der
-Baseline liegt.
+Das Ergebnis umfasst Plattformkomponenten und Abweichungen, etwa bei
+Authentifizierung, Datenmodellen, Integrationen, Observability, Backups,
+Infrastruktur oder Signing. Erst dann lässt sich zwischen passendem Profil,
+begrenzter Erweiterung und einer Lösung außerhalb der Baseline entscheiden.
+Die Methode folgt damit bewusst der Reihenfolge Anforderung, technische
+Einordnung und erst anschließend Profil- oder Technologieauswahl.

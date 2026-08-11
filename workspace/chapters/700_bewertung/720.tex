@@ -1,35 +1,28 @@
 \subsection{Stärken}
 \label{subsec:staerken}
 
-Die architektonische Hauptstärke ist die Verbindung einer gemeinsamen
-Baseline mit expliziten Verantwortungsgrenzen. Frontend, Backend,
-Desktop-Schicht, Persistenz und Tooling bleiben getrennte Bausteine; zugleich
-wird das Frontend profilübergreifend verwendet. Damit adressiert die
-Architektur die Anforderungen A-02 und A-05, ohne jede Variante mit allen
-Laufzeitkomponenten zu belasten (Kapitel~\ref{sec:architektur}).
+Die gemeinsame Baseline verbindet zentrale Pflege mit klaren Grenzen zwischen
+Frontend, Backend, Desktop, Persistenz und Tooling. Das geteilte Frontend
+adressiert A-02 und A-05, ohne jedes Profil mit allen Komponenten zu belasten.
+Diese Trennung unterstützt eigene Tests und produktspezifische Erweiterungen,
+ohne die gemeinsame Präsentationsschicht zu duplizieren.
 
-Bei der Variabilität bilden fünf Profile wiederkehrende Plattformzuschnitte
-ab. Abhängigkeiten verhindern insbesondere PostgreSQL ohne Backend, während
-die Capability aus kompatiblen Profilen herausgelöst bleibt. Die dokumentierte
-Abnahme der fünf Basisprofile, der drei zulässigen PostgreSQL-Kombinationen und
-der beiden unzulässigen Kombinationen stützt diese Stärke für den aktuellen,
-begrenzten Feature-Katalog \parencite{kleiveist2026acceptance}. Sie belegt
-nicht, dass beliebig viele künftige Capabilities ebenso beherrschbar wären.
+Fünf Profile bilden wiederkehrende Plattformzuschnitte ab. Abhängigkeiten
+verhindern PostgreSQL ohne Backend. Die Abnahme aller Basisprofile sowie der
+zulässigen und unzulässigen PostgreSQL-Kombinationen stützt dieses Modell für
+den begrenzten aktuellen Katalog, nicht für beliebig viele künftige
+Capabilities \parencite{kleiveist2026acceptance}.
 
-Prozessual schafft \texttt{control.py} einen gemeinsamen Einstieg, ohne npm,
-Pytest, Cargo, Tauri, Docker oder Alembic zu verbergen. Profilabhängiges
-Überspringen nicht vorhandener Schichten verbindet eine einheitliche
-Befehlsoberfläche mit den tatsächlichen Projektgrenzen
-(Kapitel~\ref{sec:tooling-entwicklungsworkflow}). Für Qualität und
-Nachvollziehbarkeit sprechen das versionierte Profilmanifest, der
-Konfigurationsvertrag, Tests und Buildpfade sowie die dokumentierte
-byte-identische Generierung zweier \texttt{desktop-cloud + postgres}-Projekte
-bei gleichen Eingaben \parencite{kleiveist2026acceptance}. Der Nachweis zur
-Reproduzierbarkeit ist damit konkret, aber auf eine untersuchte Kombination
-und Umgebung begrenzt.
+\texttt{control.py} vereinheitlicht den Einstieg, während Fachwerkzeuge
+sichtbar bleiben. Manifest, Konfigurationsvertrag, Tests und Buildpfade erhöhen
+die Nachvollziehbarkeit. Die byte-identische Generierung zweier
+\texttt{desktop-cloud + postgres}-Projekte liefert dafür einen konkreten, aber
+auf eine Kombination und Umgebung begrenzten Nachweis
+\parencite{kleiveist2026acceptance}.
+Profilabhängiges Überspringen nicht vorhandener Schichten hält die gemeinsame
+Befehlsoberfläche dabei an den tatsächlichen Projektumfang gebunden.
 
-Tabelle~\ref{tab:strengths-limitations} verdichtet diese Stärken gemeinsam mit
-ihren jeweiligen Geltungsgrenzen. Sie trennt beobachtete Mechanismen und
-dokumentierte Prüfergebnisse von der daraus abgeleiteten Bedeutung.
+Tabelle~\ref{tab:strengths-limitations} stellt Stärken und Geltungsgrenzen
+gegenüber.
 
 \input{workspace/tables/strengths-limitations}

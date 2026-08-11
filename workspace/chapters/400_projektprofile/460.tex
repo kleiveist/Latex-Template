@@ -1,15 +1,13 @@
 \subsection{Profil Full-platform}
 \label{subsec:profil-full-platform}
 
-Auch \texttt{full-platform} deklariert \texttt{frontend}, \texttt{backend},
-\texttt{tauri} und \texttt{cloud}. Semantisch steht das Preset für zwei
-Produktkanäle aus derselben Frontend-Basis. Browser-Build und
-Tauri-Desktopanwendung greifen auf dasselbe FastAPI-Backend zu. Im Scaffold
-unterscheidet sich das Profil von \texttt{desktop-\allowbreak cloud} nur durch ID, Name und
-Beschreibung im Manifest beziehungsweise im generierten Frontend-Profil; der
-Scaffold-Plan der Basisfeatures ist gleich
+\texttt{full-platform} stellt Browser und Tauri als zwei Produktkanäle
+derselben Frontend-Basis bereit; beide greifen auf dasselbe FastAPI-Backend zu.
+Von \texttt{desktop-\allowbreak cloud} unterscheidet sich der Scaffold nur in
+Profilidentität und Beschreibung, nicht in den Basisfeatures
 \parencite{kleiveist2026profiles,kleiveist2026template}.
+Browser-Build und Desktopanwendung verwenden damit dieselbe Frontend- und
+Backendbasis.
 
-Die Bezeichnung \emph{full} schaltet keine Persistenz hinzu. Erst die optionale
-Auswahl von \texttt{postgres} ergänzt \texttt{database} und
-\texttt{postgres}; ohne sie bleibt auch dieses Profil datenbankfrei.
+\emph{Full} schließt keine Persistenz ein. Erst \texttt{postgres} ergänzt die
+Datenbankfähigkeit.

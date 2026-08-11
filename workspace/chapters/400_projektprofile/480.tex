@@ -1,22 +1,17 @@
 \subsection{Single-Repository-Strategie}
 \label{subsec:single-repository-strategie}
 
-Die fünf Profile sind keine langfristig gepflegten Template-Forks. Im
-Master-Repository liegen Core, vollständige Feature-Implementierungen,
-Profildefinitionen und Generator gemeinsam; \path{features.toml} und die fünf
-Preset-Dateien bilden dabei die deklarative Quelle für Pfade und
-Abhängigkeiten. Damit existiert eine technische Wartungsbasis, aus der der
-Generator eigenständige Produktprojekte ableitet
+Die fünf Profile sind keine Template-Forks. Core, Feature-Implementierungen,
+Profile und Generator liegen in einer Wartungsbasis, aus der eigenständige
+Produktprojekte entstehen
 \parencite{kleiveist2026profiles,kleiveist2026template}.
 
-Master-Repository und Produktprojekt sind folglich zu unterscheiden: Das
-Master enthält auch optionale Implementierungen und aktiviert in seinem eigenen
-Manifest PostgreSQL, damit diese Basis wartbar bleibt. Das generierte Projekt
-erhält Core plus die Pfade seines aufgelösten Profils, ein neues
-\path{project-profile.toml}, das generierte Frontend-Profil und eine
-featureabhängige \path{.env.example}. Es bleibt anschließend ein separates
-Projektverzeichnis; der Generator verändert das Master nicht. Die Struktur
-reduziert konzeptionell die Zahl unabhängiger Template-Baselines und
-adressiert damit die in Kapitel~\ref{sec:anforderungen} formulierte
-kontrollierte Variabilität. Eine vergleichende Bewertung dieser Konsequenz
-erfolgt erst im Bewertungskapitel.
+Das Master enthält auch optionale Implementierungen und aktiviert selbst
+PostgreSQL. Ein generiertes Projekt erhält dagegen nur Core, aufgelöste
+Feature-Pfade, Manifest, Frontend-Profil und passende \path{.env.example}. Es
+bleibt danach vom unveränderten Master getrennt. Die zentrale Pflege reduziert
+parallele Baselines; eine automatische Rücksynchronisierung generierter
+Projekte besteht nicht.
+Diese Trennung schützt die Wartungsbasis vor Produktänderungen. Umgekehrt
+profitieren bereits erzeugte Produkte nicht ohne gezielte Übernahme von
+späteren Korrekturen des Masters.

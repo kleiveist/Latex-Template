@@ -1,36 +1,25 @@
 \subsection{Teststrategie}
 \label{subsec:teststrategie}
 
-Die Verifikation folgt dem in Abschnitt~\ref{subsec:methodisches-vorgehen}
-festgelegten Fallstudienprinzip: Eine Beobachtung wird einem Projektartefakt,
-einer ausgeführten Prüfung und einem commitgebundenen Ergebnis zugeordnet.
-Damit gilt weder vorhandener Testcode als Ausführungsnachweis noch eine
-Workflow-Datei als erfolgreicher CI-Lauf. Für die Qualitätsmerkmale aus
-Abschnitt~\ref{subsec:qualitaets-wartbarkeitsanforderungen} werden zuerst
-Ausführungsergebnisse, danach das Abnahmeprotokoll und erst anschließend
-Testcode, Konfiguration, Implementierung und Dokumentation als Evidenz
-herangezogen \parencite{runeson2009case-study,iso25010-2023}.
+Die Verifikation ordnet jede Beobachtung einem Artefakt, einer ausgeführten
+Prüfung und einem commitgebundenen Ergebnis zu. Testcode allein belegt keine
+Ausführung, eine Workflow-Datei keinen erfolgreichen CI-Lauf.
+Ausführungsergebnisse und Abnahmeprotokoll wiegen daher stärker als Code,
+Konfiguration und Dokumentation
+\parencite{runeson2009case-study,iso25010-2023}.
 
-Die gemeinsame Baseline wird auf vier Ebenen geprüft: Die Tooling-Suite deckt
-CLI, Profilauflösung, Generator, Konfiguration, Release- und
-Repository-Hygiene sowie die Workflow-Struktur ab. Komponentenprüfungen
-betreffen JSON-Schema, FastAPI und SQLAlchemy sowie Vitest im Frontend und die
-Tauri-/Rust-Prüfkette. Integrationsprüfungen verbinden PostgreSQL~16 mit
-Konfigurationsdiagnose, Alembic-Migration und realer Verbindung. Schließlich
-erzeugen Buildprüfungen Web-Bundles, Container-Images oder native Pakete
-\parencite{kleiveist2026ci}.
+Vier Ebenen decken die Baseline ab: Tooling-Tests prüfen CLI, Profile,
+Generator, Konfiguration, Release und Repository; Komponententests Schema,
+Backend, Frontend und Tauri/Rust. Integrationstests verbinden PostgreSQL~16,
+Konfiguration und Alembic. Buildprüfungen erzeugen Web-, Container- oder native
+Artefakte \parencite{kleiveist2026ci}.
 
-Der Umfang wird aus dem Profilmodell in Kapitel~\ref{sec:projektprofile}
-abgeleitet. Frontend- und Tooling-Prüfungen sind gemeinsam; Backend-,
-Tauri- und PostgreSQL-Suiten laufen nur bei aktivierter Capability. Ein
-deaktivierter Gegenstand ist daher \emph{nicht anwendbar} und kein Fehler.
-\emph{PASS} bezeichnet eine erfolgreich ausgeführte Prüfung, \emph{FAIL} ein
-ausgeführtes und nicht erfülltes Kriterium und \emph{nicht verifiziert} das
-Fehlen hinreichender Evidenz. So werden A-01 und A-03 aus
-Tabelle~\ref{tab:anforderungen-template} durch Generierung und
-Strukturprüfung, A-04 durch die öffentliche Tooling-Schnittstelle und A-07
-durch gültige sowie absichtlich abgewiesene Capability-Kombinationen
-operationalisiert. Abbildung~\ref{fig:verification-model} ordnet diese
-Prüfungen in die Nachweiskette ein.
+Der Umfang folgt dem aktiven Profil. \emph{PASS} bezeichnet eine erfolgreiche,
+\emph{FAIL} eine ausgeführte und gescheiterte Prüfung. \emph{Nicht verifiziert}
+bedeutet fehlende Evidenz, \emph{außerhalb des Scopes} eine bewusste Grenze;
+deaktivierte Gegenstände sind nicht anwendbar. Generierung und Strukturprüfung
+adressieren A-01 und A-03, die öffentliche Tooling-Schnittstelle A-04 und
+gültige sowie abgewiesene Capability-Kombinationen A-07. Abbildung~\ref{fig:verification-model}
+ordnet diese Nachweise ein.
 
 \input{workspace/figures/verification/verification-model}

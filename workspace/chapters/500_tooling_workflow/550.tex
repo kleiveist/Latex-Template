@@ -1,40 +1,32 @@
 \subsection{Tests und Builds}
 \label{subsec:tests-builds}
 
-Ein leerer \texttt{test}-Aufruf zeigt zunächst die Suite-Karte; eine Ausführung
-erfordert \texttt{--suite}. Verfügbar sind \texttt{tools} für die
-Python-Toolingtests, \texttt{schema} für JSON-Schema-Beispiele, \texttt{api}
-und \texttt{database} für Pytest, \texttt{postgres} für Integrationstests,
-\texttt{frontend} für das npm-/Vitest-Skript, \texttt{e2e} für Playwright und
-\texttt{tauri} für Strukturprüfung, \texttt{cargo check --locked} und
-Rust-Tests. \texttt{test --suite all} expandiert auf diese acht Suites und ist
-der vollständige projektbezogene Einstieg; optionale Markdown- oder
-JSON-Berichte landen unter \path{.report/}
+Die acht Testsuiten decken Tooling, Schema, API, Datenbank, PostgreSQL,
+Frontend, E2E und Tauri/Rust ab. \texttt{test --suite all} bildet den
+vollständigen projektbezogenen Einstieg; Berichte sind optional
 \parencite{kleiveist2026control,kleiveist2026tooling}.
+Die Tooling-Suite prüft unter anderem Generator, Profile und Konfiguration; die
+Komponentensuiten delegieren an Pytest, Vitest, Playwright oder Cargo. Damit
+bleiben Testbereiche getrennt ausführbar.
 
-Die Auswahl bleibt profilabhängig: Fehlt ein Feature im aktiven Manifest,
-meldet die zugehörige Suite \texttt{SKIP}; fehlen bei einem aktiven Feature
-Quellen oder ausführbare Voraussetzungen, entsteht \texttt{FAIL}. Die
-PostgreSQL-Suite wird ohne \texttt{DATABASE\_URL\_TEST} ebenfalls übersprungen,
-und die E2E-Suite nur bei vorhandener Playwright-Konfiguration ausgeführt. Für
-Backend-Suites prüft der Runner die virtuelle Umgebung und versucht sie bei
-Bedarf über \texttt{install} zu reparieren. Konfigurierte E2E-Tests können die
-Entwicklungsdienste selbst im Detached-Modus starten und anschließend stoppen;
-\texttt{--no-start} unterbindet diesen Schritt.
+Die Auswahl bleibt profilabhängig: Fehlt ein Feature, meldet die Suite
+\texttt{SKIP}; fehlen für ein aktives Feature Quellen oder Voraussetzungen,
+meldet sie \texttt{FAIL}. PostgreSQL ohne Test-URL und E2E ohne
+Playwright-Konfiguration werden übersprungen. Der Runner kann fehlende
+Backend-Umgebungen reparieren und für E2E die Entwicklungsdienste verwalten.
+Diese Semantik unterscheidet bewusst fehlende Features von defekten aktiven
+Komponenten. Ein übersprungener Test ist deshalb kein Erfolgsnachweis.
 
-Die Build-Karte trennt drei Artefaktpfade. \texttt{build web} ruft das
-npm-Buildskript auf. Neben dem Vite-Ausgabeverzeichnis entsteht ein ZIP-Paket
-unter \path{.dist/web/}. \texttt{build desktop} ist nur bei aktivem
-Tauri-Feature zulässig und reicht Ziel- und Bundlewahl an das native
-Tauri-Tooling weiter. Der Containerpfad ist auf Cloudprofile begrenzt und baut
-über Docker wahlweise Backend-, Frontend- oder beide Images. Der Befehl
-\texttt{container validate} prüft zuvor das Compose-Modell, ohne Dienste zu
-starten \parencite{kleiveist2026container,kleiveist2026release}.
+Die Buildpfade bleiben getrennt: Web erzeugt Vite-Ausgabe und ZIP, Desktop
+delegiert Ziel und Bundle an Tauri, Container baut für Cloudprofile Frontend-,
+Backend- oder beide Images. \texttt{container validate} prüft das
+Compose-Modell ohne Start \parencite{kleiveist2026container,kleiveist2026release}.
+Der Webpfad legt zusätzlich ein ZIP-Paket ab. Desktop-Builds bleiben an ein
+aktives Tauri-Feature und die jeweilige Zielplattform gebunden.
 
-Die GitHub-Actions-Workflows verwenden dieselben öffentlichen Einstiege.
-Getrennte Jobs adressieren Core-Prüfungen, generierte Profilmatrizen,
-PostgreSQL und native Desktopziele. Lokaler Befehl und CI-Orchestrierung sind damit vergleichbar,
-aber nicht identisch: CI stellt Betriebssysteme, Laufzeiten und den temporären
-PostgreSQL-Dienst bereit. Ergebnisse dieser Ausführungen werden erst in
-Kapitel~\ref{sec:qualitaetssicherung-verifikation} bewertet
+GitHub Actions verwendet dieselben öffentlichen Einstiege für Core,
+Profilmatrizen, PostgreSQL und Desktopziele. CI ergänzt dafür Betriebssysteme,
+Laufzeiten und einen temporären PostgreSQL-Dienst
 \parencite{kleiveist2026ci}.
+Lokale und externe Abläufe nutzen damit vergleichbare Einstiegspunkte, laufen
+aber nicht unter identischen Umgebungsbedingungen.

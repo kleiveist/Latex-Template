@@ -1,32 +1,23 @@
 \subsection{Entwickler-Onboarding}
 \label{subsec:entwickler-onboarding}
 
-Die README trennt zwei Einstiege. Für Produktentwicklung wird das
-Master-Repository geklont, mit \texttt{doctor} geprüft und mit \texttt{init}
-ein Profilprojekt erzeugt. Erst im Zielverzeichnis folgen erneut
-\texttt{doctor}, dann \texttt{install} und \texttt{run}; Produktcode,
-Konfiguration, Tests und Commits gehören ab diesem Punkt in das abgeleitete
-Repository. Template-Wartung arbeitet dagegen direkt an Baseline, Profilen
-oder Tooling des Masters und führt dort mindestens Diagnose, Installation und
-den vollständigen Testweg aus. Diese Trennung verhindert, dass Produktarbeit
-versehentlich die gemeinsame Vorlage verändert
+Das Onboarding folgt dem Pfad Master klonen, \texttt{doctor}, \texttt{init},
+Zielprojekt, erneut \texttt{doctor}, \texttt{install} und \texttt{run}.
+Produktcode, Konfiguration, Tests und Commits gehören danach in das abgeleitete
+Repository. Template-Wartung arbeitet dagegen im Master und prüft dort die
+gesamte Baseline
 \parencite{kleiveist2026template,kleiveist2026profiles}.
+Diese Trennung verhindert, dass Produktentwicklung versehentlich die gemeinsame
+Vorlage verändert.
 
-Als Grundausstattung dokumentiert das Projekt Git, Python~3.11 oder neuer und
-Node.js~20 oder neuer mit npm. Desktopprofile ergänzen Rust Stable. Hinzu
-kommen die plattformspezifischen Tauri-Voraussetzungen. Docker/Compose wird erst für
-Containerpfade benötigt, ein erreichbares PostgreSQL nur für die optionale
-PostgreSQL-Capability und PyGitIndex nur zur Regeneration der
-Dokumentationsnavigation. Diese Abstufung entspricht den getrennten
-Diagnosewegen und verhindert, optionale Werkzeuge als Blocker jedes Profils zu
-behandeln.
+Grundvoraussetzungen sind Git, Python ab 3.11 und Node.js ab 20. Desktopprofile
+benötigen zusätzlich Rust Stable und plattformspezifische Tauri-Pakete;
+Docker, PostgreSQL und PyGitIndex nur für die jeweiligen optionalen Aufgaben.
+Optionale Werkzeuge blockieren damit nicht jedes Profil.
 
-Die Navigation ist ebenfalls aufgabenbezogen: Die README beschreibt den
-Ersteinstieg, der Tooling Guide Befehle und Diagnose, Project Profiles das
-Strukturmodell und Runtime Configuration die Wertepriorität. CI-, Container-
-und Release-Dokumente führen zu automatisierten Prüfungen und
-Auslieferungsgrenzen weiter. Damit reduziert das Repository die Zahl
-unterschiedlicher öffentlicher Setup-Pfade; eine messbare Verkürzung des
-Onboardings oder Produktivitätssteigerung folgt daraus noch nicht und bleibt
-der Bewertung in Kapitel~\ref{sec:bewertung} vorbehalten
+README und Fachdokumente trennen Einstieg, Tooling, Profile, Konfiguration, CI,
+Container und Release. Das vereinheitlicht die öffentlichen Setup-Pfade,
+belegt aber noch keine messbare Verkürzung des Onboardings
 \parencite{kleiveist2026tooling,kleiveist2026configuration,kleiveist2026ci,kleiveist2026release}.
+Die Dokumentationsstruktur ergänzt damit das technische Onboarding, ersetzt
+aber keine empirische Messung seiner Dauer.

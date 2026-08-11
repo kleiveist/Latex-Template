@@ -1,54 +1,38 @@
 \subsection{Geeignete Projekttypen}
 \label{subsec:geeignete-projekttypen}
 
-Die Projekteignung wird aus dem Zielbild in
-Kapitel~\ref{sec:anforderungen}, den vorhandenen Architekturbausteinen, dem
-Verifikationsstand und den in Kapitel~\ref{sec:bewertung} zusammengeführten
-Stärken und Grenzen abgeleitet. Maßgeblich sind die benötigten Zugriffskanäle,
-Backend- und Persistenzbedarf, Deploymentform, Umfang nativer Integration
-sowie Abweichungen bei Infrastruktur, Sicherheit und Betrieb. Direkt belegt
-sind die generierbaren Feature-Kombinationen und die im technischen
-Abnahmeprotokoll geprüften Profilpfade. Die Einstufung eines Projekttyps als
-\emph{gut geeignet}, \emph{bedingt geeignet} oder \emph{nicht primär
-vorgesehen} ist demgegenüber eine qualitative Transferbewertung: Sie drückt
-den Abstand der Anforderungen zur Baseline aus, nicht eine empirisch
-ermittelte Erfolgswahrscheinlichkeit
+Die Eignung hängt von Zugriffskanälen, Backend und Persistenz, Deployment,
+nativer Integration sowie Infrastruktur-, Sicherheits- und Betriebsbedarf ab.
+Belegt sind generierbare Kombinationen und geprüfte Profilpfade. Die Stufen
+\emph{gut geeignet}, \emph{bedingt geeignet} und \emph{nicht primär
+vorgesehen} bewerten dagegen qualitativ den Abstand zur Baseline, nicht die
+Erfolgswahrscheinlichkeit eines Projekts
 \parencite{kleiveist2026profiles,kleiveist2026acceptance}.
+Je mehr zentrale Anforderungen außerhalb der vorhandenen Komponenten und
+Nachweise liegen, desto größer sind Anpassungsbedarf und verbleibendes Risiko.
 
-Gut geeignet erscheinen zunächst browserbasierte Frontends, die mit dem
-Profil \texttt{web-only} ohne Template-Backend ausgeliefert werden können.
-Benötigt eine Webanwendung zusätzlich eine zentrale API und eine
-providerneutrale Deploymentstruktur, deckt \texttt{web-cloud} diese Grenze
-mit Vite, TypeScript, FastAPI und den Cloud-Bausteinen ab. Hierzu zählen
-beispielsweise interne Business-Anwendungen, Verwaltungsoberflächen und
-datenbasierte Webanwendungen. Relationale Persistenz entsteht jedoch erst
-durch die separate Capability \texttt{postgres}; Authentifizierung,
-Berechtigungen, Fachmodelle und produktive Infrastruktur bleiben
-produktspezifisch.
+\texttt{web-only} eignet sich für browserbasierte Frontends ohne
+Template-Backend. \texttt{web-cloud} ergänzt zentrale API und providerneutrale
+Deploymentstruktur, etwa für interne Business- und Datenanwendungen.
+PostgreSQL bleibt optional; Authentifizierung, Berechtigungen, Fachmodelle und
+produktive Infrastruktur sind produktspezifisch.
+Damit deckt das Profil die technische Ausgangsstruktur, nicht die konkrete
+Geschäftsanwendung ab.
 
-Für lokale Desktop-Werkzeuge stellt \texttt{desktop-local} das gemeinsame
-Frontend in einer Tauri-Laufzeit bereit. Die Eignung gilt insbesondere, wenn
-kein zentrales Backend erforderlich ist und benötigte native Funktionen mit
-überschaubaren Tauri-Kommandos ergänzt werden können; eine lokale Datenbank
-gehört nicht zur Baseline. \texttt{desktop-cloud} ergänzt dagegen FastAPI und
-Deployment-Bausteine für einen Desktop-Client mit zentral bereitgestellten
-Diensten. Erfordert ein Produkt Browser- und Desktopzugang auf derselben
-Frontend- und Backendbasis, bildet \texttt{full-platform} den passenden
-semantischen Ausgangspunkt. Auch dort bleibt PostgreSQL optional. Der primäre
-Einsatzbereich lässt sich daher als Web-, Cloud- und Desktop-orientierte
-Business-/Full-Stack-Anwendungen zusammenfassen, sofern ihre technischen
-Anforderungen innerhalb dieser Grenzen liegen.
+\texttt{desktop-local} passt zu lokalen Werkzeugen ohne zentrales Backend,
+sofern native Funktionen überschaubar ergänzt werden können; eine lokale
+Datenbank fehlt. \texttt{desktop-cloud} ergänzt zentrale Dienste,
+\texttt{full-platform} zusätzlich den Browserkanal. Der primäre Einsatzbereich
+sind damit Web-, Cloud- und Desktop-orientierte Business-/Full-Stack-Anwendungen.
+Für alle Desktopvarianten müssen weitergehende native Funktionen gezielt
+ergänzt und geprüft werden.
 
 \input{workspace/figures/business/project-suitability-map}
 
-Abbildung~\ref{fig:project-suitability-map} verdichtet die Einstufung;
-Tabelle~\ref{tab:project-suitability} ordnet ihr Profile und wesentliche
-Ergänzungen zu. \emph{Geeignet} bedeutet dabei nur, dass die Baseline einen
-relevanten Teil der Plattformarchitektur abdeckt. Ein fertiges Produkt
-entsteht daraus erst durch Fachlogik, Benutzeroberfläche, Integrationen,
-Produktsicherheit und den konkreten Betrieb. Technische Eignung ist zudem
-nicht mit Wirtschaftlichkeit gleichzusetzen; Budget, Teamkompetenzen,
-Betriebskosten und Produktstrategie sind nicht Gegenstand dieser
-Transferbewertung.
+Abbildung~\ref{fig:project-suitability-map} und
+Tabelle~\ref{tab:project-suitability} fassen die Zuordnung zusammen.
+\emph{Geeignet} bedeutet nur, dass die Baseline wesentliche Plattformteile
+abdeckt. Fachlogik, Oberfläche, Integrationen, Produktsicherheit und Betrieb
+bleiben ebenso offen wie die wirtschaftliche Bewertung.
 
 \input{workspace/tables/project-suitability}

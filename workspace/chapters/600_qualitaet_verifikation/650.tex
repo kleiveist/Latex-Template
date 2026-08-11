@@ -1,27 +1,21 @@
 \subsection{Security und Konfigurationsgrenzen}
 \label{subsec:security-konfigurationsgrenzen}
 
-Die in Abschnitt~\ref{subsec:konfigurationsmodell} beschriebene Priorität
-CLI-Override vor Prozessumgebung, \path{.env} und Default ist durch einzelne
-Tooling-Tests belegt. Dieselbe Suite prüft ungültige Umgebungen, Ports und
-CORS-Ursprünge, die profilabhängige Erzeugung von \path{.env.example} und die
-Pflicht zu \path{DATABASE_URL} nur bei PostgreSQL. Der aktuelle lokale Lauf
-dieser Tests bestand; der externe Tooling-Job auf demselben Commit bleibt wie
-in Abschnitt~\ref{subsec:continuous-integration} beschrieben fehlgeschlagen
+Tooling-Tests belegen die Konfigurationspriorität sowie die Validierung von
+Umgebungen, Ports und CORS-Ursprüngen. Sie prüfen auch die profilabhängige
+\path{.env.example} und \path{DATABASE_URL} nur für PostgreSQL. Lokal bestanden
+diese Tests, während der externe Tooling-Job auf demselben Commit scheiterte
 \parencite{kleiveist2026configuration,kleiveist2026ci-core-run}.
 
-Die geprüfte Grenze lässt nur die öffentliche \path{VITE_API_BASE_URL} in
-das Frontend gelangen. Tests verwerfen öffentlich deklarierte Secrets,
-entfernen \path{DATABASE_URL} aus Frontend- und Tauri-Umgebungen und
-maskieren Datenbankpasswörter einschließlich kodierter Varianten in
-Diagnosen. Profile ohne PostgreSQL erzeugen keine Datenbankvariable.
-Backend- und aktuelle CI-Tests decken außerdem \path{/api/health} und
-\path{/api/ready}, Fehlerantworten sowie datenbankunabhängige Liveness ab;
-der Release-Check prüft Tauri-CSP und Capability-Metadaten
+Nur \path{VITE_API_BASE_URL} darf in das Frontend gelangen. Tests verwerfen
+öffentliche Secrets, entfernen \path{DATABASE_URL} aus Frontend und Tauri und
+maskieren Datenbankpasswörter in Diagnosen. Ohne PostgreSQL entsteht keine
+Datenbankvariable. Weitere Prüfungen decken Health, Readiness,
+Fehlerantworten, datenbankunabhängige Liveness sowie Tauri-CSP und
+Capability-Metadaten ab
 \parencite{kleiveist2026acceptance,kleiveist2026release}.
 
-Diese Befunde verifizieren nur Konfigurations-, Secret- und Desktop-Grenzen
-der Baseline. Authentifizierung, Rollen- und Berechtigungskonzepte,
-produktive Credentials, TLS-Terminierung und providerspezifische Härtung sind
-gemäß Abschnitt~\ref{subsec:abgrenzung} produktspezifisch. Eine vollständige
-Produktsicherheitsbewertung ist daher nicht Gegenstand dieser Verifikation.
+Verifiziert sind damit nur Konfigurations-, Secret- und Desktop-Grenzen der
+Baseline. Authentifizierung, Berechtigungen, produktive Credentials, TLS und
+providerspezifische Härtung bleiben produktspezifisch; eine vollständige
+Sicherheitsbewertung ist nicht belegt.

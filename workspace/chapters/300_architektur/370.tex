@@ -1,26 +1,22 @@
 \subsection{Persistenz mit PostgreSQL, SQLAlchemy und Alembic}
 \label{subsec:persistenz-postgresql}
 
-PostgreSQL ist keine Pflichtkomponente und kein eigenes Profil. Die wählbare
-Capability \texttt{postgres} setzt \texttt{database} voraus, das wiederum ein
-Backend benötigt; Web-only und Desktop-local werden deshalb abgewiesen. Die
-generische Datenbankfähigkeit enthält SQLAlchemy-Engine, Sessions und Alembic,
-während die PostgreSQL-Erweiterung den Psycopg-3-Treiber, URL-Vorgaben und
-Integrationstests ergänzt. PostgreSQL selbst bleibt eine getrennte
-Laufzeiteinheit \parencite{postgresql2026docs,kleiveist2026database}.
+PostgreSQL ist optional und kein eigenes Profil. \texttt{postgres} setzt
+\texttt{database} und damit ein Backend voraus; Web-only und Desktop-local
+sind ausgeschlossen. Die Datenbankfähigkeit umfasst SQLAlchemy-Engine,
+Sessions und Alembic. PostgreSQL ergänzt Psycopg~3, URL-Vorgaben und
+Integrationstests und bleibt eine getrennte Laufzeiteinheit
+\parencite{postgresql2026docs,kleiveist2026database}.
 
-\path{backend/app/db/engine.py} erzeugt die Engine erst beim ersten Zugriff und
-aktiviert \texttt{pool\_pre\_ping}; Sessions werden über eine Generator-Dependency
-geschlossen. Die leere deklarative \texttt{Base} ist nur ein Erweiterungspunkt
-für spätere Fachmodelle. Das entspricht der von SQLAlchemy dokumentierten
-Trennung von Engine, Pool, Dialekt und Session sowie dem verzögerten Aufbau der
-ersten Verbindung \parencite{sqlalchemy2026engines}.
+Die Engine entsteht erst beim Zugriff und prüft Verbindungen vor der Nutzung;
+Sessions werden kontrolliert geschlossen. Die leere deklarative \texttt{Base}
+ist ein Erweiterungspunkt für Fachmodelle
+\parencite{sqlalchemy2026engines}.
 
-Alembic verwendet dieselbe Metadatenbasis für Online- und Offline-Migrationen.
-Da das Template keine Fachmodelle enthält, existiert noch keine initiale
-Revision; weder \texttt{create\_all()} noch automatische Migrationen beim
-FastAPI-Start sind implementiert. Schemaänderungen erfolgen ausschließlich über
-explizite Alembic-Kommandos, deren Umgebung und Revisionsablauf die offizielle
-Dokumentation beschreibt \parencite{alembic2026tutorial,kleiveist2026database}.
-\texttt{/api/health} bleibt datenbankunabhängig, während
-\texttt{/api/ready} bei aktivierter Datenbankfähigkeit die Erreichbarkeit prüft.
+Alembic nutzt dieselbe Metadatenbasis für Online- und Offline-Migrationen. Ohne
+Fachmodelle gibt es keine initiale Revision. Weder \texttt{create\_all()} noch
+automatische Migrationen beim FastAPI-Start sind implementiert; Änderungen
+erfordern explizite Alembic-Kommandos
+\parencite{alembic2026tutorial,kleiveist2026database}. \texttt{/api/health}
+bleibt datenbankunabhängig, \texttt{/api/ready} prüft bei aktiver Persistenz die
+Erreichbarkeit.

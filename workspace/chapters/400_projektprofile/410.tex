@@ -1,62 +1,53 @@
 \subsection{Grundprinzip des Profilmodells}
 \label{subsec:grundprinzip-profilmodell}
 
-Wie in Kapitel~\ref{sec:architektur} beschrieben, bildet ein
-Master-Repository die gemeinsame technische Ausgangsbasis. Das Modell weist
-damit Merkmale featurebasierter Variabilitätsverwaltung und systematischer
-Softwarewiederverwendung auf, ohne allein deshalb eine vollständige
-Software-Produktlinie zu konstituieren
+Das Master-Repository verwaltet Varianten featurebasiert und unterstützt damit
+systematische Wiederverwendung, ohne eine vollständige Software-Produktlinie
+zu bilden
 \parencite{clements2001software-product-lines,krueger1992software-reuse}.
-Der Katalog \path{profiles/features.toml} trennt vier Begriffe: Der
-\emph{Core} umfasst die in jedes Produktprojekt kopierten Pfade
-\path{README.md}, \path{VERSION}, \path{.gitignore}, \path{config/},
-\path{docs/}, \path{profiles/}, \path{shared/} und \path{tools/}. Ein
-\emph{Feature} ordnet einer technischen Fähigkeit eigene Scaffold-Pfade und
-gegebenenfalls Abhängigkeiten zu. Ein \emph{Profil} ist dagegen ein benanntes
-Preset zulässiger Features. Eine \emph{optionale Capability} erweitert dieses
-Preset nach der Profilwahl; sie ist weder ein Plattformprofil noch automatisch
-Bestandteil eines Profils \parencite{kleiveist2026profiles,kleiveist2026template}.
+Dabei bezeichnet \emph{Core} die Pfade jedes Produktprojekts. Ein
+\emph{Feature} bündelt Pfade und Abhängigkeiten einer technischen Fähigkeit,
+ein \emph{Profil} eine zulässige Feature-Kombination. Eine \emph{Capability}
+erweitert ein Profil optional und ist selbst kein Plattformprofil. Das
+\emph{Manifest} dokumentiert die Auswahl im generierten Projekt
+\parencite{kleiveist2026profiles,kleiveist2026template}.
+Zum Core gehören unter anderem Versionsstand, Konfiguration, Dokumentation,
+Profilbeschreibungen, gemeinsame Artefakte und Tooling. Technische
+Laufzeitkomponenten liegen dagegen in den jeweils ausgewählten Feature-Pfaden.
 
 \input{workspace/figures/profiles/profile-model}
 
-Abbildung~\ref{fig:profile-model} fasst diese Ebenen zusammen. Sie abstrahiert
-von den Laufzeitkomponenten und hebt stattdessen hervor, dass Core,
-Feature-Katalog und Presets in einer Wartungsbasis liegen. Der Generator löst
-das gewählte Preset und kompatible Capabilities auf, bildet aus Core- und
-Feature-Pfaden einen Scaffold-Plan und kopiert diesen in ein neues
-Produktprojekt. Nicht aktivierte Verzeichnisse werden somit überwiegend gar
-nicht ausgewählt; bei Webprofilen entfernt die Nachbearbeitung zusätzlich die
-Tauri-CLI aus den kopierten Frontend-Abhängigkeiten. Optional können Name,
-Slug und bei Tauri die Anwendungs-ID angepasst werden
+Der Generator löst Profil und kompatible Capabilities auf und kopiert Core und
+aktive Feature-Pfade in ein neues Produktprojekt
+(Abbildung~\ref{fig:profile-model}). Nicht aktive Verzeichnisse werden nicht
+ausgewählt; Webprofile verlieren zusätzlich die Tauri-CLI. Name, Slug und bei
+Tauri die Anwendungs-ID sind anpassbar
 \parencite{kleiveist2026profiles,kleiveist2026tooling}.
+Aus der Auflösung entsteht ein geordneter Scaffold-Plan. Dadurch enthält das
+Zielprojekt nicht lediglich deaktivierte Bausteine, sondern überwiegend nur die
+für seine Variante vorgesehenen Verzeichnisse.
 
-Die Auswahl in Abbildung~\ref{fig:profile-selection-flow} berücksichtigt, dass
-die gegenwärtigen Presets Backend und Cloud gemeinsam führen. Bei
-Desktopprojekten trennt der zusätzliche Browser-Produktkanal semantisch
-\texttt{full-platform} von \texttt{desktop-cloud}; erst nach der Profilwahl
-wird eine Capability geprüft. Die anschließende Abhängigkeitsauflösung
-verhindert, dass dadurch stillschweigend ein fehlendes Plattformfeature
-ergänzt wird.
+Backend und Cloud treten in den aktuellen Presets gemeinsam auf. Bei
+Desktopprojekten unterscheidet ein zusätzlicher Browserkanal
+\texttt{full-platform} von \texttt{desktop-cloud}. Capabilities werden erst
+nach der Profilwahl geprüft; fehlende Plattformfeatures ergänzt der Resolver
+nicht stillschweigend (Abbildung~\ref{fig:profile-selection-flow}).
 
 \input{workspace/figures/profiles/profile-selection-flow}
 
-Das aktive Manifest heißt \texttt{project-profile.toml}. Es wird für jedes
-generierte Projekt erzeugt. \texttt{schema\_version} hält die Schema-Version
-fest. \texttt{id}, \texttt{name} und \texttt{description} beschreiben das
-Profil. \texttt{optional\_features} erfasst die angeforderten Erweiterungen;
-\texttt{features} enthält die vollständige Auflösung. Das Tooling lädt und
-validiert das Manifest. Dadurch behandelt es nur aktive Dienste und Workflows.
-Im Master nennt das Manifest \texttt{full-platform} als Profil. Zusätzlich
-aktiviert es \texttt{postgres}; das Preset selbst bleibt davon unberührt.
-Profilstruktur und Laufzeitwerte sind getrennte Achsen. Development-, Test- und
-Produktionswerte, Ports, URLs und Geheimnisse stammen aus dem in
-Abschnitt~\ref{subsec:konfigurationsmodell} beschriebenen
-Konfigurationsmodell \parencite{kleiveist2026configuration,kleiveist2026template}.
+Das erzeugte \texttt{project-profile.toml} hält Schema-Version,
+Profilidentität, angeforderte Erweiterungen und vollständig aufgelöste Features
+fest. Das Tooling validiert es und behandelt nur aktive Dienste und Workflows.
+Das Master-Manifest verwendet \texttt{full-platform + postgres}, ohne das
+Preset selbst zu verändern. Laufzeitwerte, Ports, URLs und Geheimnisse gehören
+dagegen zum getrennten Konfigurationsmodell
+\parencite{kleiveist2026configuration,kleiveist2026template}.
+Im Manifest bleiben angeforderte optionale Features und das aufgelöste Ergebnis
+getrennt sichtbar. Diese Unterscheidung macht transitive Abhängigkeiten
+nachvollziehbar.
 
-Abbildung~\ref{fig:profile-matrix} ermöglicht den schnellen strukturellen
-Vergleich. Tabelle~\ref{tab:profile-matrix} ergänzt dazu die exakt deklarierten
-Feature-IDs und die daraus ausgewählten Laufzeitverzeichnisse. Insbesondere ist
-PostgreSQL bei keinem der fünf Presets voreingestellt.
+Abbildung~\ref{fig:profile-matrix} und Tabelle~\ref{tab:profile-matrix}
+vergleichen die fünf Presets. Keines aktiviert PostgreSQL vorab.
 
 \input{workspace/figures/profiles/profile-matrix}
 \input{workspace/tables/profile-matrix}

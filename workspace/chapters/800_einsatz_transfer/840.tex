@@ -1,35 +1,21 @@
 \subsection{Auswahl des Projektprofils}
 \label{subsec:auswahl-projektprofil}
 
-Die Profilwahl übersetzt die analysierten Zugriffskanäle in das in
-Kapitel~\ref{sec:projektprofile} definierte Modell. Für ein reines
-Browser-Frontend ohne Template-Backend wird \texttt{web-only} gewählt;
-Browser, FastAPI-Backend und Deploymentstruktur führen zu
-\texttt{web-cloud}. Ein lokaler Desktop-Client ohne Cloud-Backend entspricht
-\texttt{desktop-local}, ein Desktop-Client mit Backend und Cloud-Bausteinen
-\texttt{desktop-cloud}. Werden zusätzlich Browser- und Desktopkanal als
-Produktkanäle benötigt, ist \texttt{full-platform} vorgesehen. Da die
-aktuellen Presets Backend und Cloud gemeinsam aktivieren, existiert kein
-separates Profil für ein Template-Backend ohne die providerneutralen
-Deployment-Dateien. Der Entscheidungsfluss in
-Abbildung~\ref{fig:profile-selection-flow} stellt diese Zuordnung bereits dar.
+Die Zugriffskanäle bestimmen das Profil: \texttt{web-only} steht für Browser
+ohne Backend, \texttt{web-cloud} für Browser mit Backend,
+\texttt{desktop-local} für Desktop ohne Cloud-Backend,
+\texttt{desktop-cloud} für Desktop mit Backend und \texttt{full-platform} für
+Browser und Desktop gemeinsam. Ein Profil für Backend ohne providerneutrale
+Deployment-Dateien existiert nicht.
 
-Ausgewählt wird das kleinste Profil, das die tatsächlich benötigten Kanäle und
-Serverkomponenten abdeckt. \texttt{full-platform} ist daher keine allgemeine
-Vorzugsvariante: Nicht benötigte Komponenten würden zusätzliche
-Abhängigkeiten, Prüfpfade und Ausgangskomplexität in das Produkt übernehmen.
-Nach der Profilwahl wird Persistenz als getrennte Achse geprüft. Nur wenn eine
-backendfähige Variante relationale PostgreSQL-Persistenz benötigt, wird die
-Capability \texttt{postgres} ergänzt; sie löst die interne
-\texttt{database}-Abhängigkeit auf. Für \texttt{web-only} und
-\texttt{desktop-local} ist diese Kombination nicht zulässig
+Gewählt wird das kleinste passende Profil. Erst danach wird PostgreSQL als
+separate Achse geprüft und nur bei Bedarf zu einem Backendprofil ergänzt. Für
+\texttt{web-only} und \texttt{desktop-local} ist dies unzulässig
 \parencite{kleiveist2026profiles}.
 
-Die Entscheidung wird in einer von drei Formen dokumentiert: Das Profil deckt
-die Plattformanforderungen vollständig ab, es passt mit benannten
-produktspezifischen Erweiterungen oder ein zentraler Teil liegt außerhalb der
-Baseline. Im letzten Fall darf nicht ersatzweise das größte Profil gewählt
-werden; vielmehr ist eine alternative Architektur oder eine klar abgegrenzte
-Teilnutzung zu untersuchen. Wirtschaftliche Randbedingungen und verfügbare
-Teamkompetenzen ergänzen diese technische Entscheidung, verändern aber nicht
-die deklarierte Bedeutung der Profile.
+Dokumentiert wird, ob das Profil vollständig passt, benannte Erweiterungen
+benötigt oder zentrale Anforderungen verfehlt. Im letzten Fall sind eine
+andere Architektur oder klar abgegrenzte Teilnutzung zu prüfen, nicht
+ersatzweise das größte Profil.
+Teamkompetenz und wirtschaftliche Randbedingungen ergänzen diese technische
+Entscheidung, ändern aber nicht die Bedeutung der Profile.

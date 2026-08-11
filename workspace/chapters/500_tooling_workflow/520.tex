@@ -1,38 +1,29 @@
 \subsection{Projektinitialisierung und Generierung}
 \label{subsec:projektinitialisierung-generierung}
 
-\texttt{python tools/control.py init} leitet aus dem in
-Kapitel~\ref{sec:projektprofile} beschriebenen Modell ein eigenständiges
-Produktprojekt ab. Ohne \texttt{--profile} führt der Befehl durch Profil und
-kompatible, als auswählbar markierte Capabilities. Nicht-interaktiv können
-Profil und wiederholbare oder kommaseparierte \texttt{--with}-Angaben gesetzt
-werden. Hinzu kommen Projektname, optionaler Slug, Zielverzeichnis und
-Dry-Run. Sobald die Identität eines Tauri-Projekts angepasst wird, verlangt
-der Generator außerdem einen gültigen Reverse-Domain-Identifier
+\texttt{init} erzeugt aus Profil und kompatiblen Capabilities ein eigenständiges
+Produktprojekt. Die Auswahl kann geführt oder nicht interaktiv erfolgen;
+Projektidentität, Ziel und Dry-Run sind konfigurierbar. Eine geänderte
+Tauri-Identität erfordert einen gültigen Reverse-Domain-Identifier
 \parencite{kleiveist2026profiles,kleiveist2026tooling}.
 
 \input{workspace/figures/tooling/project-generation-workflow}
 
-Technisch lädt \texttt{init} den Katalog, löst das Preset und transitive
-optionale Abhängigkeiten auf und bildet daraus einen geordneten Scaffold-Plan
-aus Core- und aktiven Feature-Pfaden. Vor einem Schreibzugriff werden
-Quellpfade und Ziel geprüft. Anschließend werden die ausgewählten Dateien ohne
-transiente Build- und Umgebungsverzeichnisse kopiert; generiert werden das
-aktive \path{project-profile.toml}, das Frontend-Profilmodul und eine
-featurebezogene \path{.env.example}. Bei angegebener Produktidentität passt
-die Nachbearbeitung die tatsächlich vorhandenen Frontend-, Backend-, Compose-,
-Tauri- und Cargo-Metadaten an. Webprofile verlieren zusätzlich Tauri-Skript
-und -CLI aus ihren kopierten npm-Metadaten.
+Der Generator löst Abhängigkeiten auf, erstellt den Scaffold-Plan und prüft
+Quellen und Ziel vor dem Schreiben. Er kopiert Core und aktive Features,
+erzeugt Manifest, Frontend-Profil und \path{.env.example} und passt vorhandene
+Produktmetadaten an. Transiente Verzeichnisse werden ausgelassen; Webprofile
+verlieren Tauri-Skript und -CLI.
+Bei angegebener Produktidentität werden nur tatsächlich vorhandene Frontend-,
+Backend-, Compose-, Tauri- und Cargo-Metadaten angepasst. Der Umfang bleibt
+damit vom gewählten Profil abhängig.
 
-Ein Ziel im Master ist nur unter \path{.generated/} zulässig; alternativ kann
-ein externes \texttt{--target-dir} gewählt werden. Das Repository selbst und
-nichtleere Ziele werden abgewiesen, während \texttt{--dry-run} nur den Plan
-ausgibt. Master-Template und erzeugtes Produktprojekt bleiben somit getrennt.
-Die Auswahl- und Kopierlogik ist auf eine deterministische Ableitung aus
-Katalog, Profil, Capabilities und Identität ausgelegt; eine empirische Aussage
-zur Reproduzierbarkeit bleibt Kapitel~\ref{sec:qualitaetssicherung-verifikation}
-vorbehalten. Als bereits in Abschnitt~\ref{subsec:optionale-capabilities}
-festgestellte Implementierungsgrenze filtert nur der Dialog nach
-\texttt{selectable}; eine direkte \texttt{--with database}-Angabe wird für
-Backendprofile akzeptiert, weil die CLI dort lediglich \texttt{optional}
-prüft \parencite{kleiveist2026template}.
+Im Master sind Ziele nur unter \path{.generated/} erlaubt; externe Ziele sind
+möglich. Das Repository selbst und nichtleere Ziele werden abgewiesen,
+\texttt{--dry-run} schreibt nichts. Eine Grenze bleibt: Nur der Dialog filtert
+nach \texttt{selectable}; direktes \texttt{--with database} wird für
+Backendprofile akzeptiert \parencite{kleiveist2026template}.
+Diese Vorprüfungen halten Master und Ziel getrennt und verhindern teilweise
+erzeugte Projekte bei bekannten Konflikten. Die Ableitung ist deterministisch
+angelegt; der empirische Reproduzierbarkeitsnachweis bleibt dennoch auf den
+geprüften Fall begrenzt.

@@ -1,24 +1,22 @@
 \subsection{Kritische Würdigung}
 \label{subsec:kritische-wuerdigung}
 
-Die technische Fallstudie untersucht das konkrete Template detailliert, ist
-aber nur begrenzt generalisierbar. Projektunterlagen belegen die Implementierung,
-nicht deren unabhängige Evaluation; Abnahme und lokale Prüfung stammen
-ebenfalls aus dem Projektkontext. Die Verbindung von Entwicklerperspektive,
-Selbstdokumentation und Bewertung kann die Evidenzauswahl beeinflussen, ohne
-commitgebundene Befunde aufzuheben. Wissenschaftliche Literatur ordnet
-allgemeine Konzepte ein, offizielle Dokumentation die Technologien; eine
-unabhängige Replikation ersetzen beide nicht.
+Die projektnahe Fallstudie ist begrenzt generalisierbar. Dokumentation,
+Abnahme und lokale Prüfung stammen aus dem Projektkontext; die
+Entwicklerperspektive kann die Evidenzauswahl beeinflussen. Literatur und
+offizielle Dokumentation ersetzen keine unabhängige Replikation.
+Commitgebundene Befunde bleiben dadurch gültig, ihre Übertragung auf andere
+Stände oder Projekte aber begrenzt.
 
-Die Testevidenz ist heterogen: Einer früheren, überwiegend Linux-basierten
-Abnahme stehen gemischte aktuelle Remote-Ergebnisse gegenüber. Jeder Test und
-Build belegt nur sein Kriterium; ohne Coverage-Messung, Compose-Start und
-durchgehend erfolgreiche Plattformläufe entsteht kein umfassender Qualitäts-
-oder Produktionsnachweis. Unsignierte Pakete ersetzen zudem keine nativen
-Produktreleases einschließlich Signierung und Notarisierung.
+Die Evidenz ist heterogen: Einer früheren, überwiegend Linux-basierten Abnahme
+stehen gemischte aktuelle CI-Ergebnisse gegenüber. Ohne Coverage-Messung,
+Compose-Start und erfolgreiche Plattformläufe entsteht kein umfassender
+Qualitäts- oder Produktionsnachweis; unsignierte Pakete ersetzen keine
+Produktreleases.
 
-Übertragbar erscheinen die Prinzipien zentraler Baseline, deklarativer
-Variabilität und gemeinsamer Tooling-Einstiege; projektspezifisch bleiben
-Technologien, Profile und commitgebundene Evidenz. Produktivitätspotenzial und
-Projekteignung wurden qualitativ hergeleitet. Zeitmessungen, Vergleichsgruppen,
-reale Kundenfallprüfungen und eine wirtschaftliche Bewertung fehlen.
+Übertragbar sind vor allem drei Prinzipien: zentrale Baseline, deklarative
+Variabilität und gemeinsame Tooling-Einstiege. Produktivität und Eignung wurden
+nur qualitativ bewertet; Zeitmessungen, Vergleichsgruppen, Kundenfälle und
+Wirtschaftsdaten fehlen.
+Diese Lücken begrenzen insbesondere Aussagen zur tatsächlichen Wirkung im
+Projektalltag.

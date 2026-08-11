@@ -1,23 +1,16 @@
 \subsection{Generierung eines Kundenprojekts}
 \label{subsec:generierung-kundenprojekt}
 
-Aus der Auswahl ergeben sich die Eingaben für die in
-Kapitel~\ref{sec:tooling-entwicklungsworkflow} beschriebene Generierung:
-Profil, optionale Capability, Projektname, gegebenenfalls Slug,
-Zielverzeichnis und bei angepasster Desktop-Identität ein
-Reverse-Domain-Identifier. \texttt{init} löst daraus die Feature-Pfade auf und erzeugt ein
-separates Projekt mit aktivem \path{project-profile.toml}. Dieser Schritt ist
-der Übergabepunkt zwischen Template-Auswahl und Produktentwicklung, nicht die
-Fertigstellung eines Kundenprodukts
+\texttt{init} erzeugt aus Profil, Capability und Projektidentität ein separates
+Projekt. Dessen aktives Manifest heißt \path{project-profile.toml}. Die
+Generierung ist der Übergabepunkt zur Produktentwicklung, nicht die
+Fertigstellung des Produkts
 \parencite{kleiveist2026tooling,kleiveist2026profiles}.
+Bei Desktopprojekten gehört eine gültige Anwendungs-ID zu diesen Eingaben.
 
-Vor Beginn der Fachentwicklung wird die erzeugte Baseline im Zielverzeichnis
-geprüft. Der Standardweg umfasst \texttt{doctor}, \texttt{install},
-\texttt{run} und \texttt{test {-}{-}suite all}; profilabhängig kommen etwa
-\texttt{tauri doctor}, Datenbankdiagnose oder Container-Validierung hinzu.
-Damit wird kontrolliert, ob Manifest, Abhängigkeiten und aktivierte Schichten
-technisch konsistent sind. Der Ablauf wiederholt nicht die Implementierung des
-Generators, sondern ordnet dessen Ergebnis in den vollständigen
-Transferprozess der Abbildung~\ref{fig:customer-project-process} ein.
+Im Zielverzeichnis prüfen \texttt{doctor}, \texttt{install}, \texttt{run} und
+\texttt{test {-}{-}suite all} die Baseline. Profilabhängige Tauri-, Datenbank-
+oder Containerprüfungen ergänzen den in
+Abbildung~\ref{fig:customer-project-process} gezeigten Transfer.
 
 \input{workspace/figures/business/customer-project-process}

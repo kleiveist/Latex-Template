@@ -1,21 +1,18 @@
 \subsection{Konfigurationsmodell}
 \label{subsec:konfigurationsmodell}
 
-Projektstruktur und Laufzeitkonfiguration sind getrennte Achsen:
-\texttt{project-profile.toml} bestimmt die vorhandenen Features,
-\path{config/environment.toml} den Variablenvertrag. Der zentrale Resolver
-berücksichtigt nur Variablen der aktiven Features und wendet in absteigender
-Priorität CLI-Override, Prozessumgebung, lokale \texttt{.env} und
-Vertragsdefault an. Ableitungen wie die lokale API-URL bleiben als Quelle
-nachvollziehbar \parencite{kleiveist2026configuration}.
+Projektstruktur und Laufzeitkonfiguration sind getrennt. Das Projektmanifest
+bestimmt die Features und liegt in \path{project-profile.toml}. Der
+Variablenvertrag steht in \path{config/environment.toml}. Für aktive Features gilt die
+Priorität CLI-Override, Prozessumgebung, lokale \texttt{.env}, Vertragsdefault.
+Auch abgeleitete Werte bleiben nachvollziehbar
+\parencite{kleiveist2026configuration}.
 
-Abbildung~\ref{fig:configuration-boundaries} zeigt die Adapter- und
-Sicherheitsgrenzen. Vite bettet ausschließlich die explizit freigegebene
-\texttt{VITE\_API\_BASE\_URL} ein. FastAPI verarbeitet serverseitige Werte
-typisiert; \texttt{DATABASE\_URL} bleibt ein maskiertes Secret. Tooling gibt nur
-relevante Werte an Kindprozesse weiter, und die Tauri-Umgebung entfernt bekannte
-Secret-Namen. Ungültige Hosts, Ports, Origins oder erforderliche fehlende Werte
-führen zu einem kontrollierten Abbruch, ohne den geheimen Eingabewert in der
-Fehlermeldung auszugeben.
+Abbildung~\ref{fig:configuration-boundaries} zeigt die Sicherheitsgrenzen.
+Vite erhält nur die freigegebene \texttt{VITE\_API\_BASE\_URL}; FastAPI
+verarbeitet Serverwerte typisiert und maskiert \texttt{DATABASE\_URL}. Das
+Tooling reicht nur relevante Werte weiter und entfernt bekannte Secret-Namen
+aus der Tauri-Umgebung. Ungültige oder fehlende Werte führen zum kontrollierten
+Abbruch, ohne Geheimnisse auszugeben.
 
 \input{workspace/figures/architecture/configuration-boundaries}

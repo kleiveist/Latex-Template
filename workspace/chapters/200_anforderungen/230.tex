@@ -1,14 +1,12 @@
 \subsection{Anforderungen für Web-, Cloud- und Desktop-Anwendungen}
 \label{subsec:anforderungen-plattformen}
 
-Alle Varianten sollen eine gemeinsame Frontend-Basis, Projektstruktur,
-Konfigurationslogik sowie ein einheitliches Test- und Dokumentationsmodell
-nutzen. Browserprojekte benötigen keine native Desktop-Schicht und nur bei
-Bedarf ein Backend. Cloudfähige Varianten erfordern eine serverseitige API,
-konfigurierbare Deployment-Grenzen sowie Health- und Readiness-Prüfbarkeit.
-Desktopvarianten sollen dasselbe Frontend in einer nativen Laufzeit verwenden
-und Weblogik von plattformspezifischer Integration trennen. Kombinierte
-Varianten verbinden Desktop-Client, Backend und gegebenenfalls Browserzugriff.
+Alle Varianten sollen Frontend-Basis, Struktur, Konfigurationslogik, Tests und
+Dokumentation teilen. Browserprojekte benötigen keine Desktop-Schicht und nur
+bei Bedarf ein Backend. Cloudvarianten erfordern API, Deployment-Grenzen sowie
+Health- und Readiness-Prüfung. Desktopvarianten verwenden dasselbe Frontend in
+einer nativen Laufzeit; kombinierte Varianten ergänzen Backend und
+gegebenenfalls Browserzugriff.
 
 \begin{table}[H]
   \centering
@@ -32,8 +30,7 @@ Varianten verbinden Desktop-Client, Backend und gegebenenfalls Browserzugriff.
   \textcite{kleiveist2026profiles}.\par}
 \end{table}
 
-Die Matrix formuliert Anforderungen, keine Prüfergebnisse. PostgreSQL ist
-dabei ausschließlich eine optionale Capability für backendfähige Profile und
-kein eigenes Plattformprofil \parencite{kleiveist2026profiles}. Öffentliche
+PostgreSQL ist nur eine optionale Capability für backendfähige Profile, kein
+eigenes Plattformprofil \parencite{kleiveist2026profiles}. Öffentliche
 Client-Konfiguration und serverseitige Werte einschließlich Geheimnissen sind
-voneinander zu trennen; eine bestimmte Cloud-Plattform wird nicht vorausgesetzt.
+zu trennen; eine bestimmte Cloud-Plattform wird nicht vorausgesetzt.

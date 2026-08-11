@@ -1,36 +1,28 @@
 \subsection{Systemprüfung und Installation}
 \label{subsec:systempruefung-installation}
 
-Der read-only ausgelegte \texttt{doctor} prüft den laufenden
-Python-Interpreter, Node.js, npm und npx sowie das optionale \texttt{uv}, lädt
-Profil und wirksame Konfiguration und kontrolliert relevante Projektpfade,
-Abhängigkeiten und Ports. Deaktivierte Schichten gelten nicht als Fehler.
-Cloudprofile ergänzen Containerprüfungen, wobei fehlendes Docker im allgemeinen
-Doctor nur warnt; erst \texttt{container doctor} behandelt es als
-Voraussetzung. Datenbankverbindung und native Desktop-Bibliotheken besitzen mit
-\texttt{db doctor --connect} beziehungsweise \texttt{tauri doctor} bewusst
-separate, vertiefende Diagnosewege. Letzterer prüft zusätzlich Rust/Cargo,
-Tauri-CLI und plattformspezifische Bibliotheken
+Der nur lesende \texttt{doctor} prüft profilabhängig Laufzeiten, Konfiguration,
+Pfade, Abhängigkeiten und Ports. Deaktivierte Schichten sind kein Fehler.
+Fehlendes Docker erzeugt allgemein nur eine Warnung; Container-, Datenbank- und
+Tauri-Voraussetzungen besitzen strengere eigene Diagnosewege
 \parencite{kleiveist2026tooling,kleiveist2026configuration}.
 
-\texttt{install} verwendet für das Frontend bei vorhandenem Lockfile
-\texttt{npm ci}, andernfalls \texttt{npm install}. Für ein aktives Backend
-legt es \path{backend/.venv} an und installiert die Basisanforderungen sowie
-profilabhängig Datenbank- und PostgreSQL-Ergänzungen; \texttt{uv} ist ein
-optionaler schneller Pfad, für den ein pip/venv-Fallback existiert. Ferner wird
-bei Bedarf eine kleine Tooling-Umgebung für Pytest eingerichtet. Chromium wird
-nur installiert, wenn Playwright im Projekt konfiguriert ist. Deaktivierte
-Frontend- oder Backendschichten werden übersprungen, und eine lokale
-\texttt{.env} wird weder erzeugt noch verändert. Native Betriebssystem- und
-Rust-Voraussetzungen bleiben Aufgabe von \texttt{tauri install}. Damit bündelt
-der Standardweg die relevanten npm- und Python-Schritte, ohne jeden
-Sonderworkflow vorwegzunehmen.
+\texttt{install} richtet nur aktive Komponenten ein: Frontend-Abhängigkeiten
+werden bevorzugt aus dem Lockfile installiert, Backend-Abhängigkeiten in einer
+virtuellen Umgebung. Datenbankpakete, Tooling-Umgebung und Chromium kommen nur
+bei Bedarf hinzu; für Python besteht neben \texttt{uv} ein pip/venv-Fallback.
+Eine lokale \texttt{.env} bleibt unverändert. Native Betriebssystem- und
+Rust-Voraussetzungen behandelt \texttt{tauri install} separat.
+Konkret verwendet das Frontend bei vorhandenem Lockfile \texttt{npm ci}. Ein
+aktives Backend erhält eine eigene Umgebung und nur die profilabhängigen
+Anforderungssätze. Chromium wird ausschließlich bei konfiguriertem Playwright
+installiert; deaktivierte Schichten werden übersprungen.
 
-Die README nennt Git, Python ab Version~3.11 und Node.js ab Version~20 als
-Grundvoraussetzungen sowie Rust Stable für Desktopprofile. Der allgemeine
-Doctor prüft jedoch weder Git noch diese Versionsbereiche; auch der Tauri-Doctor
-meldet jeden vorhandenen aktiven Rust-Toolchain als gültig. Die festgelegten
-Python- und Node-Hauptversionen werden dagegen in den CI-Workflows explizit
-eingerichtet. Dies ist eine Grenze zwischen dokumentierter Voraussetzung und
-lokaler Durchsetzung, nicht eine zusätzliche Tooling-Funktion
+Die README fordert Git, Python ab 3.11, Node.js ab 20 und für Desktopprofile
+Rust Stable. Der allgemeine Doctor prüft Git und diese Versionsbereiche nicht;
+der Tauri-Doctor akzeptiert jede aktive Rust-Toolchain. CI richtet die
+festgelegten Python- und Node-Hauptversionen dagegen explizit ein. Damit weicht
+die lokale Durchsetzung von der Dokumentation ab
 \parencite{kleiveist2026template,kleiveist2026ci}.
+Diese Grenze betrifft die Prüfung der Voraussetzung, nicht deren dokumentierte
+Gültigkeit.

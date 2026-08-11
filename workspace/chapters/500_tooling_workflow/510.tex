@@ -1,35 +1,27 @@
 \subsection{Rolle von control.py}
 \label{subsec:rolle-control-py}
 
-\path{tools/control.py} ist der öffentliche Einstiegspunkt für die
-projektweiten Arbeitsabläufe. Der mit \texttt{argparse} aufgebaute Parser
-stellt im untersuchten Stand die Befehle \texttt{init}, \texttt{doctor},
-\texttt{install}, \texttt{console}, \texttt{run}, \texttt{stop},
-\texttt{test}, \texttt{build}, \texttt{config}, \texttt{db},
-\texttt{tauri}, \texttt{container}, \texttt{version}, \texttt{release} und
-\texttt{docs} bereit. Gruppenbefehle zeigen ohne Aktion ihre nächste
-Befehlsebene; ebenso liefern ein leerer Aufruf und \texttt{--help} ein
-Orientierungsmodell, ohne einen Workflow auszuführen
+\path{tools/control.py} bündelt die öffentlichen Arbeitsabläufe. Seine Befehle
+decken Initialisierung, Diagnose, Installation, Entwicklung, Konfiguration,
+Datenbank, Tests, Builds, Container, Tauri, Versionierung, Release und
+Dokumentation ab. Hilfe und Gruppenansichten strukturieren diese Oberfläche
 \parencite{kleiveist2026control,kleiveist2026tooling}.
+Zu den wichtigsten Einstiegen gehören \texttt{init}, \texttt{doctor},
+\texttt{install}, \texttt{run}, \texttt{test} und \texttt{build}. Die Gruppen
+\texttt{db}, \texttt{tauri}, \texttt{container} und \texttt{release} ergänzen
+nur die jeweils benötigten Fachabläufe.
 
 \input{workspace/figures/tooling/control-command-map}
 
-Die gemeinsame Oberfläche ersetzt die Fachwerkzeuge nicht. Ihre Handler laden
-das aktive Projektmanifest sowie bei Bedarf die Laufzeitkonfiguration und
-delegieren anschließend unter anderem an npm und
-Vite, Uvicorn und Pytest, Cargo und Tauri, Docker Compose, Alembic oder
-PyGitIndex. Damit wird die in Kapitel~\ref{sec:anforderungen} formulierte
-Anforderung nach gemeinsamen Entwicklungsbefehlen adressiert, während die
-technischen Subsysteme eigenständig bleiben. Die geführte \texttt{console}
-ruft dieselben öffentlichen Befehle als Kindprozesse auf und bildet daher eine
-alternative Bedienoberfläche, kein zweites Tooling-System.
+Die Handler laden Manifest und bei Bedarf Laufzeitkonfiguration und delegieren
+an die jeweiligen Fachwerkzeuge. Diese bleiben eigenständig. Die geführte
+\texttt{console} ruft dieselben Befehle auf und bildet kein zweites System.
 
-Erwartbare Bedienfehler werden an der jeweiligen Grenze behandelt: Unbekannte
-Parserargumente zeigen Hilfe, Fehlermeldung und nächsten Hilfeschritt und enden
-mit Exit-Code~2; fachliche Fehlschläge enden regelmäßig mit Code~1. Hilfe,
-erfolgreiche Ausführung und reine Warnzustände liefern Code~0. Bekannte Profil-
-und Generierungsfehler werden ohne Traceback ausgegeben. Nur die letzte
-Sicherheitsgrenze für unerwartete Exceptions protokolliert zusätzlich den
-Stacktrace; ein dort ankommender Abbruch per Tastatur erhält Code~130. Diese
-Statuskonvention ermöglicht sowohl interaktive Diagnose als auch die
-Auswertung durch CI-Workflows \parencite{kleiveist2026control,kleiveist2026ci}.
+Unterschiedliche Exitcodes trennen Hilfe und Erfolg, fachliche Fehler,
+Bedienfehler und Abbruch. Erwartete Profil- und Generierungsfehler erscheinen
+ohne Traceback; unerwartete Exceptions werden protokolliert. Diese Konvention
+unterstützt interaktive Diagnose und CI-Auswertung
+\parencite{kleiveist2026control,kleiveist2026ci}.
+Insbesondere lassen sich erfolgreiche Ausführung, fachlicher Fehlschlag und
+fehlerhafte Bedienung maschinell unterscheiden. Warnungen blockieren den
+Workflow nicht automatisch.

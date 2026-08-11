@@ -1,12 +1,9 @@
 \subsection{Profil Web-only}
 \label{subsec:profil-web-only}
 
-\texttt{web-only} aktiviert als einziges Plattformfeature
-\texttt{frontend}. Zum Core kommt daher \path{frontend/}. Nicht in den
-Scaffold gelangen \path{backend/}, \path{src-tauri/}, \path{deployment/}
-sowie Datenbank- und PostgreSQL-Abhängigkeiten. Der Generator entfernt außerdem
-Tauri-Skript und -CLI aus \path{package.json} und Lockfile. Das Laufzeitmodell
-ist damit ein im Browser geladenes Vite-Frontend ohne FastAPI- oder native
-Desktop-Schicht; auch das generierte Frontend-Profil aktiviert keinen
-Backend-Statusaufruf. Gegenüber \texttt{web-cloud} fehlen folglich API und
-Cloud-/Deployment-Feature \parencite{kleiveist2026profiles}.
+\texttt{web-only} ergänzt den Core ausschließlich um das Vite-Frontend. Der
+Browser lädt es ohne FastAPI-, Desktop-, Deployment- oder Datenbankschicht;
+Tauri-Skript und -CLI werden entfernt. Das Profil eignet sich damit für reine
+Clientanwendungen ohne Backendzugriff \parencite{kleiveist2026profiles}.
+Gegenüber \texttt{web-cloud} fehlen folglich API und Cloud-Feature; auch das
+generierte Frontend aktiviert keinen Backend-Statusaufruf.

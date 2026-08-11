@@ -1,50 +1,38 @@
 \subsection{Schwächen und Grenzen}
 \label{subsec:schwaechen-grenzen}
 
-Für die Einordnung sind drei Fälle zu unterscheiden. Eine \emph{technische
-Schwäche} ist ein Nachteil der vorhandenen Lösung, eine \emph{Scope-Grenze}
-eine bewusste Auslassung und ein \emph{nicht verifizierter Bereich} eine
-fehlende Nachweisabdeckung. Erstere wirkt unmittelbar auf die Bewertung;
-letztere beiden sind nicht automatisch Implementierungsfehler.
+Zu unterscheiden sind technische Schwächen, bewusste Scope-Grenzen und nicht
+verifizierte Bereiche. Nur die erste Gruppe bezeichnet unmittelbar einen
+Nachteil der Umsetzung.
+Scope-Grenzen erzeugen zwar Anpassungsbedarf, sind aber keine fehlgeschlagene
+Anforderung. Fehlende Verifikation erlaubt noch kein positives oder negatives
+technisches Urteil.
 
-Technisch erhöht die Bündelung im Master-Repository dessen interne
-Komplexität. Änderungen an gemeinsamen Pfaden, Generator und Feature-Katalog
-können mehrere Profile betreffen und verlangen Regressionstests über die
-Varianten. Der derzeit kleine Katalog begrenzt dieses Risiko, beseitigt es aber
-nicht. Hinzu kommen zwei konkrete Architekturgrenzen: Die gemeinsamen
-JSON-Schemata werden von Frontend und Backend noch nicht zur Laufzeit
-konsumiert, sodass Schnittstellenänderungen manuell synchronisiert werden
-müssen (Abschnitt~\ref{subsec:shared-contracts-schnittstellen}). Zudem trennt
-die direkte CLI-Auswahl \texttt{optional} und \texttt{selectable} weniger
-streng als der interaktive Dialog (Abschnitt~\ref{subsec:optionale-capabilities}).
-Beide Punkte erzeugen Wartungs- beziehungsweise Fehlbedienungsrisiken, ohne
-die geprüften Presets grundsätzlich infrage zu stellen. Hinzu kommt ein
-Prozessbefund: Auf dem untersuchten HEAD bestanden die Webprofile in der
-externen Matrix, während der Tooling-Job, die Desktop-Profiltests und der
-Windows-Installationsschritt fehlschlugen; einem lokal bestandenen
-Tooling-Kontrolllauf steht damit ein widersprüchlicher Remote-Nachweis
-gegenüber (Abschnitt~\ref{subsec:continuous-integration}).
+Die Bündelung im Master erhöht die interne Komplexität: Änderungen an Core,
+Generator oder Katalog erfordern Regressionstests über mehrere Profile.
+Außerdem nutzen Frontend und Backend die gemeinsamen JSON-Schemata nicht zur
+Laufzeit; Vertragsänderungen bleiben manuell. Die direkte CLI-Auswahl trennt
+\texttt{optional} und \texttt{selectable} schwächer als der Dialog. Beide
+Abweichungen erzeugen Wartungs- oder Fehlbedienungsrisiken. Auf dem
+untersuchten HEAD kommen widersprüchliche Nachweise hinzu: Webprofile und der
+lokale Tooling-Lauf bestanden, externe Tooling-, Desktopprofil- und
+Windows-Prüfungen scheiterten.
+Dieser Befund stellt die frühere commitgebundene Abnahme nicht rückwirkend
+infrage, verhindert aber ein vollständig grünes Urteil für den neueren Stand.
 
-Die Profilgrenzen sind dagegen beabsichtigt: \texttt{web-only} enthält kein
-Backend, \texttt{desktop-local} keine Cloud-API, und PostgreSQL ist nur mit
-Backendprofilen vereinbar. Ebenso gehören Fachlogik, generische
-Authentifizierung oder Rollenmodelle, eine verpflichtende Datenbank, ein
-bestimmter Cloud-Provider sowie produktspezifische native Kommandos nicht zur
-Baseline. Daraus entsteht Anpassungsaufwand für konkrete Produkte, aber keine
-Abweichung von der Abgrenzung in Abschnitt~\ref{subsec:abgrenzung}.
+Bewusst ausgeschlossen sind Backend in \texttt{web-only}, Cloud-API in
+\texttt{desktop-local} und PostgreSQL ohne Backend. Auch Fachlogik,
+Authentifizierung, Rollenmodelle, verpflichtende Persistenz, Cloud-Provider
+und native Fachkommandos bleiben produktspezifisch. Der daraus folgende
+Anpassungsaufwand ist keine Abweichung vom Scope.
 
-Nicht abschließend verifiziert sind die in
-Abschnitt~\ref{subsec:extern-verbleibende-pruefungen} vorgesehenen externen
-Punkte. Die aktuellen CI-Läufe belegen Compose-Validierung und beide
-Master-Image-Builds, nicht jedoch den Start des Compose-Verbunds oder eine
-produktive Bereitstellung. Offen bleiben ferner Release Validation und Branch
-Protection. Linux- und macOS-Pakete wurden auf dem untersuchten HEAD
-unsigniert gebaut; der Windows-Job scheiterte. Signing, macOS-Notarisierung,
-Veröffentlichung und produktive Cloud-Bereitstellung bleiben bewusst produkt-
-oder infrastrukturspezifisch
+Nicht abschließend verifiziert sind Compose-Start, produktive Bereitstellung,
+Release Validation und Branch Protection. Linux und macOS wurden unsigniert
+paketiert, Windows scheiterte. Signing, Notarisierung, Veröffentlichung und
+produktiver Cloudbetrieb bleiben produkt- oder infrastrukturspezifisch
 \parencite{kleiveist2026ci-core-run,kleiveist2026ci-desktop-run,kleiveist2026acceptance}.
-Daraus folgen vor allem Betriebs-, Plattform- und Prozessrisiken: Die
-vorliegenden Paketergebnisse lassen sich nicht auf signierte Releases und
-nicht auf einen produktiven Cloudbetrieb übertragen. Die Fallstudie bewertet
-daher eine technische Template-Baseline, nicht die Produktionsreife eines
-daraus entstehenden Produkts.
+Die Paketergebnisse belegen daher weder signierte Releases noch produktiven
+Cloudbetrieb. Bewertet wird die Template-Baseline, nicht die Produktionsreife
+eines Produkts.
+Die verbleibenden Risiken betreffen damit vor allem Betrieb, Plattformen und
+Freigabeprozesse.

@@ -1,43 +1,32 @@
 \subsection{Gesamtbewertung}
 \label{subsec:gesamtbewertung}
 
-Für die Zusammenführung werden drei qualitative Stufen verwendet.
-\emph{Weitgehend adressiert} bedeutet, dass ein Anforderungskriterium durch
-implementierte Mechanismen und einschlägige Abnahmen im vorgesehenen Umfang
-gestützt wird. \emph{Teilweise adressiert} kennzeichnet eine tragfähige
-Grundlage mit wesentlichen Reichweiten- oder Nachweislücken.
-\emph{Nicht abschließend nachgewiesen} bedeutet, dass die vorhandene Evidenz
-keine belastbare Gesamtfeststellung zulässt. Die Stufen messen weder Qualität
-noch Produktivität numerisch.
+Tabelle~\ref{tab:template-evaluation} unterscheidet weitgehend und teilweise
+adressierte Kriterien von nicht abschließend nachgewiesenen. Diese Stufen sind
+qualitativ und messen weder Qualität noch Produktivität numerisch.
 
 \input{workspace/tables/template-evaluation}
 
-Bezogen auf die Fragestellungen in Abschnitt~\ref{subsec:fragestellungen}
-zeigt die Fallstudie eine belastbare technische Baseline für die definierten
-Profile. Gemeinsamer Kern, deklarative Presets, Capability-Abhängigkeiten und
-ein profilabhängiges Tooling adressieren Wiederverwendung, Standardisierung
-und Flexibilität. Die dokumentierte Abnahme stützt Generierung, Installation,
-Tests und Builds im dort untersuchten Umfang; besonders stark ist diese
-Evidenz für die fünf Scaffold-Varianten, die kompatiblen
-PostgreSQL-Kombinationen und das Linux-Packaging
-\parencite{kleiveist2026acceptance}. Die späteren externen Läufe ergänzen
-aktuelle Web-, Container-, Linux- und macOS-Nachweise, enthalten aber zugleich
-reale Fehler in Tooling-, Desktopprofil- und Windows-Jobs
-(Abschnitt~\ref{subsec:continuous-integration}).
+Die Baseline ist für die definierten Profile technisch tragfähig. Kern,
+Presets, Abhängigkeiten und Tooling unterstützen Wiederverwendung,
+Standardisierung und Flexibilität. Die Abnahme stützt Generierung,
+Installation, Tests, Builds, PostgreSQL-Kombinationen und Linux-Packaging
+\parencite{kleiveist2026acceptance}. Neuere externe Läufe ergänzen Web-,
+Container-, Linux- und macOS-Nachweise, enthalten aber Fehler in Tooling-,
+Desktopprofil- und Windows-Jobs.
+Die Evidenz ist damit belastbar, aber nach Commit und Plattform unterschiedlich
+weitreichend.
 
-Dem stehen höhere zentrale Pflegekomplexität, manuell synchronisierte
-Schnittstellenartefakte und fehlende automatische Updates bereits generierter
-Projekte gegenüber. Plattform- und Betriebsnachweise enden vor einem grünen
-Windows-Paket, signierten Windows-/macOS-Releases, Notarisierung und
-produktivem Cloudbetrieb. Diese Punkte begrenzen die technische Verifikation,
-ohne die bewusst provider- und fachlogikfreie Baseline als fehlerhaft
-einzustufen.
+Grenzen sind zentrale Pflegekomplexität, manuell synchronisierte Verträge und
+fehlende Updates generierter Projekte. Windows-Paketierung, signierte Releases,
+Notarisierung und produktiver Cloudbetrieb sind nicht nachgewiesen. Bewusst
+ausgelassene Provider- und Fachlogik ist dagegen kein Fehler.
+Tabelle~\ref{tab:template-evaluation} macht den Unterschied zwischen
+adressierter Anforderung und offener Nachweisbreite sichtbar.
 
-Das Produktivitätspotenzial ist deshalb plausibel, aber nicht quantitativ
-belegt: Automatisierung und gemeinsame Workflows können wiederkehrenden
-Setup-Aufwand reduzieren, während Template-Pflege und Technologievielfalt
-einen Teil dieses Nutzens aufzehren. Insgesamt eignet sich der Stand als
-standardisierte Ausgangsbasis für die vorgesehenen Projektfamilien, nicht als
-fertige Produktionsanwendung oder als universelle Vorlage. Die endgültige
-Beantwortung der Forschungsfragen und die Übertragung auf konkrete
-Einsatzfelder bleiben den nachfolgenden Kapiteln vorbehalten.
+Automatisierung und gemeinsame Workflows schaffen plausibles, aber nicht
+quantifiziertes Produktivitätspotenzial. Der Stand eignet sich als
+standardisierte Basis für die vorgesehenen Projektfamilien, nicht als fertige
+Produktionsanwendung oder universelle Vorlage.
+Ob sich die zentrale Investition wirtschaftlich lohnt, bleibt ohne Nutzungs-
+und Kostendaten offen.

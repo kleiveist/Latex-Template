@@ -80,6 +80,9 @@
 % ------------------------------------------------------------
 \usepackage{graphicx}
 \usepackage{xcolor}
+\ifbeginnerstatements
+  \usepackage{tcolorbox}
+\fi
 \usepackage{tikz}
 \usetikzlibrary{
   arrows.meta,
@@ -96,6 +99,32 @@
 \definecolor{caseGreen}{HTML}{5A8F3D}
 \definecolor{caseLight}{HTML}{F4F8FB}
 \definecolor{caseLine}{HTML}{A9B4BF}
+
+% Optionale, zurückhaltende Erklärungen für technische Neueinsteiger
+\ifbeginnerstatements
+  \definecolor{beginnerBackground}{HTML}{F3F3F3}
+  \definecolor{beginnerBorder}{HTML}{B8B8B8}
+
+  \newtcolorbox{beginnerstatement}[1][Kurz erklärt]{
+    colback=beginnerBackground,
+    colframe=beginnerBorder,
+    colbacktitle=beginnerBackground,
+    coltitle=black,
+    coltext=black,
+    boxrule=0.6pt,
+    arc=2mm,
+    outer arc=2mm,
+    left=2.5mm,
+    right=2.5mm,
+    top=2mm,
+    bottom=2mm,
+    before skip=10pt plus 2pt minus 2pt,
+    after skip=10pt plus 2pt minus 2pt,
+    fonttitle=\bfseries,
+    fontupper=\small,
+    title={#1}
+  }
+\fi
 
 \tikzset{
   casePrimary/.style={

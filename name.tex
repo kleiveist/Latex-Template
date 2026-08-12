@@ -1,8 +1,27 @@
 % !TeX program = pdflatex
 \documentclass[11pt,a4paper]{article}
 
+% Optionale Erklärungsebene für technische Neueinsteiger
+% Auf \beginnerstatementsfalse setzen, um die unveränderte Fallstudie
+% ohne zusätzliche Erklärungen zu erzeugen.
+\newif\ifbeginnerstatements
+\beginnerstatementstrue
+
 % Zentrale Einstellungen und Pakete
 \input{preamble}
+
+\ifbeginnerstatements
+  \newcommand{\beginnerinput}[1]{%
+    \par
+    \InputIfFileExists{#1.tex}{}{
+      \PackageError{beginnerstatements}%
+        {Beginner-Erklaerung `#1.tex' nicht gefunden}%
+        {Pruefen Sie Pfad und Dateinamen der Beginner-Erklaerung.}%
+    }%
+  }
+\else
+  \newcommand{\beginnerinput}[1]{}
+\fi
 
 % ------------------------------------------------------------
 % Metadaten
